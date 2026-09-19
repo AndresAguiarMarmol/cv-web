@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andres Aguiar | Analista de Sistemas TI - Curriculum & Portfolio</title>
+  <meta name="description" content="Portfolio y Curriculum Vitae de Andres Aguiar, Analista de Sistemas con más de 40 años de trayectoria en TI, gestión de operaciones, desarrollo en Python/SQL y liderazgo en soporte corporativo.">
+  <meta name="author" content="Andres Aguiar">
+
+  <!-- Open Graph / Meta Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Andres Aguiar | Analista de Sistemas">
+  <meta property="og:description" content="Más de 40 Años de Trayectoria en Tecnología de Información, Operaciones y Desarrollo de Software.">
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS via CDN con soporte Dark Mode por clase -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Estilos Personalizados -->
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0b0f19] text-slate-900 dark:text-slate-100 antialiased selection:bg-blue-500 selection:text-white transition-colors duration-200">
+
+  <!-- =======================================================================
+       Header & Barra de Navegación
+       ======================================================================= -->
+  <header class="fixed top-0 left-0 right-0 z-40 glass-nav">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Logotipo / Identidad -->
+      <a href="#" class="flex items-center gap-2.5 group">
+        <span class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 text-white flex items-center justify-center font-bold text-sm shadow-sm group-hover:scale-105 transition-transform">
+          AA
+        </span>
+        <div class="flex flex-col">
+          <span class="font-bold text-sm sm:text-base leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+            Andres Aguiar
+          </span>
+          <span class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Analista de Sistemas</span>
+        </div>
+      </a>
+
+      <!-- Navegación de Escritorio -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300">
+        <a href="#pilares" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Especialidad</a>
+        <a href="#proyectos" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Casos de Éxito</a>
+        <a href="#skills" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Stack Técnico</a>
+        <a href="#trayectoria" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Trayectoria</a>
+        <a href="#certificaciones" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Formación</a>
+        <a href="#aptitudes" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Aptitudes</a>
+        <a href="#contacto" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contacto</a>
+      </nav>
+
+      <!-- Botones de Acción (Tema & CV) -->
+      <div class="flex items-center gap-3">
+        <!-- Selector Modo Oscuro -->
+        <button 
+          id="theme-toggle" 
+          type="button" 
+          aria-label="Cambiar modo de tema"
+          class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          <i data-lucide="moon" class="w-5 h-5 hidden dark:block"></i>
+          <i data-lucide="sun" class="w-5 h-5 block dark:hidden"></i>
+        </button>
+
+        <!-- Botón Descarga / Imprimir CV -->
+        <button 
+          type="button" 
+          class="btn-print-cv hidden sm:inline-flex items-center gap-2 px-4 py-2 text-xs md:text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 active:bg-blue-800 rounded-xl shadow-sm hover:shadow transition-all"
+        >
+          <i data-lucide="download" class="w-4 h-4"></i>
+          <span>Descargar CV</span>
+        </button>
+
+        <!-- Botón Menú Móvil -->
+        <button 
+          id="mobile-menu-btn" 
+          type="button" 
+          aria-label="Abrir menú" 
+          aria-expanded="false" 
+          class="md:hidden p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 focus:outline-none"
+        >
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menú Desplegable Móvil -->
+    <div id="mobile-menu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur px-4 pt-2 pb-6 space-y-3">
+      <a href="#pilares" class="mobile-nav-link block py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-blue-600">Especialidad</a>
+      <a href="#proyectos" class="mobile-nav-link block py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-blue-600">Casos de Éxito</a>
+      <a href="#skills" class="mobile-nav-link block py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-blue-600">Stack Técnico</a>
+      <a href="#trayectoria" class="mobile-nav-link block py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-blue-600">Trayectoria</a>
+      <a href="#certificaciones" class="mobile-nav-link block py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-blue-600">Certificaciones</a>
+      <a href="#contacto" class="mobile-nav-link block py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-blue-600">Contacto</a>
+      
+      <div class="pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+        <button type="button" class="btn-print-cv inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold text-white bg-blue-600 rounded-xl w-full justify-center">
+          <i data-lucide="download" class="w-4 h-4"></i>
+          <span>Descargar CV en PDF</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =======================================================================
+       Contenido Principal
+       ======================================================================= -->
+  <main class="pt-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+
+    <!-- Hero Section -->
+    <section id="hero" class="pt-6 sm:pt-12 pb-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <!-- Columna Izquierda: Presentación -->
+        <div class="lg:col-span-8">
+          <!-- Badges de Estado -->
+          <div class="flex flex-wrap items-center gap-2.5 mb-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span id="bind-status">Disponible para Proyectos & Consultoría TI</span>
+            </div>
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-blue-500"></i>
+              <span id="bind-location">Santiago, Chile</span>
+            </div>
+          </div>
+
+          <!-- Titulares Principales -->
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15] mb-6">
+            Más de 40 años optimizando <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-300">Recursos de TI</span> y desarrollando <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-500 dark:from-indigo-300 dark:to-blue-400">Soluciones de Software</span>.
+          </h1>
+
+          <p class="bind-summary text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-8">
+            Profesional experto en Tecnología de Información con más de 40 años de sólida trayectoria liderando operaciones de soporte técnico, administración de plataformas y desarrollo de sistemas empresariales.
+          </p>
+
+          <!-- Botones CTA -->
+          <div class="flex flex-wrap items-center gap-3 mb-10">
+            <a href="#proyectos" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all">
+              <span>Ver Casos de Éxito</span>
+              <i data-lucide="arrow-down" class="w-4 h-4"></i>
+            </a>
+            <a href="https://wa.me/56933395447" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm shadow-md transition-colors">
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+              <span>WhatsApp Directo</span>
+            </a>
+            <button type="button" class="btn-copy-email inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors">
+              <i data-lucide="copy" class="w-4 h-4 text-blue-500"></i>
+              <span>Copiar Correo</span>
+            </button>
+          </div>
+
+          <!-- Indicadores Numéricos / Métricas Rápidas -->
+          <div id="hero-metrics-container" class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-200 dark:border-slate-800">
+            <!-- Poblado dinámicamente desde data.js -->
+          </div>
+        </div>
+
+        <!-- Columna Derecha: Tarjeta Ejecutiva de Perfil -->
+        <div class="lg:col-span-4">
+          <div class="bg-gradient-to-b from-white to-slate-50 dark:from-slate-800 dark:to-slate-850 p-6 sm:p-7 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-xl relative overflow-hidden">
+            <div class="absolute -top-12 -right-12 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+            <div class="flex items-center gap-4 mb-5">
+              <div class="relative w-16 h-16 rounded-2xl overflow-hidden ring-4 ring-blue-100 dark:ring-blue-950 shadow-lg shrink-0 flex items-center justify-center bg-gradient-to-tr from-blue-600 to-indigo-600">
+                <img src="assets/img/foto-perfil.jpg" alt="Andres Aguiar" class="w-full h-full object-cover absolute inset-0 z-10" onerror="this.remove()">
+                <span class="font-bold text-2xl text-white">AA</span>
+              </div>
+              <div>
+                <h3 class="font-extrabold text-lg text-slate-900 dark:text-white">Andres Aguiar</h3>
+                <p class="text-xs font-semibold text-blue-600 dark:text-blue-400">Analista de Sistemas</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1 mt-0.5">
+                  <i data-lucide="map-pin" class="w-3 h-3 text-slate-400"></i>
+                  <span>Santiago, Chile</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="space-y-3 text-xs text-slate-600 dark:text-slate-300 border-t border-slate-200/80 dark:border-slate-700/80 pt-4 mb-5">
+              <div class="flex items-center justify-between">
+                <span class="text-slate-500">Graduación:</span>
+                <span class="font-bold text-amber-600 dark:text-amber-400">1° en Promoción UCLA</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-slate-500">Especialidad:</span>
+                <span class="font-semibold text-slate-800 dark:text-slate-200">Gestión TI, Web, Python & Cripto</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-slate-500">Teléfono:</span>
+                <a href="tel:+56933395447" class="font-bold text-blue-600 dark:text-blue-400 hover:underline">+56 9 3339 5447</a>
+              </div>
+            </div>
+
+            <div class="space-y-2 pt-2 border-t border-slate-200/80 dark:border-slate-700/80">
+              <button type="button" class="btn-print-cv w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs shadow transition-all">
+                <i data-lucide="download" class="w-4 h-4"></i>
+                <span>Descargar Curriculum en PDF</span>
+              </button>
+              <a href="https://www.linkedin.com/in/andres-aguiar-b4824395" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 font-semibold text-xs transition-all">
+                <i data-lucide="linkedin" class="w-4 h-4 text-blue-500"></i>
+                <span>Ver Perfil en LinkedIn</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Pilares de Especialización (Core Pillars) -->
+    <section id="pilares" class="scroll-mt-20">
+      <div class="mb-10">
+        <span class="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400">Áreas de Dominio</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">
+          Capacidades Centrales en TI
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2 max-w-2xl">
+          Alineación precisa entre visión estratégica y ejecución técnica para garantizar proyectos sin desvíos y con alta adopción de usuario.
+        </p>
+      </div>
+
+      <div id="pillars-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Se llena dinámicamente con data.js -->
+      </div>
+    </section>
+
+    <!-- Casos de Estudio & Proyectos Destacados -->
+    <section id="proyectos" class="scroll-mt-20">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400">Portfolio Práctico</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">
+            Casos de Estudio & Proyectos
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2 max-w-2xl">
+            Cada caso aborda el desafío bajo el enfoque STAR: Situación, Tarea técnica, Acción de análisis y Resultados medibles.
+          </p>
+        </div>
+        <div class="text-xs text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 self-start sm:self-auto">
+          💡 Haz clic en cualquier proyecto para ver el análisis completo
+        </div>
+      </div>
+
+      <div id="projects-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Se llena dinámicamente con data.js -->
+      </div>
+    </section>
+
+    <!-- Habilidades Técnicas & Herramientas -->
+    <section id="skills" class="scroll-mt-20">
+      <div class="mb-10">
+        <span class="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400">Herramientas & Tecnologías</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">
+          Stack de Análisis & Gestión TI
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2 max-w-2xl">
+          Dominio de frameworks de trabajo, lenguajes de consulta, herramientas de modelado y protocolos de integración.
+        </p>
+      </div>
+
+      <div id="skills-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Se llena dinámicamente con data.js -->
+      </div>
+    </section>
+
+    <!-- Trayectoria Profesional (Timeline) -->
+    <section id="trayectoria" class="scroll-mt-20">
+      <div class="mb-10">
+        <span class="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400">Experiencia Comprobada</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">
+          Trayectoria Profesional
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2 max-w-2xl">
+          Evolución de responsabilidades, proyectos gestionados y resultados en entornos de TI y consultoría.
+        </p>
+      </div>
+
+      <div class="relative">
+        <div id="experience-container" class="space-y-6">
+          <!-- Se llena dinámicamente con data.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Certificaciones & Educación -->
+    <section id="certificaciones" class="scroll-mt-20">
+      <div class="mb-10">
+        <span class="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400">Validación Profesional</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">
+          Certificaciones & Educación
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2 max-w-2xl">
+          Credenciales de la industria que respaldan el conocimiento formal en agilidad, gobernanza TI y arquitectura cloud.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+            <i data-lucide="award" class="w-5 h-5 text-blue-500"></i>
+            <span>Certificaciones & Especializaciones</span>
+          </h3>
+          <div id="certs-container" class="space-y-3">
+            <!-- Se llena dinámicamente con data.js -->
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+            <i data-lucide="graduation-cap" class="w-5 h-5 text-blue-500"></i>
+            <span>Formación Académica Universitaria</span>
+          </h3>
+          <div id="education-container" class="space-y-3">
+            <!-- Se llena dinámicamente con data.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Aptitudes, Idiomas & Intereses -->
+    <section id="aptitudes" class="scroll-mt-20">
+      <div class="mb-10">
+        <span class="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400">Perfil Humano & Complementario</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">
+          Aptitudes, Idiomas & Intereses
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2 max-w-2xl">
+          Competencias blandas, dominio de idiomas y disciplina personal que complementan más de cuatro décadas de experiencia profesional.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Aptitudes -->
+        <div class="space-y-4">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <i data-lucide="brain" class="w-5 h-5 text-indigo-500"></i>
+            <span>Aptitudes Personales</span>
+          </h3>
+          <div id="aptitudes-container" class="space-y-3">
+            <!-- Se llena dinámicamente con data.js -->
+          </div>
+        </div>
+
+        <!-- Idiomas -->
+        <div class="space-y-4">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <i data-lucide="languages" class="w-5 h-5 text-blue-500"></i>
+            <span>Idiomas</span>
+          </h3>
+          <div id="languages-container" class="space-y-3">
+            <!-- Se llena dinámicamente con data.js -->
+          </div>
+        </div>
+
+        <!-- Otros Intereses -->
+        <div class="space-y-4">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <i data-lucide="heart" class="w-5 h-5 text-rose-500"></i>
+            <span>Otros Intereses</span>
+          </h3>
+          <div id="interests-container" class="space-y-3">
+            <!-- Se llena dinámicamente con data.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto & Formulario -->
+    <section id="contacto" class="scroll-mt-20 pb-16">
+      <div class="bg-gradient-to-br from-blue-50 to-indigo-50/50 dark:from-slate-800/60 dark:to-slate-900/80 rounded-3xl p-8 sm:p-12 border border-blue-100 dark:border-slate-700/80 shadow-sm">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          
+          <!-- Información y Canales Directos -->
+          <div class="lg:col-span-5 space-y-6">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400">Canales Directos</span>
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">
+                ¿Conversamos sobre tu próximo proyecto TI?
+              </h2>
+              <p class="text-sm text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
+                Disponible para proyectos de análisis de sistemas, consultoría de soporte técnico, integraciones con Python / SQL y optimización de recursos tecnológicos.
+              </p>
+            </div>
+
+            <div class="space-y-4 pt-2">
+              <!-- Teléfono / WhatsApp Directo -->
+              <div class="flex items-center gap-3 text-sm text-slate-700 dark:text-slate-300">
+                <div class="w-10 h-10 rounded-xl bg-white dark:bg-slate-800 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shadow-sm border border-slate-200 dark:border-slate-700">
+                  <i data-lucide="phone" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Teléfono / WhatsApp</div>
+                  <a href="https://wa.me/56933395447" target="_blank" rel="noopener noreferrer" class="bind-phone font-semibold hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                    +56 9 3339 5447
+                  </a>
+                </div>
+              </div>
+
+              <!-- Correo Electrónico -->
+              <div class="flex items-center gap-3 text-sm text-slate-700 dark:text-slate-300">
+                <div class="w-10 h-10 rounded-xl bg-white dark:bg-slate-800 flex items-center justify-center text-blue-600 dark:text-blue-400 shadow-sm border border-slate-200 dark:border-slate-700">
+                  <i data-lucide="mail" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Correo Electrónico</div>
+                  <a href="mailto:andres.aguiar.marmol@gmail.com" class="bind-email font-semibold hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                    andres.aguiar.marmol@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <!-- LinkedIn -->
+              <div class="flex items-center gap-3 text-sm text-slate-700 dark:text-slate-300">
+                <div class="w-10 h-10 rounded-xl bg-white dark:bg-slate-800 flex items-center justify-center text-blue-600 dark:text-blue-400 shadow-sm border border-slate-200 dark:border-slate-700">
+                  <i data-lucide="linkedin" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Red Profesional</div>
+                  <a href="https://www.linkedin.com/in/andres-aguiar-b4824395" target="_blank" rel="noopener noreferrer" class="bind-linkedin font-semibold hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                    linkedin.com/in/andres-aguiar-b4824395
+                  </a>
+                </div>
+              </div>
+
+              <!-- Ubicación -->
+              <div class="flex items-center gap-3 text-sm text-slate-700 dark:text-slate-300">
+                <div class="w-10 h-10 rounded-xl bg-white dark:bg-slate-800 flex items-center justify-center text-blue-600 dark:text-blue-400 shadow-sm border border-slate-200 dark:border-slate-700">
+                  <i data-lucide="map-pin" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Ubicación Actual</div>
+                  <span class="font-semibold text-slate-800 dark:text-slate-200">Santiago, Chile</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4 flex flex-wrap gap-3">
+              <button type="button" class="btn-copy-email inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 shadow-sm transition-all">
+                <i data-lucide="copy" class="w-4 h-4 text-blue-500"></i>
+                <span>Copiar email con 1 clic</span>
+              </button>
+              <a href="https://wa.me/56933395447" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold shadow-sm transition-all">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                <span>Escribir por WhatsApp</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Formulario de Contacto -->
+          <div class="lg:col-span-7 bg-white dark:bg-slate-800/90 rounded-2xl p-6 sm:p-8 border border-slate-200 dark:border-slate-700 shadow-sm">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Enviar Mensaje Rápido</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">
+              Te responderé a la brevedad dentro de las próximas 24 horas hábiles.
+            </p>
+
+            <form id="contact-form" class="space-y-4">
+              <div>
+                <label for="form-name" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  Nombre Completo / Empresa *
+                </label>
+                <input 
+                  type="text" 
+                  id="form-name" 
+                  required 
+                  placeholder="Ej: Lic. Martín Gómez / Grupo Consultor"
+                  class="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                >
+              </div>
+
+              <div>
+                <label for="form-email" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  Correo Electrónico de Contacto *
+                </label>
+                <input 
+                  type="email" 
+                  id="form-email" 
+                  required 
+                  placeholder="nombre@empresa.com"
+                  class="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                >
+              </div>
+
+              <div>
+                <label for="form-message" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  Mensaje o Propuesta *
+                </label>
+                <textarea 
+                  id="form-message" 
+                  rows="4" 
+                  required 
+                  placeholder="Hola Andrés, nos gustaría coordinar una entrevista técnica o conversar sobre una vacante de Analista de Sistemas..."
+                  class="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                ></textarea>
+              </div>
+
+              <button 
+                type="submit" 
+                class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-sm shadow transition-colors duration-200"
+              >
+                <i data-lucide="send" class="w-4 h-4"></i>
+                <span>Enviar Mensaje</span>
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =======================================================================
+       Modal Nativo (<dialog closedby="any">) para Detalles de Proyectos
+       Cumple estrictamente con Modern Web Guidance: nativo, light-dismiss,
+       soporte de tecla Esc y accesibilidad mediante aria-labelledby.
+       ======================================================================= -->
+  <dialog id="project-modal" closedby="any" aria-labelledby="modal-title" class="p-0 border-0 rounded-2xl bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-2xl backdrop:bg-slate-950/70 backdrop:backdrop-blur-sm">
+    <div class="relative max-h-[90vh] overflow-y-auto p-6 sm:p-8">
+      
+      <!-- Botón de Cerrar Modal -->
+      <button 
+        id="modal-close-btn" 
+        type="button" 
+        aria-label="Cerrar modal"
+        class="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+      >
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Encabezado del Modal -->
+      <div class="flex items-center gap-2 mb-3">
+        <span id="modal-category" class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300"></span>
+        <span id="modal-tag" class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300"></span>
+      </div>
+
+      <h2 id="modal-title" class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-4 pr-8 leading-snug"></h2>
+
+      <!-- Resumen de Impacto Destacado -->
+      <div class="p-4 rounded-xl bg-blue-50/80 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-900/50 mb-6">
+        <div class="text-xs font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400 mb-1">Métrica de Impacto Comprobada</div>
+        <div id="modal-impact" class="text-sm font-semibold text-slate-800 dark:text-slate-200"></div>
+      </div>
+
+      <!-- Sección Desafío / Problema -->
+      <div class="space-y-6">
+        <div>
+          <h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+            El Desafío / Situación Inicial
+          </h3>
+          <p id="modal-problem" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200/70 dark:border-slate-800"></p>
+        </div>
+
+        <!-- Acción y Análisis Realizado -->
+        <div>
+          <h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+            Análisis, Arquitectura & Acciones Ejecutadas
+          </h3>
+          <p id="modal-action" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200/70 dark:border-slate-800"></p>
+        </div>
+
+        <!-- Stack y Herramientas Usadas -->
+        <div>
+          <h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Tecnologías & Estándares de Integración</h3>
+          <div id="modal-tech" class="flex flex-wrap gap-2"></div>
+        </div>
+
+        <!-- Resultados Concretos -->
+        <div>
+          <h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Entregables y Resultados de Negocio</h3>
+          <ul id="modal-results" class="space-y-2 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200/70 dark:border-slate-800"></ul>
+        </div>
+      </div>
+
+      <!-- Pie del Modal -->
+      <div class="mt-8 pt-4 border-t border-slate-200 dark:border-slate-800 flex justify-end">
+        <form method="dialog">
+          <button type="submit" class="px-5 py-2.5 rounded-xl bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-sm font-semibold transition-colors">
+            Cerrar Ventana
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </dialog>
+
+  <!-- =======================================================================
+       Pie de Página (Footer)
+       ======================================================================= -->
+  <footer class="border-t border-slate-200 dark:border-slate-800 py-10 bg-white dark:bg-slate-900/50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-slate-700 dark:text-slate-300">Andres Aguiar</span>
+        <span>•</span>
+        <span>Curriculum & Portfolio de Analista de Sistemas TI</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <button type="button" class="btn-print-cv hover:text-blue-600 transition-colors font-medium">
+          Imprimir / Guardar en PDF
+        </button>
+        <span>•</span>
+        <a href="#hero" class="hover:text-blue-600 transition-colors">Volver arriba ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

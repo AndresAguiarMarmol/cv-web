@@ -1,0 +1,215 @@
+/* ==========================================================================
+   Variables y Configuración de Tema
+   ========================================================================== */
+:root {
+  color-scheme: light dark;
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --border-color: #e2e8f0;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --accent-primary: #2563eb;
+  --accent-primary-hover: #1d4ed8;
+  --accent-soft: #eff6ff;
+  --accent-border: #bfdbfe;
+  --badge-bg: #f1f5f9;
+  --badge-text: #334155;
+  --nav-bg: rgba(255, 255, 255, 0.85);
+  --modal-bg: #ffffff;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+/* Modo oscuro explícito */
+html.dark {
+  --bg-primary: #0b0f19;
+  --bg-secondary: #111827;
+  --bg-card: #141c2e;
+  --border-color: #1e293b;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent-primary: #3b82f6;
+  --accent-primary-hover: #60a5fa;
+  --accent-soft: rgba(59, 130, 246, 0.12);
+  --accent-border: rgba(59, 130, 246, 0.25);
+  --badge-bg: #1e293b;
+  --badge-text: #cbd5e1;
+  --nav-bg: rgba(11, 15, 25, 0.85);
+  --modal-bg: #111827;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.4);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.5);
+  --shadow-lg: 0 10px 25px -3px rgb(0 0 0 / 0.6), 0 4px 6px -4px rgb(0 0 0 / 0.5);
+}
+
+/* ==========================================================================
+   Comportamiento General & Tipografía
+   ========================================================================== */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  min-height: 100vh;
+}
+
+/* Glassmorphism para navegación */
+.glass-nav {
+  background-color: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* ==========================================================================
+   Modales Nativos (<dialog>)
+   ========================================================================== */
+dialog {
+  padding: 0;
+  border: none;
+  background: transparent;
+  max-width: 92vw;
+  width: 46rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: fadeInBackdrop 0.2s ease-out;
+}
+
+dialog[open] {
+  animation: zoomInDialog 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeInBackdrop {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes zoomInDialog {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ==========================================================================
+   Tarjetas y Elementos Visuales
+   ========================================================================== */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-primary);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Insignias de métricas de impacto */
+.metric-badge {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(14, 165, 233, 0.1));
+  border: 1px solid var(--accent-border);
+  color: var(--accent-primary);
+}
+
+/* Timeline vertical para trayectoria */
+.timeline-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 1.25rem;
+  width: 2px;
+  background-color: var(--border-color);
+}
+
+@media (min-width: 768px) {
+  .timeline-line {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* Toast container */
+#toast-container {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  animation: slideInToast 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideInToast {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ==========================================================================
+   Estilos para Impresión / Exportación a PDF (Ctrl + P)
+   ========================================================================== */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt;
+  }
+
+  .no-print,
+  nav,
+  footer,
+  #contact,
+  #theme-toggle,
+  .btn-cta,
+  dialog {
+    display: none !important;
+  }
+
+  .card-hover {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    break-inside: avoid;
+    margin-bottom: 1rem !important;
+  }
+
+  section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+    break-inside: avoid;
+  }
+
+  a {
+    text-decoration: none !important;
+    color: #000000 !important;
+  }
+}

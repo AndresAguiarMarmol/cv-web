@@ -13,7 +13,7 @@ const PROFILE_DATA = {
     email: "andres.aguiar.marmol@gmail.com",
     phone: "+56 9 3339 5447",
     linkedin: "https://www.linkedin.com/in/andres-aguiar-b4824395",
-    github: "https://github.com",
+    github: "https://github.com/AndresAguiarMarmol",
     cvPdfUrl: "#",
     metrics: [
       { label: "Años de Trayectoria TI", value: "+40" },

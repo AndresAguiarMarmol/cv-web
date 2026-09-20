@@ -1,10 +1,17 @@
 /**
- * Lógica interactiva del Portfolio de Analista de Sistemas
+ * Lógica interactiva del Portfolio de Analista de Sistemas - Andres Aguiar
+ * Incluye: Modo oscuro, Filtros por rol, Resumen ejecutivo, Modales STAR y Botón flotante.
  */
+
+let currentFilter = 'all';
 
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   renderProfile();
+  renderExecutivePitch();
+  renderBrandTechnologies();
+  renderProjectFilters();
+  renderProjects('all');
   setupNavigation();
   setupModals();
   setupContactForm();
@@ -43,7 +50,7 @@ function initTheme() {
 }
 
 /* ==========================================================================
-   Renderizado dinámico de datos desde data.js
+   Renderizado dinámico del Perfil General
    ========================================================================== */
 function renderProfile() {
   if (typeof PROFILE_DATA === 'undefined') return;
@@ -83,6 +90,20 @@ function renderProfile() {
     if (el.tagName === 'A') el.href = PROFILE_DATA.personal.github;
   });
 
+  const phoneEls = document.querySelectorAll('.bind-phone');
+  phoneEls.forEach(el => {
+    el.textContent = PROFILE_DATA.personal.phone;
+    if (el.tagName === 'A') el.href = `tel:${PROFILE_DATA.personal.phone.replace(/[^0-9+]/g, '')}`;
+  });
+
+  const whatsappEls = document.querySelectorAll('.bind-whatsapp');
+  whatsappEls.forEach(el => {
+    if (el.tagName === 'A') {
+      const cleanPhone = PROFILE_DATA.personal.phone.replace(/[^0-9]/g, '');
+      el.href = `https://wa.me/${cleanPhone}`;
+    }
+  });
+
   // Métricas del Hero
   const metricsContainer = document.getElementById('hero-metrics-container');
   if (metricsContainer && PROFILE_DATA.personal.metrics) {
@@ -110,57 +131,7 @@ function renderProfile() {
     `).join('');
   }
 
-  // 3. Casos de Estudio / Proyectos
-  const projectsContainer = document.getElementById('projects-container');
-  if (projectsContainer && PROFILE_DATA.projects) {
-    projectsContainer.innerHTML = PROFILE_DATA.projects.map(proj => `
-      <article class="p-6 md:p-8 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 card-hover flex flex-col justify-between">
-        <div>
-          <div class="flex items-center justify-between gap-2 mb-4">
-            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/70 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-800/50">
-              ${proj.category}
-            </span>
-            <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50">
-              ${proj.tag}
-            </span>
-          </div>
-
-          <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3 leading-snug">
-            ${proj.title}
-          </h3>
-
-          <div class="mb-4 p-3 rounded-lg bg-slate-50 dark:bg-slate-900/60 border-l-4 border-blue-500">
-            <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">Impacto Clave</p>
-            <p class="text-sm font-bold text-slate-800 dark:text-slate-200">${proj.impact}</p>
-          </div>
-
-          <p class="text-sm text-slate-600 dark:text-slate-300 mb-5 line-clamp-3 leading-relaxed">
-            ${proj.summary}
-          </p>
-
-          <div class="flex flex-wrap gap-1.5 mb-6">
-            ${proj.techStack.slice(0, 5).map(tech => `
-              <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-700/60 text-slate-700 dark:text-slate-300 font-medium">
-                ${tech}
-              </span>
-            `).join('')}
-            ${proj.techStack.length > 5 ? `<span class="text-xs px-2 py-1 text-slate-400">+${proj.techStack.length - 5} más</span>` : ''}
-          </div>
-        </div>
-
-        <button 
-          type="button" 
-          onclick="openProjectModal('${proj.id}')"
-          class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white dark:bg-slate-700/60 dark:hover:bg-blue-600 text-slate-800 dark:text-slate-200 font-semibold text-sm transition-colors duration-200"
-        >
-          <span>Ver Análisis & Detalles</span>
-          <i data-lucide="arrow-right" class="w-4 h-4"></i>
-        </button>
-      </article>
-    `).join('');
-  }
-
-  // 4. Habilidades Técnicas por Categoría
+  // 3. Habilidades Técnicas por Categoría
   const skillsContainer = document.getElementById('skills-container');
   if (skillsContainer && PROFILE_DATA.technicalSkills) {
     skillsContainer.innerHTML = Object.entries(PROFILE_DATA.technicalSkills).map(([category, items]) => `
@@ -181,7 +152,7 @@ function renderProfile() {
     `).join('');
   }
 
-  // 5. Trayectoria Profesional (Timeline)
+  // 4. Trayectoria Profesional (Timeline)
   const experienceContainer = document.getElementById('experience-container');
   if (experienceContainer && PROFILE_DATA.experience) {
     experienceContainer.innerHTML = PROFILE_DATA.experience.map(exp => `
@@ -212,21 +183,7 @@ function renderProfile() {
     `).join('');
   }
 
-  const phoneEls = document.querySelectorAll('.bind-phone');
-  phoneEls.forEach(el => {
-    el.textContent = PROFILE_DATA.personal.phone;
-    if (el.tagName === 'A') el.href = `tel:${PROFILE_DATA.personal.phone.replace(/[^0-9+]/g, '')}`;
-  });
-
-  const whatsappEls = document.querySelectorAll('.bind-whatsapp');
-  whatsappEls.forEach(el => {
-    if (el.tagName === 'A') {
-      const cleanPhone = PROFILE_DATA.personal.phone.replace(/[^0-9]/g, '');
-      el.href = `https://wa.me/${cleanPhone}`;
-    }
-  });
-
-  // 6. Certificaciones & Educación
+  // 5. Certificaciones & Educación
   const certsContainer = document.getElementById('certs-container');
   if (certsContainer && PROFILE_DATA.educationAndCerts) {
     certsContainer.innerHTML = PROFILE_DATA.educationAndCerts.certifications.map(cert => `
@@ -268,7 +225,7 @@ function renderProfile() {
     `).join('');
   }
 
-  // 7. Idiomas
+  // 6. Idiomas
   const languagesContainer = document.getElementById('languages-container');
   if (languagesContainer && PROFILE_DATA.languages) {
     languagesContainer.innerHTML = PROFILE_DATA.languages.map(lang => `
@@ -289,7 +246,7 @@ function renderProfile() {
     `).join('');
   }
 
-  // 8. Aptitudes
+  // 7. Aptitudes
   const aptitudesContainer = document.getElementById('aptitudes-container');
   if (aptitudesContainer && PROFILE_DATA.aptitudes) {
     aptitudesContainer.innerHTML = PROFILE_DATA.aptitudes.map(apt => `
@@ -305,7 +262,7 @@ function renderProfile() {
     `).join('');
   }
 
-  // 9. Otros Intereses
+  // 8. Otros Intereses
   const interestsContainer = document.getElementById('interests-container');
   if (interestsContainer && PROFILE_DATA.interests) {
     interestsContainer.innerHTML = PROFILE_DATA.interests.map(item => `
@@ -319,6 +276,209 @@ function renderProfile() {
         </div>
       </div>
     `).join('');
+  }
+}
+
+/* ==========================================================================
+   Propuesta 1: Resumen Ejecutivo en 30 Segundos
+   ========================================================================== */
+function renderExecutivePitch() {
+  const container = document.getElementById('executive-pitch-container');
+  if (!container || !PROFILE_DATA.executivePitch) return;
+
+  const { title, badge, subtitle, points } = PROFILE_DATA.executivePitch;
+
+  container.innerHTML = `
+    <div class="bg-gradient-to-br from-blue-50/90 via-indigo-50/40 to-slate-50/80 dark:from-slate-850 dark:via-slate-800/90 dark:to-slate-900 p-8 sm:p-10 rounded-3xl border border-blue-200/80 dark:border-slate-700/80 shadow-md">
+      <div class="max-w-3xl mb-8">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-600 text-white mb-3 shadow-sm">
+          <i data-lucide="zap" class="w-3.5 h-3.5"></i>
+          <span>${badge}</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white leading-tight">
+          ${title}
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-2">
+          ${subtitle}
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        ${points.map(pt => `
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-sm card-hover flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <div class="w-11 h-11 rounded-xl bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold">
+                  <i data-lucide="${pt.icon}" class="w-5 h-5"></i>
+                </div>
+                <span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">
+                  ${pt.badge}
+                </span>
+              </div>
+              <h3 class="text-base font-extrabold text-slate-900 dark:text-white mb-2">
+                ${pt.title}
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                ${pt.description}
+              </p>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+/* ==========================================================================
+   Propuesta 2: Insignias de Marcas Tecnológicas
+   ========================================================================== */
+function renderBrandTechnologies() {
+  const container = document.getElementById('brand-tech-container');
+  if (!container || !PROFILE_DATA.brandTechnologies) return;
+
+  container.innerHTML = PROFILE_DATA.brandTechnologies.map(tech => `
+    <div 
+      class="brand-tech-badge flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 shadow-xs"
+      style="border-left: 3px solid ${tech.color};"
+    >
+      <div class="w-7 h-7 rounded-lg flex items-center justify-center shrink-0" style="background-color: ${tech.bg}; color: ${tech.color};">
+        <i data-lucide="${tech.icon || 'code'}" class="w-4 h-4"></i>
+      </div>
+      <div class="flex flex-col">
+        <span class="text-xs font-bold text-slate-800 dark:text-slate-200 leading-tight">${tech.name}</span>
+        <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">${tech.category}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ==========================================================================
+   Propuesta 3: Filtros Interactivos por Especialidad / Rol
+   ========================================================================== */
+function renderProjectFilters() {
+  const container = document.getElementById('project-filters-container');
+  if (!container || !PROFILE_DATA.filterCategories) return;
+
+  container.innerHTML = `
+    <div class="flex flex-wrap items-center gap-2 pt-2">
+      <span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mr-1 flex items-center gap-1.5">
+        <i data-lucide="filter" class="w-3.5 h-3.5"></i>
+        <span>Filtrar por Área:</span>
+      </span>
+      ${PROFILE_DATA.filterCategories.map(cat => `
+        <button 
+          type="button"
+          onclick="setProjectFilter('${cat.id}')"
+          class="filter-pill inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold border ${cat.id === currentFilter ? 'active' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'}"
+          data-filter="${cat.id}"
+        >
+          <i data-lucide="${cat.icon || 'tag'}" class="w-3.5 h-3.5"></i>
+          <span>${cat.label}</span>
+        </button>
+      `).join('')}
+    </div>
+  `;
+}
+
+window.setProjectFilter = function(filterId) {
+  currentFilter = filterId;
+  
+  // Actualizar estado de las píldoras de filtro
+  const buttons = document.querySelectorAll('.filter-pill');
+  buttons.forEach(btn => {
+    if (btn.getAttribute('data-filter') === filterId) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+
+  renderProjects(filterId);
+
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
+};
+
+/* ==========================================================================
+   Renderizado de Proyectos con Tarjetas Visuales Enriquecidas
+   ========================================================================== */
+function renderProjects(filter = 'all') {
+  const projectsContainer = document.getElementById('projects-container');
+  if (!projectsContainer || !PROFILE_DATA.projects) return;
+
+  const filteredProjects = filter === 'all'
+    ? PROFILE_DATA.projects
+    : PROFILE_DATA.projects.filter(p => p.filterCategory === filter || (filter === 'dev' && (p.filterCategory === 'dev' || p.filterCategory === 'erp')));
+
+  if (filteredProjects.length === 0) {
+    projectsContainer.innerHTML = `
+      <div class="col-span-full text-center py-12 bg-white dark:bg-slate-800/50 rounded-2xl border border-dashed border-slate-300 dark:border-slate-700">
+        <p class="text-sm text-slate-500 dark:text-slate-400">No hay proyectos para esta categoría en este momento.</p>
+      </div>
+    `;
+    return;
+  }
+
+  projectsContainer.innerHTML = filteredProjects.map(proj => `
+    <article class="p-6 md:p-7 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 card-hover flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between gap-2 mb-4">
+          <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/70 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-800/50">
+            ${proj.category}
+          </span>
+          <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50">
+            ${proj.tag}
+          </span>
+        </div>
+
+        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3 leading-snug">
+          ${proj.title}
+        </h3>
+
+        <!-- Métrica de Impacto -->
+        <div class="mb-4 p-3 rounded-xl bg-slate-50 dark:bg-slate-900/60 border-l-4 border-blue-500">
+          <p class="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-0.5">Impacto Cuantitativo</p>
+          <p class="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200 leading-snug">${proj.impact}</p>
+        </div>
+
+        <!-- Pipeline / Arquitectura Visual -->
+        ${proj.visualBadge ? `
+          <div class="mb-4 p-2.5 rounded-lg bg-blue-50/60 dark:bg-blue-950/40 border border-blue-200/60 dark:border-blue-900/40 text-blue-800 dark:text-blue-300 architecture-badge flex items-center gap-1.5">
+            <i data-lucide="workflow" class="w-3.5 h-3.5 shrink-0 text-blue-500"></i>
+            <span class="truncate">${proj.visualBadge}</span>
+          </div>
+        ` : ''}
+
+        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mb-5 line-clamp-3 leading-relaxed">
+          ${proj.summary}
+        </p>
+
+        <div class="flex flex-wrap gap-1.5 mb-6">
+          ${proj.techStack.slice(0, 5).map(tech => `
+            <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-700/60 text-slate-700 dark:text-slate-300 font-medium">
+              ${tech}
+            </span>
+          `).join('')}
+          ${proj.techStack.length > 5 ? `<span class="text-xs px-2 py-1 text-slate-400">+${proj.techStack.length - 5} más</span>` : ''}
+        </div>
+      </div>
+
+      <div class="pt-2">
+        <button 
+          type="button" 
+          onclick="openProjectModal('${proj.id}')"
+          class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white dark:bg-slate-700/60 dark:hover:bg-blue-600 text-slate-800 dark:text-slate-200 font-semibold text-xs sm:text-sm transition-colors duration-200"
+        >
+          <span>Ver Análisis & Detalles STAR</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </article>
+  `).join('');
+
+  if (window.lucide) {
+    window.lucide.createIcons();
   }
 }
 
@@ -362,7 +522,7 @@ function setupNavigation() {
         });
       }
     });
-  }, { threshold: 0.3 });
+  }, { threshold: 0.25 });
 
   sections.forEach(section => observer.observe(section));
 }

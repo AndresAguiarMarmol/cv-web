@@ -23,6 +23,60 @@ const PROFILE_DATA = {
     ]
   },
 
+  // 1. Resumen Ejecutivo en 30 Segundos (Elevator Pitch)
+  executivePitch: {
+    title: "Resumen Ejecutivo en 30 Segundos",
+    badge: "Propuesta de Valor",
+    subtitle: "Tres razones estratégicas por las cuales mi perfil aporta solidez, versatilidad y resultados inmediatos a su organización:",
+    points: [
+      {
+        id: "adaptability",
+        badge: "Versatilidad Tecnológica",
+        icon: "cpu",
+        title: "Adaptabilidad Tecnológica Continua",
+        description: "Capacidad demostrada para dominar y transicionar entre paradigmas: desde sistemas core legados industriales (Adabas, Natural, Cobol) hasta desarrollo moderno en Python, bases de datos SQL Server, aplicaciones web interactivas (HTML5/CSS/JS) y operación de hardware cripto."
+      },
+      {
+        id: "leadership",
+        badge: "Gobernanza & Operaciones",
+        icon: "briefcase",
+        title: "20+ Años en Liderazgo Corporativo TI",
+        description: "Dirección de divisiones de Soporte Técnico y Help Desk en plantas industriales de gran envergadura (CVG ALCASA). Gestión de compras de software/hardware, control de presupuestos, cumplimiento de acuerdos y alianzas tecnológicas interinstitucionales."
+      },
+      {
+        id: "results",
+        badge: "Excelencia & Producción",
+        icon: "award",
+        title: "1° en Promoción UCLA & Software en Producción",
+        description: "Graduado con Honores (Índice 3.55/4) como Primer Lugar de la Promoción en la UCLA. Software creado y operando activamente hoy: módulo multimoneda para SAINT ERP en Mini Market Don Andres CA y aplicación Halterofilia Pro para atletas olímpicos."
+      }
+    ]
+  },
+
+  // 2. Insignias Tecnológicas con Identidad de Marca
+  brandTechnologies: [
+    { name: "Python", category: "Backend & Scripting", color: "#387EB8", bg: "rgba(56, 126, 184, 0.12)", icon: "code-2" },
+    { name: "SQL Server", category: "Bases de Datos", color: "#CC292B", bg: "rgba(204, 41, 43, 0.12)", icon: "database" },
+    { name: "JavaScript (ES6+)", category: "Frontend Web", color: "#EAB308", bg: "rgba(234, 179, 8, 0.15)", icon: "file-code" },
+    { name: "HTML5 & CSS3", category: "Web Standards", color: "#E44D26", bg: "rgba(228, 77, 38, 0.12)", icon: "layout" },
+    { name: "Bitcoin (BTC)", category: "Cripto & ASICs", color: "#F7931A", bg: "rgba(247, 147, 26, 0.14)", icon: "coins" },
+    { name: "Ethereum (ETH)", category: "Rigs de Minería", color: "#627EEA", bg: "rgba(98, 126, 234, 0.14)", icon: "cpu" },
+    { name: "VS Code & Git", category: "Dev Tools", color: "#007ACC", bg: "rgba(0, 122, 204, 0.12)", icon: "git-branch" },
+    { name: "SAINT ERP", category: "Sistemas Administrativos", color: "#10B981", bg: "rgba(16, 185, 129, 0.12)", icon: "layers" },
+    { name: "Adabas & Natural", category: "Sistemas Core", color: "#8B5CF6", bg: "rgba(139, 92, 246, 0.12)", icon: "server" },
+    { name: "Binance & P2P", category: "Finanzas Digitales", color: "#F0B90B", bg: "rgba(240, 185, 11, 0.14)", icon: "arrow-left-right" }
+  ],
+
+  // 3. Categorías de Filtro Interactivo de Proyectos
+  filterCategories: [
+    { id: "all", label: "Todos los Casos (8)", icon: "grid" },
+    { id: "web", label: "Desarrollo Web (2)", icon: "globe" },
+    { id: "dev", label: "Python & Sistemas (2)", icon: "code" },
+    { id: "crypto", label: "Cripto & Minería (1)", icon: "cpu" },
+    { id: "leadership", label: "Liderazgo TI (2)", icon: "users" },
+    { id: "erp", label: "Análisis & Finanzas (1)", icon: "bar-chart-3" }
+  ],
+
   languages: [
     { name: "Español", level: "Nativo", badge: "Idioma Materno" },
     { name: "Inglés Técnico", level: "Intermedio", badge: "Documentación & Sistemas" }
@@ -73,9 +127,11 @@ const PROFILE_DATA = {
   projects: [
     {
       id: "proj-halterofilia-pro",
+      filterCategory: "web",
       title: "Halterofilia Pro: Aplicación de Gestión y Monitoreo para Atletas Olímpicos",
       category: "Desarrollo Web & Deporte",
       tag: "En Operación Activa",
+      visualBadge: "Atletas ➔ 1RM Dinámico ➔ Métricas Snatch & Clean & Jerk",
       impact: "Seguimiento digitalizado de marcas y cargas de entrenamiento en tiempo real",
       summary: "Aplicación web desarrollada con HTML, CSS y JavaScript diseñada específicamente para que atletas de halterofilia gestionen y monitoreen de manera precisa su progreso en distintas disciplinas olímpicas.",
       problem: "Los atletas y entrenadores dependían de anotaciones físicas o planillas dispersas, lo cual ralentizaba calcular porcentajes de carga (1RM) y seguir la evolución de arrancada y dos tiempos.",
@@ -89,9 +145,11 @@ const PROFILE_DATA = {
     },
     {
       id: "proj-crypto-mining",
+      filterCategory: "crypto",
       title: "Infraestructura & Operación de Minería de Criptomonedas (BTC / ETH) y Finanzas P2P",
       category: "Criptoactivos & Hardware",
       tag: "+5 Años de Experiencia",
+      visualBadge: "Rigs GPU (ETH) + ASICs (BTC) ➔ Hashrate Pool ➔ Binance P2P",
       impact: "Operación ininterrumpida de Rigs/ASICs y transacciones cambiarias multimoneda",
       summary: "Diseño, ensamblaje, puesta en marcha, mantenimiento y administración de Rigs de Minado de Ethereum y equipos de minería Bitcoin, complementado con gestión financiera en plataformas globales.",
       problem: "La minería y comercialización de criptoactivos requiere control térmico exhaustivo, balanceo de potencia eléctrica, optimización de hashrate y gestión segura ante la volatilidad cambiaria.",
@@ -105,9 +163,11 @@ const PROFILE_DATA = {
     },
     {
       id: "proj-cv-web-andres",
+      filterCategory: "web",
       title: "Curriculum Vitae & Portfolio Web Interactivo – Andres Aguiar",
       category: "Desarrollo Web & Gestión TI",
       tag: "Showcase Técnico",
+      visualBadge: "HTML5 / Tailwind ➔ data.js Modular ➔ <dialog> Nativo ➔ GitHub Pages",
       impact: "Arquitectura desacoplada, alta accesibilidad y soporte nativo multi-tema",
       summary: "Aplicación web moderna construida en HTML, CSS y JavaScript que presenta de forma interactiva y ejecutiva más de cuatro décadas de competencias técnicas y proyectos en TI.",
       problem: "El formato PDF tradicional resulta rígido para presentar en profundidad proyectos complejos en formato STAR, tecnologías de hardware, cripto y sistemas legados.",
@@ -121,9 +181,11 @@ const PROFILE_DATA = {
     },
     {
       id: "proj-saint-python",
+      filterCategory: "dev",
       title: "Módulo MultiMoneda para Sistema Administrativo SAINT V 9.035",
       category: "Desarrollo Python & SQL",
       tag: "En Operación Activa",
+      visualBadge: "Tasa en Vivo ➔ Python / VS Code ➔ SQL Server ➔ SAINT ERP",
       impact: "Transacciones comerciales multimoneda automatizadas en tiempo real",
       summary: "Diseño, programación y puesta en producción de un módulo complementario en Python y SQL Server para habilitar la operativa multimoneda dentro del software administrativo SAINT en el Mini Market Don Andres CA.",
       problem: "La versión operativa del sistema administrativo requería adaptación inmediata para procesar pagos y cotizaciones dinámicas en múltiples divisas sin alterar la integridad de los datos contables históricos.",
@@ -137,9 +199,11 @@ const PROFILE_DATA = {
     },
     {
       id: "proj-soporte-cvg",
+      filterCategory: "leadership",
       title: "Coordinación de la División de Soporte Técnico (CVG ALCASA)",
       category: "Gestión & Operaciones TI",
       tag: "Liderazgo Corporativo",
+      visualBadge: "Equipos de Soporte ➔ Compras TI ➔ Sinergias Grupo CVG",
       impact: "Gobernanza operativa continua de la Gerencia de Sistemas (2013 - 2018)",
       summary: "Dirección y coordinación de las operaciones de todas las áreas de Soporte Técnico de la empresa estatal del aluminio CVG ALCASA, asegurando la disponibilidad de la infraestructura TI.",
       problem: "Garantizar la continuidad operativa de una planta industrial de gran escala con cientos de usuarios corporativos y requerimientos tecnológicos heterogéneos.",
@@ -153,9 +217,11 @@ const PROFILE_DATA = {
     },
     {
       id: "proj-apoyo-usuario",
+      filterCategory: "leadership",
       title: "Centro de Apoyo al Usuario & Help Desk Corporativo",
       category: "Mesa de Ayuda & TI",
       tag: "Estandarización de Servicio",
+      visualBadge: "Help Desk Central ➔ SLAs ➔ Parque de Microcomputadores",
       impact: "Atención centralizada de solicitudes de TI para toda la organización (2000 - 2012)",
       summary: "Liderazgo de la división encargada de la recepción, control, seguimiento y resolución de requerimientos de servicio tecnológico para la Gerencia de Sistemas y Organización.",
       problem: "Falta de centralización en los pedidos de soporte, compras descentralizadas de microcomputadores y necesidad de control en las actualizaciones de software de la empresa.",
@@ -169,9 +235,11 @@ const PROFILE_DATA = {
     },
     {
       id: "proj-simulacion-contrato",
+      filterCategory: "erp",
       title: "Sistema de Simulación de Contrato Colectivo & Presupuesto",
       category: "Análisis & Modelado",
       tag: "Impacto Estratégico",
+      visualBadge: "Modelos IFPS ➔ Proyección Salarial ➔ Negociación Colectiva",
       impact: "Modelado predictivo financiero para la negociación sindical de ALCASA",
       summary: "Diseño, desarrollo, implementación y operación del Sistema de Simulación de Contrato Colectivo ALCASA 1990 y el Sistema de Formulación Presupuestaria 1992.",
       problem: "La alta gerencia requería simular en tiempo real el impacto económico de las cláusulas salariales y beneficios contractuales durante las negociaciones colectivas.",
@@ -185,9 +253,11 @@ const PROFILE_DATA = {
     },
     {
       id: "proj-sistemas-core",
+      filterCategory: "dev",
       title: "Evolución y Mantenimiento de Sistemas Administrativos Core",
       category: "Arquitectura & Programación",
       tag: "Sistemas Core",
+      visualBadge: "Nómina Adabas/Natural ➔ Cuentas x Cobrar/Pagar ➔ Contabilidad",
       impact: "Disponibilidad y precisión en Nóminas, Pagos, Cobros y Contabilidad General",
       summary: "Mantenimiento, evolución y programación de la suite administrativa de CVG ALCASA, incluyendo la programación del nuevo Sistema de Nómina en Adabas/Natural.",
       problem: "Sistemas críticos de misión empresarial requerían actualización constante ante cambios fiscales, organizacionales y contractuales.",

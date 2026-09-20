@@ -191,14 +191,28 @@ function renderProfile() {
         <div class="p-3 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 shrink-0">
           <i data-lucide="award" class="w-6 h-6"></i>
         </div>
-        <div>
-          <div class="flex items-center gap-2 mb-1">
+        <div class="flex-1 min-w-0">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
             <h4 class="text-sm md:text-base font-bold text-slate-900 dark:text-white">${cert.name}</h4>
-            <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300">
+            <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300">
               ${cert.badge}
             </span>
           </div>
           <p class="text-xs text-slate-500 dark:text-slate-400">${cert.issuer} • ${cert.year}</p>
+          ${cert.file ? `
+            <div class="mt-3">
+              <a 
+                href="${cert.file}" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/60 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-400 border border-blue-200/80 dark:border-blue-800/60 transition-colors shadow-xs"
+              >
+                <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+                <span>Ver Certificado Oficial (PDF)</span>
+                <i data-lucide="external-link" class="w-3 h-3 ml-0.5 opacity-70"></i>
+              </a>
+            </div>
+          ` : ''}
         </div>
       </div>
     `).join('');

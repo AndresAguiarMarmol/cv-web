@@ -6,8 +6,8 @@ const PROFILE_DATA = {
   personal: {
     name: "Andres Aguiar",
     title: "Analista de Sistemas",
-    subtitle: "Más de 40 Años de Trayectoria en Tecnologías de Información, Gestión de TI, Desarrollo Web & Criptoactivos",
-    summary: "Profesional experto en Tecnología de Información con más de 40 años de sólida trayectoria liderando operaciones de soporte técnico, administración de plataformas, desarrollo de sistemas y soluciones digitales. Especializado en maximizar el rendimiento tecnológico mediante programación en Python/SQL, desarrollo de aplicaciones web (HTML/CSS/JS), y más de 5 años de experiencia en infraestructura de minería de criptomonedas (BTC/ETH) y finanzas P2P.",
+    subtitle: "Más de 40 Años de Trayectoria en Tecnologías de Información, Gestión de TI, Desarrollo Web, Inteligencia Artificial & Criptoactivos",
+    summary: "Profesional experto en Tecnología de Información con más de 40 años de sólida trayectoria liderando operaciones de soporte técnico, administración de plataformas, desarrollo de sistemas y soluciones digitales. Especializado en maximizar el rendimiento tecnológico mediante programación en Python/SQL, desarrollo de aplicaciones web (HTML/CSS/JS), adopción práctica de Inteligencia Artificial (IA), y más de 5 años de experiencia en infraestructura de minería de criptomonedas (BTC/ETH) y finanzas P2P.",
     location: "Santiago, Chile",
     status: "Disponible para Consultoría, Proyectos TI & Desarrollo Web",
     email: "andres.aguiar.marmol@gmail.com",
@@ -17,7 +17,7 @@ const PROFILE_DATA = {
     cvPdfUrl: "#",
     metrics: [
       { label: "Años de Trayectoria TI", value: "+40" },
-      { label: "Minería Cripto (BTC/ETH)", value: "+5 Años" },
+      { label: "Certificaciones IA (2026)", value: "BIG & Hashtag" },
       { label: "Graduación UCLA", value: "1° Lugar" },
       { label: "Índice Académico", value: "3.55/4" }
     ]
@@ -34,7 +34,7 @@ const PROFILE_DATA = {
         badge: "Versatilidad Tecnológica",
         icon: "cpu",
         title: "Adaptabilidad Tecnológica Continua",
-        description: "Capacidad demostrada para dominar y transicionar entre paradigmas: desde sistemas core legados industriales (Adabas, Natural, Cobol) hasta desarrollo moderno en Python, bases de datos SQL Server, aplicaciones web interactivas (HTML5/CSS/JS) y operación de hardware cripto."
+        description: "Capacidad demostrada para dominar y transicionar entre paradigmas: desde sistemas core legados industriales (Adabas, Natural, Cobol) hasta desarrollo moderno en Python, Inteligencia Artificial (IA), bases de datos SQL Server, aplicaciones web interactivas (HTML5/CSS/JS) y operación de hardware cripto."
       },
       {
         id: "leadership",
@@ -55,6 +55,7 @@ const PROFILE_DATA = {
 
   // 2. Insignias Tecnológicas con Identidad de Marca
   brandTechnologies: [
+    { name: "Inteligencia Artificial", category: "Desarrollo con IA", color: "#10A37F", bg: "rgba(16, 163, 127, 0.14)", icon: "sparkles" },
     { name: "Python", category: "Backend & Scripting", color: "#387EB8", bg: "rgba(56, 126, 184, 0.12)", icon: "code-2" },
     { name: "SQL Server", category: "Bases de Datos", color: "#CC292B", bg: "rgba(204, 41, 43, 0.12)", icon: "database" },
     { name: "JavaScript (ES6+)", category: "Frontend Web", color: "#EAB308", bg: "rgba(234, 179, 8, 0.15)", icon: "file-code" },
@@ -272,6 +273,12 @@ const PROFILE_DATA = {
   ],
 
   technicalSkills: {
+    "Inteligencia Artificial & Innovación (2026)": [
+      "Desarrollo Asistido por IA: de 0 a Producción (BIG school / MoureDev)",
+      "Participación en la Semana de la Inteligencia Artificial (Hashtag Capacitaciones)",
+      "Uso de Modelos LLM y Asistentes de IA para aceleración de software",
+      "Ingeniería de Prompts y Automatización de Procesos con IA"
+    ],
     "Desarrollo Web & Frontend": [
       "HTML5 Semántico & CSS3 Moderno",
       "JavaScript (Vanilla, Manipulación DOM, ES6+)",
@@ -400,6 +407,22 @@ const PROFILE_DATA = {
       }
     ],
     certifications: [
+      {
+        name: "Iniciación al Desarrollo con IA: De 0 a Producción",
+        issuer: "BIG school (Brais Moure / Romuald Fons)",
+        badge: "Certificación Oficial (6h)",
+        year: "2026 (18/03/2026)",
+        file: "assets/docs/certificado-desarrollo-ia-bigschool.pdf",
+        credentialId: "Jornadas Formativas IA - BIG school"
+      },
+      {
+        name: "Semana de la Inteligencia Artificial",
+        issuer: "Hashtag Capacitaciones (NIF: 26.344.392/0001-08)",
+        badge: "Certificación Oficial (8h)",
+        year: "2026 (06/08/2026)",
+        file: "assets/docs/certificado-semana-ia-hashtag.pdf",
+        credentialId: "Semana de la IA - Hashtag"
+      },
       {
         name: "Desarrollo Web (HTML, CSS, JavaScript)",
         issuer: "Proyectos Prácticos & Soluciones Digitales",

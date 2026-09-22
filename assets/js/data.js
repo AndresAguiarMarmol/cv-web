@@ -40,8 +40,8 @@ const PROFILE_DATA = {
         id: "leadership",
         badge: "Gobernanza & Operaciones",
         icon: "briefcase",
-        title: "20+ Años en Liderazgo Corporativo TI",
-        description: "Dirección de divisiones de Soporte Técnico y Help Desk en plantas industriales de gran envergadura (CVG ALCASA). Gestión de compras de software/hardware, control de presupuestos, cumplimiento de acuerdos y alianzas tecnológicas interinstitucionales."
+        title: "20+ Años en Liderazgo Corporativo TI & 10 Años VP de Operaciones",
+        description: "Dirección de divisiones de Soporte Técnico y Help Desk en plantas industriales (CVG ALCASA), sumado a una década como Cofundador y Vicepresidente de Operaciones en Mini Market Don Andrés. Dominio integral de presupuestos, compras de tecnología, proveedores, flujo de caja y continuidad del negocio."
       },
       {
         id: "results",
@@ -70,11 +70,11 @@ const PROFILE_DATA = {
 
   // 3. Categorías de Filtro Interactivo de Proyectos
   filterCategories: [
-    { id: "all", label: "Todos los Casos (8)", icon: "grid" },
+    { id: "all", label: "Todos los Casos (9)", icon: "grid" },
     { id: "web", label: "Desarrollo Web (2)", icon: "globe" },
     { id: "dev", label: "Python & Sistemas (2)", icon: "code" },
     { id: "crypto", label: "Cripto & Minería (1)", icon: "cpu" },
-    { id: "leadership", label: "Liderazgo TI (2)", icon: "users" },
+    { id: "leadership", label: "Liderazgo & Operaciones (3)", icon: "users" },
     { id: "erp", label: "Análisis & Finanzas (1)", icon: "bar-chart-3" }
   ],
 
@@ -199,6 +199,25 @@ const PROFILE_DATA = {
       ]
     },
     {
+      id: "proj-minimarket-operaciones",
+      filterCategory: "leadership",
+      title: "Cofundación & Dirección de Operaciones – Mini Market Don Andrés (10 Años)",
+      category: "Liderazgo & Operaciones Comerciales",
+      tag: "Cofundador & VP Operaciones",
+      visualBadge: "Factibilidad ➔ Puesta en Marcha ➔ Cadena de Suministro ➔ 10 Años Operación",
+      impact: "10 años de gestión integral de operaciones, finanzas y abastecimiento (2014 – 2024)",
+      summary: "Cofundación, estructuración estratégica y dirección operativa de Mini Market Don Andrés durante una década completa en Puerto Ordaz, Venezuela, abarcando desde el estudio de factibilidad técnica/económica hasta la supervisión de finanzas, compras y logística de punto de venta.",
+      problem: "Planificar, aperturar y mantener rentable un modelo comercial de abastecimiento continuo y servicio al cliente durante 10 años en un entorno económico dinámico y competitivo.",
+      action: "Lideré el estudio de factibilidad y ejecución integral del proyecto; supervisé el flujo de caja, presupuestos y rentabilidad a lo largo de 10 años; negocié acuerdos comerciales y condiciones de pago con distribuidores clave; coordiné la logística de recepción y control de pérdidas; e implementé estándares de fidelización de clientes.",
+      techStack: ["Dirección de Operaciones", "Gestión Financiera & Presupuesto", "Negociación con Proveedores", "Cadena de Suministro", "Logística & Control de Mermas", "Fidelización de Clientes"],
+      results: [
+        "Apertura comercial exitosa en los plazos previstos tras estudio de factibilidad integral.",
+        "10 años ininterrumpidos de rentabilidad, solvencia financiera y control presupuestario.",
+        "Optimización de costos y alta rotación de inventario mediante negociación directa con distribuidores clave.",
+        "Crecimiento comercial sostenido e implementación de estándares de servicio que fidelizaron a la clientela local."
+      ]
+    },
+    {
       id: "proj-soporte-cvg",
       filterCategory: "leadership",
       title: "Coordinación de la División de Soporte Técnico (CVG ALCASA)",
@@ -320,6 +339,20 @@ const PROFILE_DATA = {
         "Creación de la aplicación Halterofilia Pro, diseñada para atletas de halterofilia, permitiendo gestionar y monitorear su progreso en distintas disciplinas olímpicas.",
         "Desarrollo de la aplicación Curriculum Vitae Web – Andrés Aguiar, construida en HTML, CSS y JavaScript como muestra práctica de competencias técnicas en desarrollo web y gestión de proyectos TI.",
         "Construcción de interfaces modernas, adaptables y con estándares accesibles de navegación."
+      ]
+    },
+    {
+      period: "Febrero 2014 – Marzo 2024",
+      role: "Cofundador / Vicepresidente de Operaciones",
+      company: "Mini Market Don Andrés",
+      location: "UC Andrés Bello, Puerto Ordaz, Venezuela",
+      description: "Dirección estratégica, gestión operativa, administrativa y comercial a lo largo de una década completa (10 años), liderando desde el estudio de factibilidad y apertura comercial hasta la cadena de suministro, control financiero y operaciones del punto de venta.",
+      highlights: [
+        "Planificación y Puesta en Marcha: Lideré el estudio de factibilidad técnica/económica, diseño y ejecución integral del proyecto, logrando la apertura comercial exitosa en los plazos previstos.",
+        "Gestión Financiera y Administrativa: Supervisé el flujo de caja, control presupuestario, fijación de precios y análisis de rentabilidad del negocio a lo largo de 10 años.",
+        "Cadena de Suministro y Proveedores: Negocié acuerdos comerciales y condiciones de pago con distribuidores clave, optimizando costos y asegurando la rotación eficiente de inventario.",
+        "Operaciones y Logística: Coordiné la recepción de mercadería, abastecimiento continuo y control de pérdidas en punto de venta.",
+        "Servicio al Cliente y Ventas: Implementé estándares de atención y fidelización de clientes, impulsando el crecimiento sostenido de las ventas locales."
       ]
     },
     {

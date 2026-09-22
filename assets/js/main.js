@@ -169,13 +169,26 @@ function renderProfile() {
           <div class="md:col-span-8 bg-white dark:bg-slate-800/80 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 card-hover">
             <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">${exp.role}</h4>
             <p class="text-sm text-slate-600 dark:text-slate-300 mb-4 leading-relaxed">${exp.description}</p>
-            <ul class="space-y-2">
-              ${exp.highlights.map(h => `
-                <li class="flex items-start gap-2 text-xs md:text-sm text-slate-600 dark:text-slate-300">
-                  <span class="text-blue-500 font-bold">•</span>
-                  <span>${h}</span>
-                </li>
-              `).join('')}
+            <ul class="space-y-2.5">
+              ${exp.highlights.map(h => {
+                const colonIdx = h.indexOf(':');
+                if (colonIdx > 0 && colonIdx < 50) {
+                  const title = h.substring(0, colonIdx);
+                  const rest = h.substring(colonIdx + 1);
+                  return `
+                    <li class="flex items-start gap-2 text-xs md:text-sm text-slate-600 dark:text-slate-300">
+                      <span class="text-blue-500 font-bold shrink-0 mt-0.5">•</span>
+                      <span><strong class="font-bold text-slate-800 dark:text-slate-100">${title}:</strong>${rest}</span>
+                    </li>
+                  `;
+                }
+                return `
+                  <li class="flex items-start gap-2 text-xs md:text-sm text-slate-600 dark:text-slate-300">
+                    <span class="text-blue-500 font-bold shrink-0 mt-0.5">•</span>
+                    <span>${h}</span>
+                  </li>
+                `;
+              }).join('')}
             </ul>
           </div>
         </div>

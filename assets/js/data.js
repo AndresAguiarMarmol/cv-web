@@ -93,7 +93,7 @@ const PROFILE_DATA = {
 
   interests: [
     { name: "Ciclismo de Montaña", icon: "bike", desc: "Pasión por el deporte outdoor, superación y constancia." },
-    { name: "Halterofilia & Deporte Olímpico", icon: "dumbbell", desc: "Entrenamiento de fuerza y desarrollo de software para atletas." },
+    { name: "Crossfit", icon: "dumbbell", desc: "Entrenamiento de fuerza y acondicionamiento físico." },
     { name: "Lectura", icon: "book-open", desc: "Actualización técnica continua y literatura diversa." },
     { name: "Música", icon: "music", desc: "Apreciación artística y equilibrio personal." }
   ],

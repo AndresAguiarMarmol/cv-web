@@ -313,6 +313,7 @@ const PROFILE_DATA = {
       "Optimización de Hashrate, Clocks & Eficiencia Eléctrica"
     ],
     "Programación & Backend": [
+      "Python y la Web (Pontificia Universidad Católica de Chile - 75 hrs, Nota 6,6)",
       "Python (Visual Studio Code)",
       "Django & Reflex (Interfaces web modernas)",
       "SQL Server (Consultas Complejas, Store Procedures)",
@@ -440,6 +441,15 @@ const PROFILE_DATA = {
       }
     ],
     certifications: [
+      {
+        name: "Curso Python y la Web",
+        issuer: "Pontificia Universidad Católica de Chile (Escuela de Ingeniería)",
+        badge: "Aprobado • Nota 6,6 (75 hrs)",
+        year: "Nov 2023 - Feb 2024",
+        file: "assets/docs/certificado-python-la-web-puc.pdf",
+        credentialId: "A2DE63F20",
+        verificationUrl: "https://www.uc.cl/ECvalidacertificado"
+      },
       {
         name: "Iniciación al Desarrollo con IA: De 0 a Producción",
         issuer: "BIG school (Brais Moure / Romuald Fons)",

@@ -212,18 +212,33 @@ function renderProfile() {
             </span>
           </div>
           <p class="text-xs text-slate-500 dark:text-slate-400">${cert.issuer} • ${cert.year}</p>
-          ${cert.file ? `
-            <div class="mt-3">
-              <a 
-                href="${cert.file}" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                class="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/60 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-400 border border-blue-200/80 dark:border-blue-800/60 transition-colors shadow-xs"
-              >
-                <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
-                <span>Ver Certificado Oficial (PDF)</span>
-                <i data-lucide="external-link" class="w-3 h-3 ml-0.5 opacity-70"></i>
-              </a>
+          ${(cert.file || cert.verificationUrl) ? `
+            <div class="mt-3 flex flex-wrap items-center gap-2">
+              ${cert.file ? `
+                <a 
+                  href="${cert.file}" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/60 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-400 border border-blue-200/80 dark:border-blue-800/60 transition-colors shadow-xs"
+                >
+                  <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+                  <span>Ver Certificado Oficial (PDF)</span>
+                  <i data-lucide="external-link" class="w-3 h-3 ml-0.5 opacity-70"></i>
+                </a>
+              ` : ''}
+              ${cert.verificationUrl ? `
+                <a 
+                  href="${cert.verificationUrl}" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-750 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-colors shadow-xs"
+                  title="Verificar autenticidad en portal oficial UC"
+                >
+                  <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-500"></i>
+                  <span>Validar en UC.cl ${cert.credentialId ? `(Cód: ${cert.credentialId})` : ''}</span>
+                  <i data-lucide="external-link" class="w-3 h-3 ml-0.5 opacity-70"></i>
+                </a>
+              ` : ''}
             </div>
           ` : ''}
         </div>

@@ -17,7 +17,7 @@ const PROFILE_DATA = {
     cvPdfUrl: "#",
     metrics: [
       { label: "Años de Trayectoria TI", value: "+40" },
-      { label: "Certificaciones IA (2026)", value: "BIG & Hashtag" },
+      { label: "Certificaciones IA (2026)", value: "3 Oficiales" },
       { label: "Graduación UCLA", value: "1° Lugar" },
       { label: "Índice Académico", value: "3.55/4" }
     ]
@@ -293,6 +293,7 @@ const PROFILE_DATA = {
 
   technicalSkills: {
     "Inteligencia Artificial & Innovación (2026)": [
+      "Iniciación al Desarrollo con IA: El Nuevo Programador (mouredev & BIG school)",
       "Desarrollo Asistido por IA: de 0 a Producción (BIG school / MoureDev)",
       "Participación en la Semana de la Inteligencia Artificial (Hashtag Capacitaciones)",
       "Uso de Modelos LLM y Asistentes de IA para aceleración de software",
@@ -442,13 +443,20 @@ const PROFILE_DATA = {
     ],
     certifications: [
       {
-        name: "Curso Python y la Web",
-        issuer: "Pontificia Universidad Católica de Chile (Escuela de Ingeniería)",
-        badge: "Aprobado • Nota 6,6 (75 hrs)",
-        year: "Nov 2023 - Feb 2024",
-        file: "assets/docs/certificado-python-la-web-puc.pdf",
-        credentialId: "A2DE63F20",
-        verificationUrl: "https://www.uc.cl/ECvalidacertificado"
+        name: "Iniciación al Desarrollo con IA: El Nuevo Programador",
+        issuer: "mouredev & BIG school (Brais Moure / Romuald Fons)",
+        badge: "Certificado de Asistencia (4h)",
+        year: "2026 (16/10/2026)",
+        file: "assets/docs/certificado-iniciacion-desarrollo-ia-mouredev.pdf",
+        credentialId: "84041adfb6"
+      },
+      {
+        name: "Semana de la Inteligencia Artificial",
+        issuer: "Hashtag Capacitaciones (NIF: 26.344.392/0001-08)",
+        badge: "Certificación Oficial (8h)",
+        year: "2026 (06/08/2026)",
+        file: "assets/docs/certificado-semana-ia-hashtag.pdf",
+        credentialId: "Semana de la IA - Hashtag"
       },
       {
         name: "Iniciación al Desarrollo con IA: De 0 a Producción",
@@ -459,12 +467,13 @@ const PROFILE_DATA = {
         credentialId: "Jornadas Formativas IA - BIG school"
       },
       {
-        name: "Semana de la Inteligencia Artificial",
-        issuer: "Hashtag Capacitaciones (NIF: 26.344.392/0001-08)",
-        badge: "Certificación Oficial (8h)",
-        year: "2026 (06/08/2026)",
-        file: "assets/docs/certificado-semana-ia-hashtag.pdf",
-        credentialId: "Semana de la IA - Hashtag"
+        name: "Curso Python y la Web",
+        issuer: "Pontificia Universidad Católica de Chile (Escuela de Ingeniería)",
+        badge: "Aprobado • Nota 6,6 (75 hrs)",
+        year: "Nov 2023 - Feb 2024",
+        file: "assets/docs/certificado-python-la-web-puc.pdf",
+        credentialId: "A2DE63F20",
+        verificationUrl: "https://www.uc.cl/ECvalidacertificado"
       },
       {
         name: "Desarrollo Web (HTML, CSS, JavaScript)",

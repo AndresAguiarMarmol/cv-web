@@ -52,6 +52,12 @@ Decisiones ya tomadas que deben respetarse salvo indicación explícita del usua
 
 Añadir una entrada nueva arriba del todo por cada tarea terminada.
 
+### 2026-10-16 — Corrección: Restauración de h2#modal-title y robustez en modal STAR
+- Detectado que al pulsar el botón "Ver caso completo STAR" no se abría el diálogo debido a la omisión accidental del elemento `<h2 id="modal-title">` en `index.html`.
+- Restaurado `<h2 id="modal-title">` en el `<dialog id="project-modal">` de [index.html](file:///d:/Carpetas/Desarrollos/Desarrollos%20WEB/CV%20Web/index.html).
+- Añadidas comprobaciones defensivas con `null-check` para cada elemento en la función `window.openProjectModal()` en [assets/js/main.js](file:///d:/Carpetas/Desarrollos/Desarrollos%20WEB/CV%20Web/assets/js/main.js) para evitar excepciones runtime no controladas.
+- 14/14 tests pasando en verde.
+
 ### 2026-10-16 — Implementación completa: Selector de Idioma Bilingüe ES/EN (Spec 002)
 - **T1 completada:** Creado [assets/js/i18n.js](file:///d:/Carpetas/Desarrollos/Desarrollos%20WEB/CV%20Web/assets/js/i18n.js) con catálogo bilingüe (ES / EN) y funciones puras (`esIdiomaValido`, `resolverIdiomaInicial`, `obtenerTraduccion`, `obtenerDiccionario`) con dual export UMD/CommonJS. Suite de pruebas [tests/i18n.test.js](file:///d:/Carpetas/Desarrollos/Desarrollos%20WEB/CV%20Web/tests/i18n.test.js) con 6/6 tests pasando (paridad exacta de claves).
 - **T2 completada:** Incorporados en [index.html](file:///d:/Carpetas/Desarrollos/Desarrollos%20WEB/CV%20Web/index.html) los botones `#lang-toggle` (navbar escritorio) y `#lang-toggle-mobile` (menú móvil) junto a los controles de tema. Etiquetados los elementos traducibles de la interfaz mediante atributos declarativos (`data-i18n`, `data-i18n-placeholder`, `data-i18n-title`, `data-i18n-aria-label`).

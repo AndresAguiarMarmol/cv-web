@@ -913,28 +913,43 @@ window.openProjectModal = function(projectId) {
   const project = PROFILE_DATA.projects.find(p => p.id === projectId);
   if (!project) return;
 
-  // Llenar contenido del modal
-  document.getElementById('modal-category').textContent = project.category;
-  document.getElementById('modal-tag').textContent = project.tag;
-  document.getElementById('modal-title').textContent = project.title;
-  document.getElementById('modal-impact').textContent = project.impact;
-  document.getElementById('modal-problem').textContent = project.problem;
-  document.getElementById('modal-action').textContent = project.action;
+  // Llenar contenido del modal de manera segura
+  const catEl = document.getElementById('modal-category');
+  if (catEl) catEl.textContent = project.category || '';
+
+  const tagEl = document.getElementById('modal-tag');
+  if (tagEl) tagEl.textContent = project.tag || '';
+
+  const titleEl = document.getElementById('modal-title');
+  if (titleEl) titleEl.textContent = project.title || '';
+
+  const impactEl = document.getElementById('modal-impact');
+  if (impactEl) impactEl.textContent = project.impact || '';
+
+  const problemEl = document.getElementById('modal-problem');
+  if (problemEl) problemEl.textContent = project.problem || '';
+
+  const actionEl = document.getElementById('modal-action');
+  if (actionEl) actionEl.textContent = project.action || '';
 
   const techContainer = document.getElementById('modal-tech');
-  techContainer.innerHTML = project.techStack.map(t => `
-    <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-medium">
-      ${t}
-    </span>
-  `).join('');
+  if (techContainer && Array.isArray(project.techStack)) {
+    techContainer.innerHTML = project.techStack.map(t => `
+      <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-medium">
+        ${t}
+      </span>
+    `).join('');
+  }
 
   const resultsContainer = document.getElementById('modal-results');
-  resultsContainer.innerHTML = project.results.map(r => `
-    <li class="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-300">
-      <i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
-      <span>${r}</span>
-    </li>
-  `).join('');
+  if (resultsContainer && Array.isArray(project.results)) {
+    resultsContainer.innerHTML = project.results.map(r => `
+      <li class="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-300">
+        <i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+        <span>${r}</span>
+      </li>
+    `).join('');
+  }
 
   dialog.showModal();
 

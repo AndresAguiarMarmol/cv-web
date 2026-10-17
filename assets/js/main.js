@@ -112,9 +112,9 @@ function renderProfile() {
   const metricsContainer = document.getElementById('hero-metrics-container');
   if (metricsContainer && PROFILE_DATA.personal.metrics) {
     metricsContainer.innerHTML = PROFILE_DATA.personal.metrics.map(m => `
-      <div class="p-4 rounded-xl bg-slate-100/70 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 text-center">
-        <span class="block text-2xl md:text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">${m.value}</span>
-        <span class="text-xs md:text-sm text-slate-600 dark:text-slate-400 font-medium">${m.label}</span>
+      <div class="p-3.5 sm:p-4 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/70 text-center shadow-xs transition-all hover:border-blue-500/40">
+        <span class="block text-xl sm:text-2xl lg:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-1">${m.value}</span>
+        <span class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 font-medium leading-snug block">${m.label}</span>
       </div>
     `).join('');
   }
@@ -367,9 +367,9 @@ function renderExecutivePitch() {
   const { title, badge, subtitle, points } = PROFILE_DATA.executivePitch;
 
   container.innerHTML = `
-    <div class="bg-gradient-to-br from-blue-50/90 via-indigo-50/40 to-slate-50/80 dark:from-slate-850 dark:via-slate-800/90 dark:to-slate-900 p-8 sm:p-10 rounded-3xl border border-blue-200/80 dark:border-slate-700/80 shadow-md">
+    <div class="p-7 sm:p-9 rounded-3xl bg-white dark:bg-slate-850 border border-slate-200/90 dark:border-slate-700/80 shadow-xs">
       <div class="max-w-3xl mb-8">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-600 text-white mb-3 shadow-sm">
+        <div class="section-tag mb-3">
           <i data-lucide="zap" class="w-3.5 h-3.5"></i>
           <span>${badge}</span>
         </div>
@@ -383,17 +383,17 @@ function renderExecutivePitch() {
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         ${points.map(pt => `
-          <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-sm card-hover flex flex-col justify-between">
+          <div class="p-6 rounded-2xl bg-slate-50/70 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/70 shadow-xs card-hover flex flex-col justify-between">
             <div>
               <div class="flex items-center justify-between gap-2 mb-4">
-                <div class="w-11 h-11 rounded-xl bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold">
+                <div class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold">
                   <i data-lucide="${pt.icon}" class="w-5 h-5"></i>
                 </div>
-                <span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">
+                <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-white dark:bg-slate-750 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
                   ${pt.badge}
                 </span>
               </div>
-              <h3 class="text-base font-extrabold text-slate-900 dark:text-white mb-2">
+              <h3 class="text-base font-bold text-slate-900 dark:text-white mb-2">
                 ${pt.title}
               </h3>
               <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -518,9 +518,12 @@ function renderProjects(filter = 'all', searchQuery = '') {
         </h3>
 
         <!-- Métrica de Impacto -->
-        <div class="mb-4 p-3 rounded-xl bg-slate-50 dark:bg-slate-900/60 border-l-4 border-blue-500">
-          <p class="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-0.5">Impacto Cuantitativo</p>
-          <p class="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200 leading-snug">${proj.impact}</p>
+        <div class="mb-4 p-3.5 rounded-xl bg-slate-50/90 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-700/60 border-l-4 border-l-blue-600 dark:border-l-blue-400">
+          <div class="flex items-center gap-1.5 text-[11px] font-semibold text-slate-500 dark:text-slate-400 mb-1">
+            <i data-lucide="trending-up" class="w-3.5 h-3.5 text-blue-600 dark:text-blue-400"></i>
+            <span>Resultado comprobable</span>
+          </div>
+          <p class="text-xs sm:text-sm font-bold text-slate-900 dark:text-slate-100 leading-snug">${proj.impact}</p>
         </div>
 
         <!-- Pipeline / Arquitectura Visual -->
@@ -537,7 +540,7 @@ function renderProjects(filter = 'all', searchQuery = '') {
 
         <div class="flex flex-wrap gap-1.5 mb-6">
           ${proj.techStack.slice(0, 5).map(tech => `
-            <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-700/60 text-slate-700 dark:text-slate-300 font-medium">
+            <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-750 text-slate-700 dark:text-slate-300 font-medium">
               ${tech}
             </span>
           `).join('')}
@@ -549,10 +552,10 @@ function renderProjects(filter = 'all', searchQuery = '') {
         <button 
           type="button" 
           onclick="openProjectModal('${proj.id}')"
-          class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white dark:bg-slate-700/60 dark:hover:bg-blue-600 text-slate-800 dark:text-slate-200 font-semibold text-xs sm:text-sm transition-colors duration-200"
+          class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-50 hover:bg-blue-600 hover:text-white dark:bg-slate-750 dark:hover:bg-blue-600 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:border-transparent font-semibold text-xs sm:text-sm transition-all duration-200 shadow-2xs cursor-pointer"
         >
-          <span>Ver Análisis & Detalles STAR</span>
-          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          <span>Ver caso completo STAR</span>
+          <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
         </button>
       </div>
     </article>

@@ -1,48 +1,55 @@
 /* ==========================================================================
-   Variables y Configuración de Tema
+   Design Tokens & Variables de Tema
+   Inspirado en diseño de sistemas de alta precisión y arquitectura suiza
    ========================================================================== */
 :root {
   color-scheme: light dark;
   --bg-primary: #f8fafc;
   --bg-secondary: #ffffff;
   --bg-card: #ffffff;
+  --bg-card-hover: #ffffff;
   --border-color: #e2e8f0;
+  --border-subtle: #edf2f7;
   --text-primary: #0f172a;
   --text-secondary: #475569;
   --text-muted: #64748b;
-  --accent-primary: #2563eb;
-  --accent-primary-hover: #1d4ed8;
+  --accent-primary: #1d4ed8;
+  --accent-primary-hover: #1e40af;
   --accent-soft: #eff6ff;
   --accent-border: #bfdbfe;
   --badge-bg: #f1f5f9;
   --badge-text: #334155;
-  --nav-bg: rgba(255, 255, 255, 0.85);
+  --nav-bg: rgba(248, 250, 252, 0.88);
   --modal-bg: #ffffff;
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.04);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.08);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
+  --shadow-lg: 0 12px 20px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.04);
 }
 
-/* Modo oscuro explícito */
+/* Modo oscuro técnico abisal */
 html.dark {
-  --bg-primary: #0b0f19;
+  --bg-primary: #0b0f17;
   --bg-secondary: #111827;
-  --bg-card: #141c2e;
-  --border-color: #1e293b;
+  --bg-card: #131c2b;
+  --bg-card-hover: #162235;
+  --border-color: rgba(148, 163, 184, 0.14);
+  --border-subtle: rgba(148, 163, 184, 0.08);
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
   --accent-primary: #3b82f6;
   --accent-primary-hover: #60a5fa;
   --accent-soft: rgba(59, 130, 246, 0.12);
-  --accent-border: rgba(59, 130, 246, 0.25);
-  --badge-bg: #1e293b;
+  --accent-border: rgba(59, 130, 246, 0.28);
+  --badge-bg: rgba(30, 41, 59, 0.8);
   --badge-text: #cbd5e1;
-  --nav-bg: rgba(11, 15, 25, 0.85);
+  --nav-bg: rgba(11, 15, 23, 0.88);
   --modal-bg: #111827;
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.4);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.5);
-  --shadow-lg: 0 10px 25px -3px rgb(0 0 0 / 0.6), 0 4px 6px -4px rgb(0 0 0 / 0.5);
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.4);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5);
+  --shadow-lg: 0 12px 24px -3px rgb(0 0 0 / 0.6);
 }
 
 /* ==========================================================================
@@ -50,7 +57,7 @@ html.dark {
    ========================================================================== */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
+  scroll-padding-top: 5.5rem;
 }
 
 body {
@@ -59,13 +66,14 @@ body {
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   transition: background-color 0.25s ease, color 0.25s ease;
   min-height: 100vh;
+  letter-spacing: -0.011em;
 }
 
-/* Glassmorphism para navegación */
+/* Glassmorphism sobrio para navegación */
 .glass-nav {
   background-color: var(--nav-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -77,16 +85,16 @@ dialog {
   border: none;
   background: transparent;
   max-width: 92vw;
-  width: 46rem;
-  border-radius: 1rem;
+  width: 48rem;
+  border-radius: 1.25rem;
   overflow: hidden;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
 }
 
 dialog::backdrop {
-  background-color: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background-color: rgba(11, 15, 23, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   animation: fadeInBackdrop 0.2s ease-out;
 }
 
@@ -102,7 +110,7 @@ dialog[open] {
 @keyframes zoomInDialog {
   from {
     opacity: 0;
-    transform: scale(0.96) translateY(8px);
+    transform: scale(0.97) translateY(6px);
   }
   to {
     opacity: 1;
@@ -111,45 +119,40 @@ dialog[open] {
 }
 
 /* ==========================================================================
-   Tarjetas y Elementos Visuales
+   Tarjetas & Acabado Técnico de Precisión
    ========================================================================== */
 .card-hover {
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, border-color 0.22s ease;
 }
 
 .card-hover:hover {
-  transform: translateY(-3px);
-  border-color: var(--accent-primary);
+  transform: translateY(-2.5px);
+  border-color: rgba(59, 130, 246, 0.45);
   box-shadow: var(--shadow-lg);
 }
 
-/* Insignias de métricas de impacto */
-.metric-badge {
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(14, 165, 233, 0.1));
-  border: 1px solid var(--accent-border);
-  color: var(--accent-primary);
+/* Indicadores de sección técnicos */
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  background-color: rgba(37, 99, 235, 0.08);
+  color: #1d4ed8;
+  border: 1px solid rgba(37, 99, 235, 0.18);
 }
 
-/* Timeline vertical para trayectoria */
-.timeline-line {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 1.25rem;
-  width: 2px;
-  background-color: var(--border-color);
+html.dark .section-tag {
+  background-color: rgba(59, 130, 246, 0.12);
+  color: #60a5fa;
+  border-color: rgba(59, 130, 246, 0.25);
 }
 
-@media (min-width: 768px) {
-  .timeline-line {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-}
-
-/* ==========================================================================
-   Filtros Interactivos de Proyectos
-   ========================================================================== */
+/* Filtros Interactivos de Proyectos */
 .filter-pill {
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
@@ -160,17 +163,17 @@ dialog[open] {
 }
 
 .filter-pill.active {
-  background-color: #2563eb !important;
+  background-color: #1d4ed8 !important;
   color: #ffffff !important;
-  border-color: #2563eb !important;
-  box-shadow: 0 4px 12px -1px rgba(37, 99, 235, 0.4);
+  border-color: #1d4ed8 !important;
+  box-shadow: 0 4px 10px -1px rgba(29, 78, 216, 0.35);
 }
 
 html.dark .filter-pill.active {
-  background-color: #3b82f6 !important;
+  background-color: #2563eb !important;
   color: #ffffff !important;
-  border-color: #3b82f6 !important;
-  box-shadow: 0 4px 14px -1px rgba(59, 130, 246, 0.5);
+  border-color: #2563eb !important;
+  box-shadow: 0 4px 12px -1px rgba(37, 99, 235, 0.45);
 }
 
 /* Insignias de Tecnologías Oficiales */
@@ -179,26 +182,54 @@ html.dark .filter-pill.active {
 }
 
 .brand-tech-badge:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px -4px rgba(0, 0, 0, 0.12);
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.08);
 }
 
 /* Diagrama / Pipeline de Arquitectura en tarjetas */
 .architecture-badge {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 0.72rem;
-  letter-spacing: -0.01em;
+  font-size: 0.73rem;
+  letter-spacing: -0.015em;
 }
 
 /* ==========================================================================
-   Botón Flotante Discreto de Contacto (Quick Contact Bar)
+   Buscador Global & Resaltado de Texto
+   ========================================================================== */
+.search-highlight {
+  background-color: #fef08a;
+  color: #0f172a;
+  font-weight: 700;
+  border-radius: 0.25rem;
+  padding: 0.05rem 0.25rem;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+html.dark .search-highlight {
+  background-color: rgba(234, 179, 8, 0.32);
+  color: #fef08a;
+  border: 1px solid rgba(234, 179, 8, 0.25);
+}
+
+.search-suggestion-chip {
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.search-suggestion-chip:active {
+  transform: scale(0.97);
+}
+
+/* ==========================================================================
+   Botón Flotante Discreto de Contacto
    ========================================================================== */
 .floating-contact-pill {
   position: fixed;
   bottom: 1.25rem;
   right: 1.25rem;
   z-index: 45;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25), 0 8px 10px -6px rgba(0, 0, 0, 0.15);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   animation: slideInToast 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -224,7 +255,7 @@ html.dark .filter-pill.active {
 @keyframes slideInToast {
   from {
     opacity: 0;
-    transform: translateY(14px) scale(0.95);
+    transform: translateY(12px) scale(0.96);
   }
   to {
     opacity: 1;
@@ -233,31 +264,14 @@ html.dark .filter-pill.active {
 }
 
 /* ==========================================================================
-   Estilos de Búsqueda y Resaltado
-   ========================================================================== */
-.search-highlight {
-  background-color: #fef08a;
-  color: #0f172a;
-  font-weight: 700;
-  border-radius: 0.25rem;
-  padding: 0.05rem 0.25rem;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-}
-
-html.dark .search-highlight {
-  background-color: rgba(234, 179, 8, 0.35);
-  color: #fef08a;
-}
-
-/* ==========================================================================
-   Estilos para Impresión / Exportación a PDF (Ctrl + P)
+   Estilos de Impresión Optimizados (Ctrl + P / Guardar PDF)
    ========================================================================== */
 @media print {
   body {
     background: #ffffff !important;
     color: #000000 !important;
-    font-size: 11pt;
+    font-size: 10.5pt;
+    line-height: 1.45;
   }
 
   .no-print,
@@ -275,7 +289,7 @@ html.dark .search-highlight {
     display: none !important;
   }
 
-  /* Asegurar que los elementos del CV se impriman completos sin importar el filtro en pantalla */
+  /* Asegurar que las tarjetas de proyectos, habilidades y experiencia se impriman completas */
   #projects-container > div,
   #skills-container > div,
   #experience-container > div {
@@ -287,18 +301,19 @@ html.dark .search-highlight {
     color: inherit !important;
     font-weight: inherit !important;
     padding: 0 !important;
+    border: none !important;
   }
 
   .card-hover {
     box-shadow: none !important;
-    border: 1px solid #ccc !important;
+    border: 1px solid #d1d5db !important;
     break-inside: avoid;
-    margin-bottom: 1rem !important;
+    margin-bottom: 0.85rem !important;
   }
 
   section {
-    padding-top: 1rem !important;
-    padding-bottom: 1rem !important;
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
     break-inside: avoid;
   }
 

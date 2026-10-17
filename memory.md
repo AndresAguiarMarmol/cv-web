@@ -48,6 +48,15 @@ Decisiones ya tomadas que deben respetarse salvo indicación explícita del usua
 
 Añadir una entrada nueva arriba del todo por cada tarea terminada.
 
+### 2026-10-16 — Refinamiento visual e identidad de ingeniería (frontend-design)
+- Aplicados los principios de la skill `frontend-design` para dotar al portfolio de una estética arquitectónica y técnica ("The Systems Architect"):
+  - Reemplazados los rótulos genéricos en mayúsculas forzadas (`UPPERCASE TRACKING-WIDEST`) por indicadores semánticos `.section-tag` sobrios con iconos y caja baja equilibrada.
+  - Rediseñado el titular principal del Hero eliminando clips de degradado múltiples para una lectura ejecutiva más rotunda y sólida.
+  - Refinadas las tarjetas de métricas del Hero con presentación tabular de alta precisión técnica.
+  - Refinado el bloque del Elevator Pitch y las tarjetas de proyectos STAR, con bloques destacados de "Resultado comprobable" y botones táctiles sutiles.
+  - Reestructurado el sistema de variables CSS en [assets/css/custom.css](file:///d:/Carpetas/Desarrollos/Desarrollos%20WEB/CV%20Web/assets/css/custom.css) con elevaciones limpias, contraste descansado y paleta técnica abisal en modo oscuro.
+  - 8/8 tests unitarios pasando en verde en `node --test` y sintaxis JS 100% validada.
+
 ### 2026-10-16 — Implementación completa: Buscador y Filtros Avanzados (Spec 001)
 - **T1 completada:** Creado [assets/js/search.js](file:///d:/Carpetas/Desarrollos/Desarrollos%20WEB/CV%20Web/assets/js/search.js) con funciones puras (`normalizarTexto`, `escaparRegex`, `coincideTexto`, `resaltarCoincidencias`, `filtrarHabilidades`, `filtrarProyectos`, `filtrarExperiencia`, `calcularTotalCoincidencias`) y suite unitaria nativa [tests/search.test.js](file:///d:/Carpetas/Desarrollos/Desarrollos%20WEB/CV%20Web/tests/search.test.js) con 8/8 tests pasando en `node --test`.
 - **T2 completada:** Maquetada en [index.html](file:///d:/Carpetas/Desarrollos/Desarrollos%20WEB/CV%20Web/index.html) la sección `#search-section` accesible con input, botón de limpieza, contador dinámico y panel de cero coincidencias `#search-empty-state` con chips de sugerencias rápidas. En [assets/css/custom.css](file:///d:/Carpetas/Desarrollos/Desarrollos%20WEB/CV%20Web/assets/css/custom.css) se definieron estilos para `<mark class="search-highlight">` (modo claro/oscuro) y reglas `@media print` para forzar la impresión íntegra del currículum.

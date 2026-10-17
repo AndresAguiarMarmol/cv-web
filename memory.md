@@ -9,8 +9,11 @@ Registro de todo lo que debe preservarse entre sesiones de trabajo: arquitectura
 
 ### A. Persistencia en `localStorage`
 - **Clave:** `theme`
-- **Valores posibles:** `"dark"` | `"light"`
-- **Comportamiento:** Si no existe la clave, se detecta automáticamente la preferencia del sistema (`window.matchMedia('(prefers-color-scheme: dark)')`). Al pulsar el botón de alternancia, se almacena la selección para futuras visitas.
+  - **Valores posibles:** `"dark"` | `"light"`
+  - **Comportamiento:** Si no existe la clave, se detecta automáticamente la preferencia del sistema (`window.matchMedia('(prefers-color-scheme: dark)')`). Al pulsar el botón de alternancia, se almacena la selección para futuras visitas.
+- **Clave:** `cv-web-lang`
+  - **Valores posibles:** `"es"` | `"en"`
+  - **Comportamiento:** Si no existe la clave guardada, se evalúa `navigator.language`; si comienza por `"en"` se selecciona `"en"`, en cualquier otro caso recurre a `"es"`. Al pulsar el selector de idioma `#lang-toggle` / `#lang-toggle-mobile`, se almacena la selección para futuras visitas con tolerancia a modo incógnito.
 
 ### B. Fuente única de datos (`PROFILE_DATA`)
 Toda la información del profesional se encuentra centralizada en `assets/js/data.js` bajo el objeto global `PROFILE_DATA`:
@@ -40,6 +43,7 @@ Decisiones ya tomadas que deben respetarse salvo indicación explícita del usua
 - **Optimización de impresión (`@media print`):** La descarga del CV en PDF aprovecha las capacidades de impresión del navegador (`Ctrl + P` o botón interactivo), ocultando la navegación, controles interactivos y fondos oscuros mediante estilos de impresión dedicados en `assets/css/custom.css`.
 - **Iconos:** Se emplea la biblioteca Lucide Icons cargada vía CDN y renderizada mediante `window.lucide.createIcons()`.
 - **Buscador y normalización de texto:** Las funciones de búsqueda residen en `assets/js/search.js` como funciones puras sin dependencias externas, con tolerancia a acentos y mayúsculas, y exportación condicional para ejecución en `node --test`.
+- **Internacionalización de interfaz (UI Chrome):** El catálogo bilingüe y funciones puras de i18n residen en `assets/js/i18n.js` con paridad estricta de claves. Solo se traduce el UI Chrome (navegación, botones, buscador, etiquetas de sección, accesibilidad y toasts), preservando el cuerpo técnico en español original por acuerdo explícito para no desvirtuar los logros y métricas STAR.
 - **Integridad de impresión:** Las reglas en `assets/css/custom.css` aseguran que al imprimir o guardar en PDF (Ctrl + P), los elementos filtrados temporalmente por el buscador permanezcan siempre visibles (`display: block !important`) para generar un currículum completo.
 
 ---
@@ -47,6 +51,12 @@ Decisiones ya tomadas que deben respetarse salvo indicación explícita del usua
 ## 3. Historial de cambios
 
 Añadir una entrada nueva arriba del todo por cada tarea terminada.
+
+### 2026-10-16 — Implementación completa: Selector de Idioma Bilingüe ES/EN (Spec 002)
+- **T1 completada:** Creado [assets/js/i18n.js](file:///d:/Carpetas/Desarrollos/Desarrollos%20WEB/CV%20Web/assets/js/i18n.js) con catálogo bilingüe (ES / EN) y funciones puras (`esIdiomaValido`, `resolverIdiomaInicial`, `obtenerTraduccion`, `obtenerDiccionario`) con dual export UMD/CommonJS. Suite de pruebas [tests/i18n.test.js](file:///d:/Carpetas/Desarrollos/Desarrollos%20WEB/CV%20Web/tests/i18n.test.js) con 6/6 tests pasando (paridad exacta de claves).
+- **T2 completada:** Incorporados en [index.html](file:///d:/Carpetas/Desarrollos/Desarrollos%20WEB/CV%20Web/index.html) los botones `#lang-toggle` (navbar escritorio) y `#lang-toggle-mobile` (menú móvil) junto a los controles de tema. Etiquetados los elementos traducibles de la interfaz mediante atributos declarativos (`data-i18n`, `data-i18n-placeholder`, `data-i18n-title`, `data-i18n-aria-label`).
+- **T3 completada:** Implementada en [assets/js/main.js](file:///d:/Carpetas/Desarrollos/Desarrollos%20WEB/CV%20Web/assets/js/main.js) la orquestación dinámica (`initLanguage`, `setLanguage`), actualización del atributo `<html lang="...">`, persistencia en `localStorage` bajo `cv-web-lang`, adaptación de filtros de proyectos y notificaciones flotantes (toasts) según idioma activo.
+- **T4 completada:** Verificación al 100% de la suite combinada de pruebas (14/14 tests pasando en `tests/search.test.js` y `tests/i18n.test.js`), validación de sintaxis con `node -c`, tolerancia a modo incógnito y actualización de especificación a `implementada`.
 
 ### 2026-10-16 — Refinamiento visual e identidad de ingeniería (frontend-design)
 - Aplicados los principios de la skill `frontend-design` para dotar al portfolio de una estética arquitectónica y técnica ("The Systems Architect"):

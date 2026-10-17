@@ -74,41 +74,45 @@
             class="font-bold text-sm sm:text-base leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
             Andres Aguiar
           </span>
-          <span class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Analista de Sistemas</span>
+          <span class="text-[11px] text-slate-500 dark:text-slate-400 font-medium" data-i18n="nav_tagline">Analista de Sistemas</span>
         </div>
       </a>
 
       <!-- Navegación de Escritorio -->
       <nav class="hidden md:flex items-center gap-5 text-sm font-medium text-slate-600 dark:text-slate-300">
-        <a href="#resumen" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Resumen
-          30s</a>
+        <a href="#resumen" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors" data-i18n="nav_summary">Resumen 30s</a>
         <a href="#pilares"
-          class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Especialidad</a>
-        <a href="#proyectos" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Casos de
-          Éxito</a>
-        <a href="#skills" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Stack
-          Técnico</a>
+          class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors" data-i18n="nav_pillars">Especialidad</a>
+        <a href="#proyectos" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors" data-i18n="nav_projects_title">Casos de Éxito</a>
+        <a href="#skills" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors" data-i18n="nav_skills">Stack Técnico</a>
         <a href="#trayectoria"
-          class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Trayectoria</a>
+          class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors" data-i18n="nav_experience">Trayectoria</a>
         <a href="#certificaciones"
-          class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Formación</a>
-        <a href="#contacto" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contacto</a>
+          class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors" data-i18n="nav_certs">Formación</a>
+        <a href="#contacto" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors" data-i18n="nav_contact">Contacto</a>
       </nav>
 
-      <!-- Botones de Acción (Tema & CV) -->
-      <div class="flex items-center gap-3">
+      <!-- Botones de Acción (Idioma, Tema & CV) -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Selector Idioma ES / EN -->
+        <button id="lang-toggle" type="button" aria-label="Cambiar idioma (Español / English)" title="Cambiar idioma"
+          class="px-2.5 py-1.5 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 border border-slate-200 dark:border-slate-700 flex items-center gap-1.5 cursor-pointer">
+          <i data-lucide="globe" class="w-3.5 h-3.5 text-blue-500"></i>
+          <span id="lang-toggle-text">EN</span>
+        </button>
+
         <!-- Selector Modo Oscuro -->
         <button id="theme-toggle" type="button" aria-label="Cambiar modo de tema"
-          class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
+          class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer">
           <i data-lucide="moon" class="w-5 h-5 hidden dark:block"></i>
           <i data-lucide="sun" class="w-5 h-5 block dark:hidden"></i>
         </button>
 
         <!-- Botón Descarga / Imprimir CV -->
         <button type="button"
-          class="btn-print-cv hidden sm:inline-flex items-center gap-2 px-4 py-2 text-xs md:text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 active:bg-blue-800 rounded-xl shadow-sm hover:shadow transition-all">
+          class="btn-print-cv hidden sm:inline-flex items-center gap-2 px-4 py-2 text-xs md:text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 active:bg-blue-800 rounded-xl shadow-sm hover:shadow transition-all cursor-pointer">
           <i data-lucide="download" class="w-4 h-4"></i>
-          <span>Descargar CV</span>
+          <span data-i18n="nav_download_cv">Descargar CV</span>
         </button>
 
         <!-- Botón Menú Móvil -->
@@ -123,28 +127,30 @@
     <div id="mobile-menu"
       class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur px-4 pt-2 pb-6 space-y-3">
       <a href="#resumen"
-        class="mobile-nav-link block py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-blue-600">⚡
-        Resumen en 30s</a>
+        class="mobile-nav-link block py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-blue-600" data-i18n="nav_summary">⚡ Resumen en 30s</a>
       <a href="#pilares"
-        class="mobile-nav-link block py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-blue-600">Especialidad</a>
+        class="mobile-nav-link block py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-blue-600" data-i18n="nav_pillars">Especialidad</a>
       <a href="#proyectos"
-        class="mobile-nav-link block py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-blue-600">Casos
-        de Éxito</a>
+        class="mobile-nav-link block py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-blue-600" data-i18n="nav_projects_title">Casos de Éxito</a>
       <a href="#skills"
-        class="mobile-nav-link block py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-blue-600">Stack
-        Técnico</a>
+        class="mobile-nav-link block py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-blue-600" data-i18n="nav_skills">Stack Técnico</a>
       <a href="#trayectoria"
-        class="mobile-nav-link block py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-blue-600">Trayectoria</a>
+        class="mobile-nav-link block py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-blue-600" data-i18n="nav_experience">Trayectoria</a>
       <a href="#certificaciones"
-        class="mobile-nav-link block py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-blue-600">Certificaciones</a>
+        class="mobile-nav-link block py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-blue-600" data-i18n="nav_certs">Certificaciones</a>
       <a href="#contacto"
-        class="mobile-nav-link block py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-blue-600">Contacto</a>
+        class="mobile-nav-link block py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-blue-600" data-i18n="nav_contact">Contacto</a>
 
-      <div class="pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+      <div class="pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center gap-3">
+        <button id="lang-toggle-mobile" type="button" aria-label="Cambiar idioma (Español / English)"
+          class="inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-bold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shrink-0 cursor-pointer">
+          <i data-lucide="globe" class="w-4 h-4 text-blue-500"></i>
+          <span id="lang-toggle-mobile-text">EN</span>
+        </button>
         <button type="button"
-          class="btn-print-cv inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold text-white bg-blue-600 rounded-xl w-full justify-center">
+          class="btn-print-cv inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold text-white bg-blue-600 rounded-xl flex-1 justify-center cursor-pointer">
           <i data-lucide="download" class="w-4 h-4"></i>
-          <span>Descargar CV en PDF</span>
+          <span data-i18n="nav_download_pdf">Descargar CV en PDF</span>
         </button>
       </div>
     </div>
@@ -166,7 +172,7 @@
             <div
               class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60">
               <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span id="bind-status">Disponible para Proyectos & Consultoría TI</span>
+              <span id="bind-status" data-i18n="hero_status">Disponible para Proyectos & Consultoría TI</span>
             </div>
             <div
               class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
@@ -177,11 +183,11 @@
 
           <!-- Titulares Principales -->
           <h1
-            class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.12] mb-6">
+            class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.12] mb-6" data-i18n="hero_headline">
             Más de 40 años optimizando recursos de TI y desarrollando soluciones de software empresarial.
           </h1>
 
-          <p class="bind-summary text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-8">
+          <p class="bind-summary text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-8" data-i18n="hero_summary">
             Profesional experto en Tecnología de Información con más de 40 años de sólida trayectoria liderando
             operaciones de soporte técnico, administración de plataformas y desarrollo de sistemas empresariales.
           </p>
@@ -190,18 +196,18 @@
           <div class="flex flex-wrap items-center gap-3 mb-10">
             <a href="#proyectos"
               class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all">
-              <span>Ver Casos de Éxito</span>
+              <span data-i18n="cta_projects">Ver Casos de Éxito</span>
               <i data-lucide="arrow-down" class="w-4 h-4"></i>
             </a>
             <a href="https://wa.me/56933395447" target="_blank" rel="noopener noreferrer"
               class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm shadow-md transition-colors">
               <i data-lucide="message-circle" class="w-4 h-4"></i>
-              <span>WhatsApp Directo</span>
+              <span data-i18n="cta_whatsapp">WhatsApp Directo</span>
             </a>
             <button type="button"
-              class="btn-copy-email inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors">
+              class="btn-copy-email inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors cursor-pointer">
               <i data-lucide="copy" class="w-4 h-4 text-blue-500"></i>
-              <span>Copiar Correo</span>
+              <span data-i18n="cta_copy_email">Copiar Correo</span>
             </button>
           </div>
 
@@ -232,11 +238,11 @@
                 <div
                   class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300 border border-emerald-200/80 dark:border-emerald-800/60 mb-1.5">
                   <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                  <span>Perfil Oficial</span>
+                  <span data-i18n="cta_profile_badge">Perfil Oficial</span>
                 </div>
                 <h3 class="font-extrabold text-lg sm:text-xl text-slate-900 dark:text-white leading-tight truncate">
                   Andres Aguiar</h3>
-                <p class="text-xs font-semibold text-blue-600 dark:text-blue-400">Analista de Sistemas</p>
+                <p class="text-xs font-semibold text-blue-600 dark:text-blue-400" data-i18n="nav_tagline">Analista de Sistemas</p>
                 <p class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1 mt-0.5">
                   <i data-lucide="map-pin" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
                   <span class="truncate">Santiago, Chile</span>
@@ -247,15 +253,15 @@
             <div
               class="space-y-3 text-xs text-slate-600 dark:text-slate-300 border-t border-slate-200/80 dark:border-slate-700/80 pt-4 mb-5">
               <div class="flex items-center justify-between">
-                <span class="text-slate-500">Graduación:</span>
-                <span class="font-bold text-amber-600 dark:text-amber-400">1° en Promoción UCLA</span>
+                <span class="text-slate-500" data-i18n="profile_label_grad">Graduación:</span>
+                <span class="font-bold text-amber-600 dark:text-amber-400" data-i18n="profile_val_grad">1° en Promoción UCLA</span>
               </div>
               <div class="flex items-center justify-between">
-                <span class="text-slate-500">Especialidad:</span>
-                <span class="font-semibold text-slate-800 dark:text-slate-200">Gestión TI, Web, Python & Cripto</span>
+                <span class="text-slate-500" data-i18n="profile_label_spec">Especialidad:</span>
+                <span class="font-semibold text-slate-800 dark:text-slate-200" data-i18n="profile_val_spec">Gestión TI, Web, Python & Cripto</span>
               </div>
               <div class="flex items-center justify-between">
-                <span class="text-slate-500">Teléfono:</span>
+                <span class="text-slate-500" data-i18n="profile_label_phone">Teléfono:</span>
                 <a href="tel:+56933395447" class="font-bold text-blue-600 dark:text-blue-400 hover:underline">+56 9 3339
                   5447</a>
               </div>
@@ -263,14 +269,14 @@
 
             <div class="space-y-2 pt-2 border-t border-slate-200/80 dark:border-slate-700/80">
               <button type="button"
-                class="btn-print-cv w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs shadow transition-all">
+                class="btn-print-cv w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs shadow transition-all cursor-pointer">
                 <i data-lucide="download" class="w-4 h-4"></i>
-                <span>Descargar Curriculum en PDF</span>
+                <span data-i18n="cta_download_cv">Descargar Curriculum en PDF</span>
               </button>
               <a href="https://www.linkedin.com/in/andres-aguiar-b4824395" target="_blank" rel="noopener noreferrer"
-                class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 font-semibold text-xs transition-all">
+                class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 font-semibold text-xs transition-all cursor-pointer">
                 <i data-lucide="linkedin" class="w-4 h-4 text-blue-500"></i>
-                <span>Ver Perfil en LinkedIn</span>
+                <span data-i18n="cta_view_linkedin">Ver Perfil en LinkedIn</span>
               </a>
             </div>
           </div>
@@ -289,7 +295,7 @@
       <!-- Insignias de Marcas Tecnológicas -->
       <div class="pt-6 border-t border-slate-200/80 dark:border-slate-800">
         <div class="flex items-center gap-2 mb-3">
-          <span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Ecosistema
+          <span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400" data-i18n="brand_tech_title">Ecosistema
             Tecnológico Principal:</span>
         </div>
         <div id="brand-tech-container" class="flex flex-wrap gap-2.5"></div>
@@ -301,12 +307,12 @@
       <div class="mb-10">
         <div class="section-tag">
           <i data-lucide="layers" class="w-3.5 h-3.5"></i>
-          <span>Áreas de dominio</span>
+          <span data-i18n="tag_pillars">Áreas de dominio</span>
         </div>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1" data-i18n="pillars_title">
           Capacidades Centrales en TI
         </h2>
-        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2 max-w-2xl">
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2 max-w-2xl" data-i18n="pillars_subtitle">
           Alineación precisa entre visión estratégica y ejecución técnica para garantizar proyectos sin desvíos y con
           alta adopción de usuario.
         </p>
@@ -328,8 +334,8 @@
               <i data-lucide="search" class="w-5 h-5"></i>
             </div>
             <div>
-              <h2 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-tight">Explorar Portfolio en Tiempo Real</h2>
-              <p class="text-xs text-slate-500 dark:text-slate-400">Filtra habilidades, proyectos STAR y experiencia profesional al instante</p>
+              <h2 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-tight" data-i18n="search_title">Explorar Portfolio en Tiempo Real</h2>
+              <p class="text-xs text-slate-500 dark:text-slate-400" data-i18n="search_subtitle">Filtra habilidades, proyectos STAR y experiencia profesional al instante</p>
             </div>
           </div>
           <!-- Contador dinámico de resultados -->
@@ -352,13 +358,16 @@
             aria-label="Buscar en todo el portfolio"
             autocomplete="off"
             spellcheck="false"
+            data-i18n-placeholder="search_placeholder"
+            data-i18n-aria-label="search_aria_label"
           >
           <button
             type="button"
             id="btn-clear-search"
-            class="hidden absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors focus:outline-none"
+            class="hidden absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors focus:outline-none cursor-pointer"
             aria-label="Limpiar búsqueda"
             title="Limpiar búsqueda"
+            data-i18n-title="search_clear_title"
           >
             <i data-lucide="x-circle" class="w-5 h-5"></i>
           </button>
@@ -368,14 +377,14 @@
         <div class="mt-3.5 flex flex-wrap items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
           <span class="font-medium mr-1 flex items-center gap-1">
             <i data-lucide="sparkles" class="w-3.5 h-3.5 text-blue-500"></i>
-            <span>Sugerencias rápidas:</span>
+            <span data-i18n="search_suggestions_label">Sugerencias rápidas:</span>
           </span>
-          <button type="button" class="search-suggestion-chip px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-750 dark:hover:bg-blue-950/50 text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 border border-slate-200 dark:border-slate-700 transition-colors" data-term="Python">Python</button>
-          <button type="button" class="search-suggestion-chip px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-750 dark:hover:bg-blue-950/50 text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 border border-slate-200 dark:border-slate-700 transition-colors" data-term="SQL">SQL Server</button>
-          <button type="button" class="search-suggestion-chip px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-750 dark:hover:bg-blue-950/50 text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 border border-slate-200 dark:border-slate-700 transition-colors" data-term="IA">Inteligencia Artificial</button>
-          <button type="button" class="search-suggestion-chip px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-750 dark:hover:bg-blue-950/50 text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 border border-slate-200 dark:border-slate-700 transition-colors" data-term="Saint">Saint ERP</button>
-          <button type="button" class="search-suggestion-chip px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-750 dark:hover:bg-blue-950/50 text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 border border-slate-200 dark:border-slate-700 transition-colors" data-term="Alcasa">CVG ALCASA</button>
-          <button type="button" class="search-suggestion-chip px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-750 dark:hover:bg-blue-950/50 text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 border border-slate-200 dark:border-slate-700 transition-colors" data-term="Soporte">Soporte Técnico</button>
+          <button type="button" class="search-suggestion-chip px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-750 dark:hover:bg-blue-950/50 text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" data-term="Python">Python</button>
+          <button type="button" class="search-suggestion-chip px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-750 dark:hover:bg-blue-950/50 text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" data-term="SQL">SQL Server</button>
+          <button type="button" class="search-suggestion-chip px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-750 dark:hover:bg-blue-950/50 text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" data-term="IA">Inteligencia Artificial</button>
+          <button type="button" class="search-suggestion-chip px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-750 dark:hover:bg-blue-950/50 text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" data-term="Saint">Saint ERP</button>
+          <button type="button" class="search-suggestion-chip px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-750 dark:hover:bg-blue-950/50 text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" data-term="Alcasa">CVG ALCASA</button>
+          <button type="button" class="search-suggestion-chip px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-750 dark:hover:bg-blue-950/50 text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" data-term="Soporte">Soporte Técnico</button>
         </div>
       </div>
 
@@ -384,20 +393,20 @@
         <div class="w-14 h-14 rounded-2xl bg-amber-50 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 flex items-center justify-center mx-auto mb-4">
           <i data-lucide="search-x" class="w-7 h-7"></i>
         </div>
-        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">No se encontraron coincidencias para "<span id="search-empty-query" class="text-blue-600 dark:text-blue-400 font-semibold"></span>"</h3>
-        <p class="text-sm text-slate-600 dark:text-slate-400 max-w-md mx-auto mb-6">
+        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2"><span data-i18n="search_empty_title_prefix">No se encontraron coincidencias para</span> "<span id="search-empty-query" class="text-blue-600 dark:text-blue-400 font-semibold"></span>"</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-400 max-w-md mx-auto mb-6" data-i18n="search_empty_desc">
           Intenta verificar la ortografía o explorar mediante las sugerencias de tecnologías y áreas más consultadas:
         </p>
         <div class="flex flex-wrap items-center justify-center gap-2 mb-6">
-          <button type="button" class="search-suggestion-chip px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-700 dark:hover:bg-blue-900/40 text-slate-800 dark:text-slate-200 text-xs font-semibold border border-slate-200 dark:border-slate-600 transition-colors" data-term="Python">Python</button>
-          <button type="button" class="search-suggestion-chip px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-700 dark:hover:bg-blue-900/40 text-slate-800 dark:text-slate-200 text-xs font-semibold border border-slate-200 dark:border-slate-600 transition-colors" data-term="SQL">SQL</button>
-          <button type="button" class="search-suggestion-chip px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-700 dark:hover:bg-blue-900/40 text-slate-800 dark:text-slate-200 text-xs font-semibold border border-slate-200 dark:border-slate-600 transition-colors" data-term="IA">Inteligencia Artificial</button>
-          <button type="button" class="search-suggestion-chip px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-700 dark:hover:bg-blue-900/40 text-slate-800 dark:text-slate-200 text-xs font-semibold border border-slate-200 dark:border-slate-600 transition-colors" data-term="Saint">Saint ERP</button>
-          <button type="button" class="search-suggestion-chip px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-700 dark:hover:bg-blue-900/40 text-slate-800 dark:text-slate-200 text-xs font-semibold border border-slate-200 dark:border-slate-600 transition-colors" data-term="Soporte">Soporte TI</button>
+          <button type="button" class="search-suggestion-chip px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-700 dark:hover:bg-blue-900/40 text-slate-800 dark:text-slate-200 text-xs font-semibold border border-slate-200 dark:border-slate-600 transition-colors cursor-pointer" data-term="Python">Python</button>
+          <button type="button" class="search-suggestion-chip px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-700 dark:hover:bg-blue-900/40 text-slate-800 dark:text-slate-200 text-xs font-semibold border border-slate-200 dark:border-slate-600 transition-colors cursor-pointer" data-term="SQL">SQL</button>
+          <button type="button" class="search-suggestion-chip px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-700 dark:hover:bg-blue-900/40 text-slate-800 dark:text-slate-200 text-xs font-semibold border border-slate-200 dark:border-slate-600 transition-colors cursor-pointer" data-term="IA">Inteligencia Artificial</button>
+          <button type="button" class="search-suggestion-chip px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-700 dark:hover:bg-blue-900/40 text-slate-800 dark:text-slate-200 text-xs font-semibold border border-slate-200 dark:border-slate-600 transition-colors cursor-pointer" data-term="Saint">Saint ERP</button>
+          <button type="button" class="search-suggestion-chip px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-700 dark:hover:bg-blue-900/40 text-slate-800 dark:text-slate-200 text-xs font-semibold border border-slate-200 dark:border-slate-600 transition-colors cursor-pointer" data-term="Soporte">Soporte TI</button>
         </div>
         <button type="button" id="btn-reset-empty-search" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-xs shadow transition-all cursor-pointer">
           <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
-          <span>Restablecer búsqueda y ver todo</span>
+          <span data-i18n="search_empty_reset">Restablecer búsqueda y ver todo</span>
         </button>
       </div>
     </section>
@@ -408,18 +417,18 @@
         <div>
           <div class="section-tag">
             <i data-lucide="folder-git-2" class="w-3.5 h-3.5"></i>
-            <span>Casos de estudio</span>
+            <span data-i18n="tag_projects">Casos de estudio</span>
           </div>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1" data-i18n="projects_title">
             Proyectos de Arquitectura & Software
           </h2>
-          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2 max-w-2xl">
+          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2 max-w-2xl" data-i18n="projects_subtitle">
             Cada caso aborda el desafío bajo el enfoque STAR: Situación, Tarea técnica, Acción de análisis y Resultados
             medibles.
           </p>
         </div>
         <div
-          class="text-xs text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 self-start sm:self-auto">
+          class="text-xs text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 self-start sm:self-auto" data-i18n="projects_hint">
           💡 Haz clic en cualquier proyecto para ver el análisis completo
         </div>
       </div>
@@ -439,12 +448,12 @@
       <div class="mb-10">
         <div class="section-tag">
           <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
-          <span>Herramientas y tecnologías</span>
+          <span data-i18n="tag_skills">Herramientas y tecnologías</span>
         </div>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1" data-i18n="skills_title">
           Stack de Análisis & Gestión TI
         </h2>
-        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2 max-w-2xl">
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2 max-w-2xl" data-i18n="skills_subtitle">
           Dominio de frameworks de trabajo, lenguajes de consulta, herramientas de modelado y protocolos de integración.
         </p>
       </div>
@@ -459,12 +468,12 @@
       <div class="mb-10">
         <div class="section-tag">
           <i data-lucide="briefcase" class="w-3.5 h-3.5"></i>
-          <span>Trayectoria profesional</span>
+          <span data-i18n="tag_experience">Trayectoria profesional</span>
         </div>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1" data-i18n="experience_title">
           Evolución & Liderazgo en TI
         </h2>
-        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2 max-w-2xl">
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2 max-w-2xl" data-i18n="experience_subtitle">
           Evolución de responsabilidades, proyectos gestionados y resultados en entornos de TI y consultoría.
         </p>
       </div>
@@ -481,12 +490,12 @@
       <div class="mb-10">
         <div class="section-tag">
           <i data-lucide="award" class="w-3.5 h-3.5"></i>
-          <span>Validación continua</span>
+          <span data-i18n="tag_certs">Validación continua</span>
         </div>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1" data-i18n="certs_title">
           Certificaciones & Educación
         </h2>
-        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2 max-w-2xl">
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2 max-w-2xl" data-i18n="certs_subtitle">
           Cursos recientes, certificaciones oficiales y especializaciones en Inteligencia Artificial, desarrollo web y programación moderna que avalan una actualización técnica continua.
         </p>
       </div>
@@ -495,7 +504,7 @@
         <div>
           <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
             <i data-lucide="award" class="w-5 h-5 text-blue-500"></i>
-            <span>Cursos Realizados & Certificaciones</span>
+            <span data-i18n="certs_courses_title">Cursos Realizados & Certificaciones</span>
           </h3>
           <div id="certs-container" class="space-y-3">
             <!-- Se llena dinámicamente con data.js -->
@@ -505,7 +514,7 @@
         <div>
           <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
             <i data-lucide="graduation-cap" class="w-5 h-5 text-blue-500"></i>
-            <span>Formación Académica Universitaria</span>
+            <span data-i18n="certs_academic_title">Formación Académica Universitaria</span>
           </h3>
           <div id="education-container" class="space-y-3">
             <!-- Se llena dinámicamente con data.js -->
@@ -519,12 +528,12 @@
       <div class="mb-10">
         <div class="section-tag">
           <i data-lucide="user-check" class="w-3.5 h-3.5"></i>
-          <span>Perfil integral</span>
+          <span data-i18n="tag_profile">Perfil integral</span>
         </div>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1" data-i18n="aptitudes_title">
           Aptitudes, Idiomas & Disciplina
         </h2>
-        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2 max-w-2xl">
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2 max-w-2xl" data-i18n="aptitudes_subtitle">
           Competencias blandas, dominio de idiomas y disciplina personal que complementan más de cuatro décadas de
           experiencia profesional.
         </p>
@@ -535,7 +544,7 @@
         <div class="space-y-4">
           <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
             <i data-lucide="brain" class="w-5 h-5 text-indigo-500"></i>
-            <span>Aptitudes Personales</span>
+            <span data-i18n="aptitudes_soft_title">Aptitudes Personales</span>
           </h3>
           <div id="aptitudes-container" class="space-y-3">
             <!-- Se llena dinámicamente con data.js -->
@@ -546,7 +555,7 @@
         <div class="space-y-4">
           <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
             <i data-lucide="languages" class="w-5 h-5 text-blue-500"></i>
-            <span>Idiomas</span>
+            <span data-i18n="aptitudes_lang_title">Idiomas</span>
           </h3>
           <div id="languages-container" class="space-y-3">
             <!-- Se llena dinámicamente con data.js -->
@@ -557,7 +566,7 @@
         <div class="space-y-4">
           <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
             <i data-lucide="heart" class="w-5 h-5 text-rose-500"></i>
-            <span>Otros Intereses</span>
+            <span data-i18n="aptitudes_interest_title">Otros Intereses</span>
           </h3>
           <div id="interests-container" class="space-y-3">
             <!-- Se llena dinámicamente con data.js -->
@@ -575,12 +584,12 @@
           <!-- Información y Canales Directos -->
           <div class="lg:col-span-5 space-y-6">
             <div>
-              <span class="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400">Canales
+              <span class="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400" data-i18n="contact_channels_tag">Canales
                 Directos</span>
-              <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1" data-i18n="contact_title">
                 ¿Conversamos sobre tu próximo proyecto TI?
               </h2>
-              <p class="text-sm text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
+              <p class="text-sm text-slate-600 dark:text-slate-300 mt-3 leading-relaxed" data-i18n="contact_desc">
                 Disponible para proyectos de análisis de sistemas, consultoría de soporte técnico, integraciones con
                 Python / SQL y optimización de recursos tecnológicos.
               </p>
@@ -594,7 +603,7 @@
                   <i data-lucide="phone" class="w-5 h-5"></i>
                 </div>
                 <div>
-                  <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Teléfono / WhatsApp</div>
+                  <div class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-i18n="contact_phone_label">Teléfono / WhatsApp</div>
                   <a href="https://wa.me/56933395447" target="_blank" rel="noopener noreferrer"
                     class="bind-phone font-semibold hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
                     +56 9 3339 5447
@@ -609,7 +618,7 @@
                   <i data-lucide="mail" class="w-5 h-5"></i>
                 </div>
                 <div>
-                  <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Correo Electrónico</div>
+                  <div class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-i18n="contact_email_label">Correo Electrónico</div>
                   <a href="mailto:andres.aguiar.marmol@gmail.com"
                     class="bind-email font-semibold hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                     andres.aguiar.marmol@gmail.com
@@ -624,7 +633,7 @@
                   <i data-lucide="linkedin" class="w-5 h-5"></i>
                 </div>
                 <div>
-                  <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Red Profesional</div>
+                  <div class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-i18n="contact_linkedin_label">Red Profesional</div>
                   <a href="https://www.linkedin.com/in/andres-aguiar-b4824395" target="_blank" rel="noopener noreferrer"
                     class="bind-linkedin font-semibold hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                     linkedin.com/in/andres-aguiar-b4824395
@@ -639,7 +648,7 @@
                   <i data-lucide="map-pin" class="w-5 h-5"></i>
                 </div>
                 <div>
-                  <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Ubicación Actual</div>
+                  <div class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-i18n="contact_location_label">Ubicación Actual</div>
                   <span class="font-semibold text-slate-800 dark:text-slate-200">Santiago, Chile</span>
                 </div>
               </div>
@@ -647,14 +656,14 @@
 
             <div class="pt-4 flex flex-wrap gap-3">
               <button type="button"
-                class="btn-copy-email inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 shadow-sm transition-all">
+                class="btn-copy-email inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 shadow-sm transition-all cursor-pointer">
                 <i data-lucide="copy" class="w-4 h-4 text-blue-500"></i>
-                <span>Copiar email con 1 clic</span>
+                <span data-i18n="contact_copy_btn">Copiar email con 1 clic</span>
               </button>
               <a href="https://wa.me/56933395447" target="_blank" rel="noopener noreferrer"
                 class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold shadow-sm transition-all">
                 <i data-lucide="message-circle" class="w-4 h-4"></i>
-                <span>Escribir por WhatsApp</span>
+                <span data-i18n="contact_whatsapp_btn">Escribir por WhatsApp</span>
               </a>
             </div>
           </div>
@@ -662,41 +671,44 @@
           <!-- Formulario de Contacto -->
           <div
             class="lg:col-span-7 bg-white dark:bg-slate-800/90 rounded-2xl p-6 sm:p-8 border border-slate-200 dark:border-slate-700 shadow-sm">
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Enviar Mensaje Rápido</h3>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2" data-i18n="contact_form_title">Enviar Mensaje Rápido</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mb-6" data-i18n="contact_form_subtitle">
               Te responderé a la brevedad dentro de las próximas 24 horas hábiles.
             </p>
 
             <form id="contact-form" class="space-y-4">
               <div>
-                <label for="form-name" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                <label for="form-name" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="contact_form_name">
                   Nombre Completo / Empresa *
                 </label>
                 <input type="text" id="form-name" required placeholder="Ej: Lic. Martín Gómez / Grupo Consultor"
-                  class="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
+                  class="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                  data-i18n-placeholder="contact_form_name_placeholder">
               </div>
 
               <div>
-                <label for="form-email" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                <label for="form-email" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="contact_form_email">
                   Correo Electrónico de Contacto *
                 </label>
                 <input type="email" id="form-email" required placeholder="nombre@empresa.com"
-                  class="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
+                  class="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                  data-i18n-placeholder="contact_form_email_placeholder">
               </div>
 
               <div>
-                <label for="form-message" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                <label for="form-message" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="contact_form_message">
                   Mensaje o Propuesta *
                 </label>
                 <textarea id="form-message" rows="4" required
                   placeholder="Hola Andrés, nos gustaría coordinar una entrevista técnica o conversar sobre una vacante de Analista de Sistemas..."
-                  class="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"></textarea>
+                  class="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                  data-i18n-placeholder="contact_form_message_placeholder"></textarea>
               </div>
 
               <button type="submit"
-                class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-sm shadow transition-colors duration-200">
+                class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-sm shadow transition-colors duration-200 cursor-pointer">
                 <i data-lucide="send" class="w-4 h-4"></i>
-                <span>Enviar Mensaje</span>
+                <span data-i18n="contact_form_submit">Enviar Mensaje</span>
               </button>
             </form>
           </div>
@@ -730,13 +742,10 @@
           class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300"></span>
       </div>
 
-      <h2 id="modal-title"
-        class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-4 pr-8 leading-snug"></h2>
-
-      <!-- Resumen de Impacto Destacado -->
+           <!-- Resumen de Impacto Destacado -->
       <div
         class="p-4 rounded-xl bg-blue-50/80 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-900/50 mb-6">
-        <div class="text-xs font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400 mb-1">Métrica de Impacto
+        <div class="text-xs font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400 mb-1" data-i18n="modal_impact_title">Métrica de Impacto
           Comprobada</div>
         <div id="modal-impact" class="text-sm font-semibold text-slate-800 dark:text-slate-200"></div>
       </div>
@@ -747,7 +756,7 @@
           <h3
             class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2 flex items-center gap-2">
             <span class="w-2 h-2 rounded-full bg-rose-500"></span>
-            El Desafío / Situación Inicial
+            <span data-i18n="modal_problem_title">El Desafío / Situación Inicial</span>
           </h3>
           <p id="modal-problem"
             class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200/70 dark:border-slate-800">
@@ -759,7 +768,7 @@
           <h3
             class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2 flex items-center gap-2">
             <span class="w-2 h-2 rounded-full bg-blue-500"></span>
-            Análisis, Arquitectura & Acciones Ejecutadas
+            <span data-i18n="modal_action_title">Análisis, Arquitectura & Acciones Ejecutadas</span>
           </h3>
           <p id="modal-action"
             class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200/70 dark:border-slate-800">
@@ -768,14 +777,14 @@
 
         <!-- Stack y Herramientas Usadas -->
         <div>
-          <h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Tecnologías &
+          <h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2" data-i18n="modal_tech_title">Tecnologías &
             Estándares de Integración</h3>
           <div id="modal-tech" class="flex flex-wrap gap-2"></div>
         </div>
 
         <!-- Resultados Concretos -->
         <div>
-          <h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Entregables y
+          <h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2" data-i18n="modal_results_title">Entregables y
             Resultados de Negocio</h3>
           <ul id="modal-results"
             class="space-y-2 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200/70 dark:border-slate-800">
@@ -787,7 +796,8 @@
       <div class="mt-8 pt-4 border-t border-slate-200 dark:border-slate-800 flex justify-end">
         <form method="dialog">
           <button type="submit"
-            class="px-5 py-2.5 rounded-xl bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-sm font-semibold transition-colors">
+            class="px-5 py-2.5 rounded-xl bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-sm font-semibold transition-colors cursor-pointer"
+            data-i18n="modal_close_btn">
             Cerrar Ventana
           </button>
         </form>
@@ -805,14 +815,14 @@
       <div class="flex items-center gap-2">
         <span class="font-bold text-slate-700 dark:text-slate-300">Andres Aguiar</span>
         <span>•</span>
-        <span>Curriculum & Portfolio de Analista de Sistemas TI</span>
+        <span data-i18n="footer_role">Curriculum & Portfolio de Analista de Sistemas TI</span>
       </div>
       <div class="flex items-center gap-4">
-        <button type="button" class="btn-print-cv hover:text-blue-600 transition-colors font-medium">
+        <button type="button" class="btn-print-cv hover:text-blue-600 transition-colors font-medium cursor-pointer" data-i18n="footer_print">
           Imprimir / Guardar en PDF
         </button>
         <span>•</span>
-        <a href="#hero" class="hover:text-blue-600 transition-colors">Volver arriba ↑</a>
+        <a href="#hero" class="hover:text-blue-600 transition-colors" data-i18n="footer_back_to_top">Volver arriba ↑</a>
       </div>
     </div>
   </footer>
@@ -823,30 +833,35 @@
   <aside aria-label="Contacto rápido"
     class="floating-contact-pill no-print flex items-center gap-1.5 p-1.5 rounded-full bg-white/95 dark:bg-slate-900/95 backdrop-blur border border-slate-200/80 dark:border-slate-700/80 shadow-2xl">
     <a href="https://wa.me/56933395447" target="_blank" rel="noopener noreferrer" title="Escribir por WhatsApp"
-      class="p-2.5 rounded-full hover:bg-emerald-50 text-emerald-600 dark:hover:bg-emerald-950/50 transition-colors">
+      class="p-2.5 rounded-full hover:bg-emerald-50 text-emerald-600 dark:hover:bg-emerald-950/50 transition-colors"
+      data-i18n-title="floating_whatsapp">
       <i data-lucide="message-circle" class="w-5 h-5"></i>
       <span class="sr-only">WhatsApp</span>
     </a>
     <a href="tel:+56933395447" title="Llamar por teléfono"
-      class="p-2.5 rounded-full hover:bg-blue-50 text-blue-600 dark:hover:bg-blue-950/50 transition-colors">
+      class="p-2.5 rounded-full hover:bg-blue-50 text-blue-600 dark:hover:bg-blue-950/50 transition-colors"
+      data-i18n-title="floating_call">
       <i data-lucide="phone" class="w-5 h-5"></i>
       <span class="sr-only">Llamar</span>
     </a>
     <button type="button"
-      class="btn-copy-email p-2.5 rounded-full hover:bg-slate-100 text-slate-700 dark:hover:bg-slate-800 dark:text-slate-300 transition-colors"
-      title="Copiar correo electrónico">
+      class="btn-copy-email p-2.5 rounded-full hover:bg-slate-100 text-slate-700 dark:hover:bg-slate-800 dark:text-slate-300 transition-colors cursor-pointer"
+      title="Copiar correo electrónico"
+      data-i18n-title="floating_copy_email">
       <i data-lucide="mail" class="w-5 h-5"></i>
       <span class="sr-only">Copiar Correo</span>
     </button>
     <button type="button"
-      class="btn-print-cv p-2.5 rounded-full hover:bg-indigo-50 text-indigo-600 dark:hover:bg-indigo-950/50 transition-colors"
-      title="Descargar CV en PDF">
-      <i data-lucide="download" class="w-5 h-5"></i>
+      class="btn-print-cv p-2.5 rounded-full hover:bg-indigo-50 text-indigo-600 dark:hover:bg-indigo-950/50 transition-colors cursor-pointer"
+      title="Descargar CV en PDF"
+      data-i18n-title="floating_download_cv">
+      <i data-lucide="download" class="w-4 h-4"></i>
       <span class="sr-only">Descargar CV</span>
     </button>
     <a href="#hero"
       class="p-2.5 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-700 dark:hover:bg-slate-800 dark:hover:text-slate-200 transition-colors"
-      title="Volver al inicio">
+      title="Volver al inicio"
+      data-i18n-title="floating_top">
       <i data-lucide="arrow-up" class="w-5 h-5"></i>
       <span class="sr-only">Arriba</span>
     </a>
@@ -854,6 +869,7 @@
 
   <!-- Scripts -->
   <script src="assets/js/data.js"></script>
+  <script src="assets/js/i18n.js"></script>
   <script src="assets/js/search.js"></script>
   <script src="assets/js/main.js"></script>
 </body>

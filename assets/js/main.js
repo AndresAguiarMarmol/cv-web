@@ -1,13 +1,15 @@
 /**
  * Lógica interactiva del Portfolio de Analista de Sistemas - Andres Aguiar
- * Incluye: Modo oscuro, Filtros por rol, Resumen ejecutivo, Modales STAR y Botón flotante.
+ * Incluye: Modo oscuro, Idioma bilingüe ES/EN, Filtros por rol, Resumen ejecutivo, Modales STAR y Botón flotante.
  */
 
 let currentFilter = 'all';
 let currentSearchQuery = '';
+let currentLanguage = 'es';
 
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
+  initLanguage();
   renderProfile();
   renderExecutivePitch();
   renderBrandTechnologies();
@@ -33,7 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
 function initTheme() {
   const themeToggleBtn = document.getElementById('theme-toggle');
   const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
-  const storedTheme = localStorage.getItem('theme');
+  let storedTheme = null;
+  try {
+    storedTheme = localStorage.getItem('theme');
+  } catch (e) {
+    storedTheme = null;
+  }
   const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   // Determinar tema inicial
@@ -45,12 +52,126 @@ function initTheme() {
 
   function toggleTheme() {
     const isDark = document.documentElement.classList.toggle('dark');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    showToast(isDark ? 'Modo oscuro activado' : 'Modo claro activado', 'info');
+    try {
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    } catch (e) {}
+    
+    const darkToast = (typeof I18nModule !== 'undefined')
+      ? I18nModule.obtenerTraduccion('toast_dark_mode', currentLanguage) || 'Modo oscuro activado'
+      : 'Modo oscuro activado';
+    const lightToast = (typeof I18nModule !== 'undefined')
+      ? I18nModule.obtenerTraduccion('toast_light_mode', currentLanguage) || 'Modo claro activado'
+      : 'Modo claro activado';
+    showToast(isDark ? darkToast : lightToast, 'info');
   }
 
   if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
   if (themeToggleMobileBtn) themeToggleMobileBtn.addEventListener('click', toggleTheme);
+}
+
+/* ==========================================================================
+   Gestión de Idioma (Español / Inglés) - Spec 002
+   ========================================================================== */
+function initLanguage() {
+  if (typeof I18nModule === 'undefined') return;
+
+  let storedLang = null;
+  try {
+    storedLang = localStorage.getItem(I18nModule.CLAVE_IDIOMA);
+  } catch (e) {
+    storedLang = null;
+  }
+
+  const browserLang = (typeof navigator !== 'undefined') ? (navigator.language || navigator.userLanguage) : null;
+  const initialLang = I18nModule.resolverIdiomaInicial(storedLang, browserLang);
+
+  setLanguage(initialLang, false);
+
+  const langToggleBtn = document.getElementById('lang-toggle');
+  const langToggleMobileBtn = document.getElementById('lang-toggle-mobile');
+
+  function handleToggle() {
+    const nextLang = currentLanguage === 'es' ? 'en' : 'es';
+    setLanguage(nextLang, true);
+  }
+
+  if (langToggleBtn) langToggleBtn.addEventListener('click', handleToggle);
+  if (langToggleMobileBtn) langToggleMobileBtn.addEventListener('click', handleToggle);
+}
+
+function setLanguage(lang, notify = false) {
+  if (typeof I18nModule === 'undefined') return;
+  const targetLang = I18nModule.esIdiomaValido(lang) ? lang : 'es';
+  currentLanguage = targetLang;
+
+  // 1. Persistencia segura en localStorage
+  try {
+    localStorage.setItem(I18nModule.CLAVE_IDIOMA, targetLang);
+  } catch (e) {
+    // Modo incógnito seguro
+  }
+
+  // 2. Atributo lang en elemento raíz <html>
+  document.documentElement.lang = targetLang;
+
+  // 3. Actualizar texto e icono de los botones selectores
+  const toggleText = document.getElementById('lang-toggle-text');
+  const toggleMobileText = document.getElementById('lang-toggle-mobile-text');
+  const btnLabel = I18nModule.obtenerTraduccion('lang_btn_text', targetLang);
+  if (toggleText) toggleText.textContent = btnLabel;
+  if (toggleMobileText) toggleMobileText.textContent = btnLabel;
+
+  // 4. Traducir elementos de texto marcados con data-i18n
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const translation = I18nModule.obtenerTraduccion(key, targetLang);
+    if (translation) {
+      el.textContent = translation;
+    }
+  });
+
+  // 5. Traducir atributos placeholder marcados con data-i18n-placeholder
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    const translation = I18nModule.obtenerTraduccion(key, targetLang);
+    if (translation) {
+      el.placeholder = translation;
+    }
+  });
+
+  // 6. Traducir atributos title marcados con data-i18n-title
+  document.querySelectorAll('[data-i18n-title]').forEach(el => {
+    const key = el.getAttribute('data-i18n-title');
+    const translation = I18nModule.obtenerTraduccion(key, targetLang);
+    if (translation) {
+      el.title = translation;
+    }
+  });
+
+  // 7. Traducir atributos aria-label marcados con data-i18n-aria-label
+  document.querySelectorAll('[data-i18n-aria-label]').forEach(el => {
+    const key = el.getAttribute('data-i18n-aria-label');
+    const translation = I18nModule.obtenerTraduccion(key, targetLang);
+    if (translation) {
+      el.setAttribute('aria-label', translation);
+    }
+  });
+
+  // 8. Re-renderizar componentes dinámicos con etiquetas en el idioma activo
+  renderProjectFilters();
+  renderProjects(currentFilter, currentSearchQuery);
+
+  // 9. Notificación Toast si fue conmutado por el usuario
+  if (notify) {
+    const toastKey = targetLang === 'en' ? 'toast_lang_switched_en' : 'toast_lang_switched_es';
+    const toastMsg = I18nModule.obtenerTraduccion(toastKey, targetLang);
+    showToast(toastMsg, 'info');
+  }
+
+  // 10. Recrear iconos Lucide
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
 }
 
 /* ==========================================================================
@@ -437,23 +558,31 @@ function renderProjectFilters() {
   const container = document.getElementById('project-filters-container');
   if (!container || !PROFILE_DATA.filterCategories) return;
 
+  const areaLabel = (typeof I18nModule !== 'undefined')
+    ? I18nModule.obtenerTraduccion('filter_area_label', currentLanguage) || 'Filtrar por Área:'
+    : 'Filtrar por Área:';
+
   container.innerHTML = `
     <div class="flex flex-wrap items-center gap-2 pt-2">
       <span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mr-1 flex items-center gap-1.5">
         <i data-lucide="filter" class="w-3.5 h-3.5"></i>
-        <span>Filtrar por Área:</span>
+        <span>${areaLabel}</span>
       </span>
-      ${PROFILE_DATA.filterCategories.map(cat => `
+      ${PROFILE_DATA.filterCategories.map(cat => {
+        const catLabel = (typeof I18nModule !== 'undefined')
+          ? I18nModule.obtenerTraduccion(`filter_${cat.id}`, currentLanguage) || cat.label
+          : cat.label;
+        return `
         <button 
           type="button"
           onclick="setProjectFilter('${cat.id}')"
-          class="filter-pill inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold border ${cat.id === currentFilter ? 'active' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'}"
+          class="filter-pill inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold border cursor-pointer ${cat.id === currentFilter ? 'active' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'}"
           data-filter="${cat.id}"
         >
           <i data-lucide="${cat.icon || 'tag'}" class="w-3.5 h-3.5"></i>
-          <span>${cat.label}</span>
+          <span>${catLabel}</span>
         </button>
-      `).join('')}
+      `}).join('')}
     </div>
   `;
 }
@@ -492,14 +621,22 @@ function renderProjects(filter = 'all', searchQuery = '') {
       ? PROFILE_DATA.projects
       : PROFILE_DATA.projects.filter(p => p.filterCategory === filter || (filter === 'dev' && (p.filterCategory === 'dev' || p.filterCategory === 'erp'))));
 
+  const emptyMsg = (typeof I18nModule !== 'undefined')
+    ? I18nModule.obtenerTraduccion('projects_empty', currentLanguage) || 'No hay proyectos que coincidan con los criterios actuales.'
+    : 'No hay proyectos que coincidan con los criterios actuales.';
+
   if (filteredProjects.length === 0) {
     projectsContainer.innerHTML = `
       <div class="col-span-full text-center py-12 bg-white dark:bg-slate-800/50 rounded-2xl border border-dashed border-slate-300 dark:border-slate-700">
-        <p class="text-sm text-slate-500 dark:text-slate-400">No hay proyectos que coincidan con los criterios actuales.</p>
+        <p class="text-sm text-slate-500 dark:text-slate-400">${emptyMsg}</p>
       </div>
     `;
     return;
   }
+
+  const resultTitle = currentLanguage === 'en' ? 'Proven result' : 'Resultado comprobable';
+  const btnReadMore = currentLanguage === 'en' ? 'View STAR Case Study' : 'Ver caso completo STAR';
+  const moreText = currentLanguage === 'en' ? 'more' : 'más';
 
   projectsContainer.innerHTML = filteredProjects.map(proj => `
     <article class="p-6 md:p-7 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 card-hover flex flex-col justify-between">
@@ -521,7 +658,7 @@ function renderProjects(filter = 'all', searchQuery = '') {
         <div class="mb-4 p-3.5 rounded-xl bg-slate-50/90 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-700/60 border-l-4 border-l-blue-600 dark:border-l-blue-400">
           <div class="flex items-center gap-1.5 text-[11px] font-semibold text-slate-500 dark:text-slate-400 mb-1">
             <i data-lucide="trending-up" class="w-3.5 h-3.5 text-blue-600 dark:text-blue-400"></i>
-            <span>Resultado comprobable</span>
+            <span>${resultTitle}</span>
           </div>
           <p class="text-xs sm:text-sm font-bold text-slate-900 dark:text-slate-100 leading-snug">${proj.impact}</p>
         </div>
@@ -544,7 +681,7 @@ function renderProjects(filter = 'all', searchQuery = '') {
               ${tech}
             </span>
           `).join('')}
-          ${proj.techStack.length > 5 ? `<span class="text-xs px-2 py-1 text-slate-400">+${proj.techStack.length - 5} más</span>` : ''}
+          ${proj.techStack.length > 5 ? `<span class="text-xs px-2 py-1 text-slate-400">+${proj.techStack.length - 5} ${moreText}</span>` : ''}
         </div>
       </div>
 
@@ -554,7 +691,7 @@ function renderProjects(filter = 'all', searchQuery = '') {
           onclick="openProjectModal('${proj.id}')"
           class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-50 hover:bg-blue-600 hover:text-white dark:bg-slate-750 dark:hover:bg-blue-600 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:border-transparent font-semibold text-xs sm:text-sm transition-all duration-200 shadow-2xs cursor-pointer"
         >
-          <span>Ver caso completo STAR</span>
+          <span>${btnReadMore}</span>
           <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
         </button>
       </div>
@@ -629,7 +766,13 @@ function setupSearch() {
         counterContainer.classList.remove('hidden');
         counterContainer.classList.add('inline-flex');
         if (counterText) {
-          counterText.textContent = total === 1 ? '1 coincidencia encontrada' : `${total} coincidencias encontradas`;
+          const singleText = (typeof I18nModule !== 'undefined')
+            ? I18nModule.obtenerTraduccion('search_counter_single', currentLanguage) || '1 coincidencia encontrada'
+            : '1 coincidencia encontrada';
+          const multiSuffix = (typeof I18nModule !== 'undefined')
+            ? I18nModule.obtenerTraduccion('search_counter_multiple', currentLanguage) || 'coincidencias encontradas'
+            : 'coincidencias encontradas';
+          counterText.textContent = total === 1 ? singleText : `${total} ${multiSuffix}`;
         }
       }
       renderTechnicalSkills(filteredSkills);
@@ -814,7 +957,10 @@ function setupContactForm() {
     const message = document.getElementById('form-message').value.trim();
 
     if (!name || !email || !message) {
-      showToast('Por favor completa todos los campos requeridos.', 'error');
+      const errToast = (typeof I18nModule !== 'undefined')
+        ? I18nModule.obtenerTraduccion('toast_form_required', currentLanguage) || 'Por favor completa todos los campos requeridos.'
+        : 'Por favor completa todos los campos requeridos.';
+      showToast(errToast, 'error');
       return;
     }
 
@@ -825,7 +971,10 @@ function setupContactForm() {
     // Abrir cliente de correo
     window.location.href = `mailto:${PROFILE_DATA.personal.email}?subject=${subject}&body=${body}`;
 
-    showToast('¡Abriendo tu cliente de correo para enviar el mensaje!', 'success');
+    const openingToast = (typeof I18nModule !== 'undefined')
+      ? I18nModule.obtenerTraduccion('toast_form_opening', currentLanguage) || '¡Abriendo tu cliente de correo para enviar el mensaje!'
+      : '¡Abriendo tu cliente de correo para enviar el mensaje!';
+    showToast(openingToast, 'success');
     contactForm.reset();
   });
 }
@@ -836,7 +985,10 @@ function setupCopyEmail() {
     btn.addEventListener('click', () => {
       const email = PROFILE_DATA.personal.email;
       navigator.clipboard.writeText(email).then(() => {
-        showToast('¡Correo electrónico copiado al portapapeles!', 'success');
+        const copiedToast = (typeof I18nModule !== 'undefined')
+          ? I18nModule.obtenerTraduccion('toast_email_copied', currentLanguage) || '¡Correo electrónico copiado al portapapeles!'
+          : '¡Correo electrónico copiado al portapapeles!';
+        showToast(copiedToast, 'success');
       }).catch(() => {
         showToast(`Correo: ${email}`, 'info');
       });

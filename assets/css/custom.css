@@ -233,6 +233,24 @@ html.dark .filter-pill.active {
 }
 
 /* ==========================================================================
+   Estilos de Búsqueda y Resaltado
+   ========================================================================== */
+.search-highlight {
+  background-color: #fef08a;
+  color: #0f172a;
+  font-weight: 700;
+  border-radius: 0.25rem;
+  padding: 0.05rem 0.25rem;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+html.dark .search-highlight {
+  background-color: rgba(234, 179, 8, 0.35);
+  color: #fef08a;
+}
+
+/* ==========================================================================
    Estilos para Impresión / Exportación a PDF (Ctrl + P)
    ========================================================================== */
 @media print {
@@ -250,8 +268,25 @@ html.dark .filter-pill.active {
   .btn-cta,
   .floating-contact-pill,
   #filters-container,
+  #project-filters-container,
+  #search-section,
+  #search-empty-state,
   dialog {
     display: none !important;
+  }
+
+  /* Asegurar que los elementos del CV se impriman completos sin importar el filtro en pantalla */
+  #projects-container > div,
+  #skills-container > div,
+  #experience-container > div {
+    display: block !important;
+  }
+
+  .search-highlight {
+    background: transparent !important;
+    color: inherit !important;
+    font-weight: inherit !important;
+    padding: 0 !important;
   }
 
   .card-hover {

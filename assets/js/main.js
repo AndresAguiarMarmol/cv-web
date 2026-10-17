@@ -4,6 +4,7 @@
  */
 
 let currentFilter = 'all';
+let currentSearchQuery = '';
 
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
@@ -12,6 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
   renderBrandTechnologies();
   renderProjectFilters();
   renderProjects('all');
+  renderTechnicalSkills();
+  renderExperience();
+  setupSearch();
   setupNavigation();
   setupModals();
   setupContactForm();
@@ -132,69 +136,10 @@ function renderProfile() {
   }
 
   // 3. Habilidades Técnicas por Categoría
-  const skillsContainer = document.getElementById('skills-container');
-  if (skillsContainer && PROFILE_DATA.technicalSkills) {
-    skillsContainer.innerHTML = Object.entries(PROFILE_DATA.technicalSkills).map(([category, items]) => `
-      <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-        <h3 class="text-base font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-          <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
-          ${category}
-        </h3>
-        <ul class="space-y-2.5">
-          ${items.map(skill => `
-            <li class="flex items-start gap-2.5 text-sm text-slate-600 dark:text-slate-300">
-              <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i>
-              <span>${skill}</span>
-            </li>
-          `).join('')}
-        </ul>
-      </div>
-    `).join('');
-  }
+  renderTechnicalSkills();
 
   // 4. Trayectoria Profesional (Timeline)
-  const experienceContainer = document.getElementById('experience-container');
-  if (experienceContainer && PROFILE_DATA.experience) {
-    experienceContainer.innerHTML = PROFILE_DATA.experience.map(exp => `
-      <div class="relative pl-8 md:pl-0 mb-10 last:mb-0">
-        <div class="md:grid md:grid-cols-12 md:gap-8 items-start">
-          <div class="md:col-span-4 md:text-right mb-2 md:mb-0">
-            <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 mb-1">
-              ${exp.period}
-            </span>
-            <div class="text-sm font-semibold text-slate-700 dark:text-slate-300">${exp.company}</div>
-            <div class="text-xs text-slate-500 dark:text-slate-400">${exp.location}</div>
-          </div>
-
-          <div class="md:col-span-8 bg-white dark:bg-slate-800/80 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 card-hover">
-            <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">${exp.role}</h4>
-            <p class="text-sm text-slate-600 dark:text-slate-300 mb-4 leading-relaxed">${exp.description}</p>
-            <ul class="space-y-2.5">
-              ${exp.highlights.map(h => {
-                const colonIdx = h.indexOf(':');
-                if (colonIdx > 0 && colonIdx < 50) {
-                  const title = h.substring(0, colonIdx);
-                  const rest = h.substring(colonIdx + 1);
-                  return `
-                    <li class="flex items-start gap-2 text-xs md:text-sm text-slate-600 dark:text-slate-300">
-                      <span class="text-blue-500 font-bold shrink-0 mt-0.5">•</span>
-                      <span><strong class="font-bold text-slate-800 dark:text-slate-100">${title}:</strong>${rest}</span>
-                    </li>
-                  `;
-                }
-                return `
-                  <li class="flex items-start gap-2 text-xs md:text-sm text-slate-600 dark:text-slate-300">
-                    <span class="text-blue-500 font-bold shrink-0 mt-0.5">•</span>
-                    <span>${h}</span>
-                  </li>
-                `;
-              }).join('')}
-            </ul>
-          </div>
-        </div>
-      </div>
-    `).join('');
-  }
+  renderExperience();
 
   // 5. Certificaciones & Educación
   const certsContainer = document.getElementById('certs-container');
@@ -322,6 +267,97 @@ function renderProfile() {
 }
 
 /* ==========================================================================
+   Renderizado de Habilidades Técnicas por Categoría
+   ========================================================================== */
+function renderTechnicalSkills(skillsData) {
+  const skillsContainer = document.getElementById('skills-container');
+  if (!skillsContainer) return;
+  const data = skillsData || (typeof PROFILE_DATA !== 'undefined' ? PROFILE_DATA.technicalSkills : null);
+  if (!data || Object.keys(data).length === 0) {
+    skillsContainer.innerHTML = `
+      <div class="col-span-full text-center py-8 bg-white dark:bg-slate-800/50 rounded-2xl border border-dashed border-slate-300 dark:border-slate-700">
+        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">No se encontraron habilidades técnicas para los criterios actuales.</p>
+      </div>
+    `;
+    return;
+  }
+
+  skillsContainer.innerHTML = Object.entries(data).map(([category, items]) => `
+    <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
+      <h3 class="text-base font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+        ${category}
+      </h3>
+      <ul class="space-y-2.5">
+        ${items.map(skill => `
+          <li class="flex items-start gap-2.5 text-sm text-slate-600 dark:text-slate-300">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i>
+            <span>${skill}</span>
+          </li>
+        `).join('')}
+      </ul>
+    </div>
+  `).join('');
+}
+
+/* ==========================================================================
+   Renderizado de Trayectoria Profesional (Timeline)
+   ========================================================================== */
+function renderExperience(experienceData) {
+  const experienceContainer = document.getElementById('experience-container');
+  if (!experienceContainer) return;
+  const data = experienceData || (typeof PROFILE_DATA !== 'undefined' ? PROFILE_DATA.experience : null);
+  if (!data || data.length === 0) {
+    experienceContainer.innerHTML = `
+      <div class="text-center py-8 bg-white dark:bg-slate-800/50 rounded-2xl border border-dashed border-slate-300 dark:border-slate-700">
+        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">No se encontraron experiencias laborales para los criterios actuales.</p>
+      </div>
+    `;
+    return;
+  }
+
+  experienceContainer.innerHTML = data.map(exp => `
+    <div class="relative pl-8 md:pl-0 mb-10 last:mb-0">
+      <div class="md:grid md:grid-cols-12 md:gap-8 items-start">
+        <div class="md:col-span-4 md:text-right mb-2 md:mb-0">
+          <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 mb-1">
+            ${exp.period}
+          </span>
+          <div class="text-sm font-semibold text-slate-700 dark:text-slate-300">${exp.company}</div>
+          <div class="text-xs text-slate-500 dark:text-slate-400">${exp.location}</div>
+        </div>
+
+        <div class="md:col-span-8 bg-white dark:bg-slate-800/80 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 card-hover">
+          <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">${exp.role}</h4>
+          <p class="text-sm text-slate-600 dark:text-slate-300 mb-4 leading-relaxed">${exp.description}</p>
+          <ul class="space-y-2.5">
+            ${exp.highlights.map(h => {
+              const colonIdx = h.indexOf(':');
+              if (colonIdx > 0 && colonIdx < 50) {
+                const title = h.substring(0, colonIdx);
+                const rest = h.substring(colonIdx + 1);
+                return `
+                  <li class="flex items-start gap-2 text-xs md:text-sm text-slate-600 dark:text-slate-300">
+                    <span class="text-blue-500 font-bold shrink-0 mt-0.5">•</span>
+                    <span><strong class="font-bold text-slate-800 dark:text-slate-100">${title}:</strong>${rest}</span>
+                  </li>
+                `;
+              }
+              return `
+                <li class="flex items-start gap-2 text-xs md:text-sm text-slate-600 dark:text-slate-300">
+                  <span class="text-blue-500 font-bold shrink-0 mt-0.5">•</span>
+                  <span>${h}</span>
+                </li>
+              `;
+            }).join('')}
+          </ul>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ==========================================================================
    Propuesta 1: Resumen Ejecutivo en 30 Segundos
    ========================================================================== */
 function renderExecutivePitch() {
@@ -435,7 +471,7 @@ window.setProjectFilter = function(filterId) {
     }
   });
 
-  renderProjects(filterId);
+  renderProjects(filterId, currentSearchQuery);
 
   if (window.lucide) {
     window.lucide.createIcons();
@@ -445,18 +481,21 @@ window.setProjectFilter = function(filterId) {
 /* ==========================================================================
    Renderizado de Proyectos con Tarjetas Visuales Enriquecidas
    ========================================================================== */
-function renderProjects(filter = 'all') {
+function renderProjects(filter = 'all', searchQuery = '') {
   const projectsContainer = document.getElementById('projects-container');
   if (!projectsContainer || !PROFILE_DATA.projects) return;
 
-  const filteredProjects = filter === 'all'
-    ? PROFILE_DATA.projects
-    : PROFILE_DATA.projects.filter(p => p.filterCategory === filter || (filter === 'dev' && (p.filterCategory === 'dev' || p.filterCategory === 'erp')));
+  const query = typeof searchQuery === 'string' ? searchQuery : currentSearchQuery;
+  const filteredProjects = (typeof SearchModule !== 'undefined')
+    ? SearchModule.filtrarProyectos(PROFILE_DATA.projects, filter, query)
+    : (filter === 'all'
+      ? PROFILE_DATA.projects
+      : PROFILE_DATA.projects.filter(p => p.filterCategory === filter || (filter === 'dev' && (p.filterCategory === 'dev' || p.filterCategory === 'erp'))));
 
   if (filteredProjects.length === 0) {
     projectsContainer.innerHTML = `
       <div class="col-span-full text-center py-12 bg-white dark:bg-slate-800/50 rounded-2xl border border-dashed border-slate-300 dark:border-slate-700">
-        <p class="text-sm text-slate-500 dark:text-slate-400">No hay proyectos para esta categoría en este momento.</p>
+        <p class="text-sm text-slate-500 dark:text-slate-400">No hay proyectos que coincidan con los criterios actuales.</p>
       </div>
     `;
     return;
@@ -522,6 +561,126 @@ function renderProjects(filter = 'all') {
   if (window.lucide) {
     window.lucide.createIcons();
   }
+}
+
+/* ==========================================================================
+   Buscador Global & Filtros en Tiempo Real
+   ========================================================================== */
+function setupSearch() {
+  const searchInput = document.getElementById('global-search-input');
+  const clearBtn = document.getElementById('btn-clear-search');
+  const counterContainer = document.getElementById('search-results-counter');
+  const counterText = document.getElementById('search-counter-text');
+  const emptyState = document.getElementById('search-empty-state');
+  const emptyQuery = document.getElementById('search-empty-query');
+  const resetEmptyBtn = document.getElementById('btn-reset-empty-search');
+  const suggestionChips = document.querySelectorAll('.search-suggestion-chip');
+
+  if (!searchInput || typeof SearchModule === 'undefined') return;
+
+  function executeSearch(query) {
+    currentSearchQuery = query;
+    const cleanQuery = SearchModule.normalizarTexto(query);
+
+    if (clearBtn) {
+      if (cleanQuery) {
+        clearBtn.classList.remove('hidden');
+      } else {
+        clearBtn.classList.add('hidden');
+      }
+    }
+
+    if (!cleanQuery) {
+      if (counterContainer) {
+        counterContainer.classList.add('hidden');
+        counterContainer.classList.remove('inline-flex');
+      }
+      if (emptyState) emptyState.classList.add('hidden');
+      renderTechnicalSkills(PROFILE_DATA.technicalSkills);
+      renderProjects(currentFilter, '');
+      renderExperience(PROFILE_DATA.experience);
+      if (window.lucide) window.lucide.createIcons();
+      return;
+    }
+
+    const filteredSkills = SearchModule.filtrarHabilidades(PROFILE_DATA.technicalSkills, cleanQuery);
+    const filteredProjects = SearchModule.filtrarProyectos(PROFILE_DATA.projects, currentFilter, cleanQuery);
+    const filteredExp = SearchModule.filtrarExperiencia(PROFILE_DATA.experience, cleanQuery);
+    const total = SearchModule.calcularTotalCoincidencias(filteredSkills, filteredProjects, filteredExp);
+
+    if (total === 0) {
+      if (counterContainer) {
+        counterContainer.classList.add('hidden');
+        counterContainer.classList.remove('inline-flex');
+      }
+      if (emptyState) {
+        emptyState.classList.remove('hidden');
+        if (emptyQuery) emptyQuery.textContent = query.trim();
+      }
+      renderTechnicalSkills({});
+      renderProjects(currentFilter, cleanQuery);
+      renderExperience([]);
+    } else {
+      if (emptyState) emptyState.classList.add('hidden');
+      if (counterContainer) {
+        counterContainer.classList.remove('hidden');
+        counterContainer.classList.add('inline-flex');
+        if (counterText) {
+          counterText.textContent = total === 1 ? '1 coincidencia encontrada' : `${total} coincidencias encontradas`;
+        }
+      }
+      renderTechnicalSkills(filteredSkills);
+      renderProjects(currentFilter, cleanQuery);
+      renderExperience(filteredExp);
+    }
+
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  }
+
+  // Evento de entrada de texto
+  searchInput.addEventListener('input', (e) => {
+    executeSearch(e.target.value);
+  });
+
+  // Atajo de teclado: Escape limpia la búsqueda
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      searchInput.value = '';
+      executeSearch('');
+    }
+  });
+
+  // Botón de limpiar búsqueda
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      searchInput.focus();
+      executeSearch('');
+    });
+  }
+
+  // Botón de restablecer desde estado vacío
+  if (resetEmptyBtn) {
+    resetEmptyBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      searchInput.focus();
+      executeSearch('');
+    });
+  }
+
+  // Chips de sugerencia rápida
+  suggestionChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const term = chip.getAttribute('data-term');
+      if (term) {
+        searchInput.value = term;
+        searchInput.focus();
+        executeSearch(term);
+      }
+    });
+  });
 }
 
 /* ==========================================================================

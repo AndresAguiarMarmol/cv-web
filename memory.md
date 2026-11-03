@@ -20,14 +20,14 @@ Toda la información del profesional se encuentra centralizada en `assets/js/dat
 
 | Sección en `PROFILE_DATA` | Tipo de dato | Descripción |
 | :--- | :--- | :--- |
-| `personal` | Objeto | Nombre, títulos, resumen, ubicación, disponibilidad, email, teléfono, links (LinkedIn, GitHub) y métricas de impacto para el Hero. |
-| `executivePitch` | Objeto | Resumen ejecutivo en 30 segundos con 3 pilares estratégicos (adaptabilidad, liderazgo y resultados). |
-| `brandTechnologies` | Array de objetos | Tecnologías destacadas con paleta cromática de marca, íconos y categorías. |
-| `corePillars` | Array de objetos | Los 4 pilares de especialización con ícono, título y descripción. |
-| `technicalSkills` | Objeto de arrays | Habilidades agrupadas por categorías (Lenguajes, Frameworks, Bases de Datos, Metodologías, etc.). |
-| `projects` | Array de objetos | Casos de estudio en formato STAR con categorías de filtro, badges, resumen y modal detallado. |
-| `experience` | Array de objetos | Trayectoria laboral cronológica con empresa, cargo, período, ubicación y lista de logros. |
-| `educationAndCerts` | Objeto | Certificaciones profesionales (con enlaces de validación y PDFs) y títulos académicos de pregrado y posgrado. |
+| `personal` | Objeto | Nombre ("Andrés Aguiar Mármol"), títulos ("Licenciado en Informática"), resumen, ubicación, disponibilidad, email, teléfono, links, métricas de impacto y sub-objeto `targetProfiles` con los 3 perfiles objetivos adaptativos de la skill `cv-andres-aguiar` (`soporte`, `gerencia`, `developer`). |
+| `executivePitch` | Objeto | Resumen ejecutivo en 30 segundos con 3 pilares estratégicos (13 años en Jefatura de Soporte ALCASA, 40 años operaciones y gobernanza TI / 10 años comercial, 1° lugar UCLA y software moderno en producción activa). |
+| `brandTechnologies` | Array de objetos | Tecnologías destacadas con paleta cromática de marca, íconos y categorías (Soporte & ITIL, Web Crypto AES-256, ERP Textil, Redes, Python 3.13, Cloud APIs, SQL Server, JS, etc.). |
+| `corePillars` | Array de objetos | Los 4 pilares de especialización con ícono, título y descripción (Jefatura de Soporte, Gobernanza TI & ERP, Desarrollo Web Crypto & Cloud, Software Deportivo). |
+| `technicalSkills` | Objeto de arrays | Habilidades agrupadas en categorías de alta fidelidad técnica (Liderazgo & Soporte ITIL/SLAs, Ciberseguridad & Web Crypto, ERPs & Gestión Comercial, Software Deportivo & Biomecánica, Infraestructura & Redes, Programación Cloud & Core). |
+| `projects` | Array de objetos | 14 casos de estudio en formato STAR con categorías de filtro (`gestion`, `sports`, `web`, `leadership`, `dev`), badges visuales, impacto medible, resumen y modal detallado. |
+| `experience` | Array de objetos | Trayectoria laboral cronológica completa: Proyectos Independientes Cloud y ERPs (2025–Presente), Jefatura de Soporte CVG ALCASA (2012–2025 | Ficha 10.752), Mini Market Don Andrés (2014–2024), Criptoactivos (2018–2023) y Analista/Programador II CVG ALCASA (1985–2012). |
+| `educationAndCerts` | Objeto | Título académico de Licenciado en Informática (UCLA, 1° en Promoción, Promedio: 3.66/4.00) y certificaciones oficiales (IA, Python PUC Nota 6,6, etc.). |
 
 ---
 
@@ -39,8 +39,9 @@ Decisiones ya tomadas que deben respetarse salvo indicación explícita del usua
 - **Tailwind CSS vía CDN:** La configuración de temas, tipografías y colores corporativos (paleta `brand`) reside en el `<script>` de configuración de Tailwind en el `<head>` de `index.html`.
 - **Modo oscuro por clase:** Se usa la clase `dark` en el elemento `<html>`, controlada por `assets/js/main.js` y estilizada mediante clases utilitarias de Tailwind y variables CSS en `assets/css/custom.css`.
 - **Separación de datos y lógica:** No añadir textos personales ni proyectos estáticos directamente en `index.html`. Toda nueva entrada debe incorporarse en `assets/js/data.js` para que `assets/js/main.js` la renderice de forma consistente.
-- **Modales nativos:** Los modales de detalle de proyectos STAR y opciones de descarga utilizan la etiqueta nativa `<dialog>`, aprovechando `showModal()` y `close()` con soporte nativo de backdrop y tecla Escape.
-- **Optimización de impresión (`@media print`):** La descarga del CV en PDF aprovecha las capacidades de impresión del navegador (`Ctrl + P` o botón interactivo), ocultando la navegación, controles interactivos y fondos oscuros mediante estilos de impresión dedicados en `assets/css/custom.css`.
+- **Modales nativos:** Los modales de detalle de proyectos STAR y opciones de exportación utilizan la etiqueta nativa `<dialog>`, aprovechando `showModal()` y `close()` con soporte nativo de backdrop y tecla Escape.
+- **Adaptación Dinámica por Cargo Objetivo (skill `cv-andres-aguiar`):** El Hero cuenta con un selector de rol (`soporte` [Prioridad 1], `gerencia` [Prioridad 2], `developer` [Prioridad 3]) que adapta titulares, resúmenes ejecutivos y permite exportar/copiar el esquema JSON oficial para plataformas ATS y postulaciones a través del `<dialog id="json-modal">`.
+- **Optimización de impresión (`@media print`):** La descarga del CV en PDF aprovecha las capacidades de impresión del navegador (`Ctrl + P` o botón interactivo), ocultando la navegación, controles interactivos, selector de roles y fondos oscuros mediante estilos de impresión dedicados en `assets/css/custom.css`.
 - **Iconos:** Se emplea la biblioteca Lucide Icons cargada vía CDN y renderizada mediante `window.lucide.createIcons()`.
 - **Buscador y normalización de texto:** Las funciones de búsqueda residen en `assets/js/search.js` como funciones puras sin dependencias externas, con tolerancia a acentos y mayúsculas, y exportación condicional para ejecución en `node --test`.
 - **Internacionalización de interfaz (UI Chrome):** El catálogo bilingüe y funciones puras de i18n residen en `assets/js/i18n.js` con paridad estricta de claves. Solo se traduce el UI Chrome (navegación, botones, buscador, etiquetas de sección, accesibilidad y toasts), preservando el cuerpo técnico en español original por acuerdo explícito para no desvirtuar los logros y métricas STAR.
@@ -51,6 +52,29 @@ Decisiones ya tomadas que deben respetarse salvo indicación explícita del usua
 ## 3. Historial de cambios
 
 Añadir una entrada nueva arriba del todo por cada tarea terminada.
+
+### 2026-11-03 — Incorporación de 5 Desarrollos de Software Clave
+- Incorporados 5 desarrollos en [assets/js/data.js](file:///d:/Carpetas/Desarrollos/Desarrollos%20WEB/CV%20Web/assets/js/data.js) con metodología STAR, métricas de impacto comprobables y badges de arquitectura visual:
+  1. **Bóveda Digital:** Wallet securizada de documentos con arquitectura Zero-Knowledge, cifrado AES-256-GCM y derivación PBKDF2 (100k iteraciones HMAC-SHA256) sobre IndexedDB.
+  2. **Gimnasio Pro:** Sistema de monitoreo biomecánico y fuerza con catálogo de 12 movimientos canónicos, cálculo de tonelaje, conversión dinámica KG/LBS y licenciamiento offline mediante firma SHA-256.
+  3. **Administración del Dojo de Karate (Municipalidad de La Reina - Santiago):** SPA de tesorería y gestión deportiva con cobranza programada automática (Día 3 a la 01:00 AM), semáforo de mensualidades, segregación bancaria al Fondo de Reserva (10%) y control de becas municipales.
+  4. **Momentos Cookie:** PWA offline de control de pedidos para taller de repostería con semáforo de producción en 4 niveles de prioridad, combos especiales y mensajería WhatsApp.
+  5. **Ventas NovaPrint:** Suite ERP textil y cotizador técnico con reglas de compatibilidad DTF/Sublimación, cálculo de IVA chileno (19% D.L. 825) y delivery, enlace Prenda-Color-Talla y emisión de tickets térmicos.
+- Actualizados los filtros interactivos (`filterCategories`) agregando `gestion` (Gestión & ERP) y `sports` (Software Deportivo) totalizando 14 proyectos en vitrina.
+- Añadidos chips de sugerencia rápida en la barra de búsqueda en [index.html](file:///d:/Carpetas/Desarrollos/Desarrollos%20WEB/CV%20Web/index.html) para Bóveda Digital, NovaPrint, Karate La Reina, Gimnasio Pro y Momentos Cookie.
+- Actualizada la skill máster [.agents/skills/sdd/SKILL.md](file:///d:/Carpetas/Desarrollos/Desarrollos%20WEB/CV%20Web/.agents/skills/sdd/SKILL.md) y catálogo bilingüe en [assets/js/i18n.js](file:///d:/Carpetas/Desarrollos/Desarrollos%20WEB/CV%20Web/assets/js/i18n.js).
+- 14/14 tests pasando en verde con `node --test`.
+
+### 2026-11-03 — Regeneración de la App con la skill cv-andres-aguiar
+- Sincronizados y regenerados los datos maestros en [assets/js/data.js](file:///d:/Carpetas/Desarrollos/Desarrollos%20WEB/CV%20Web/assets/js/data.js) según la skill `cv-andres-aguiar`:
+  - Nombre completo: Andrés Aguiar Mármol.
+  - Título y formación formal: Licenciado en Informática (UCLA, 1° de su Promoción, Promedio 3.66/4.00).
+  - Hitos laborales: CVG ALCASA (Septiembre 1985 – Diciembre 2025 | Ficha 10.752; Jefe de División de Soporte Técnico 2012–2025 y Analista / Programador II 1985–2012), Mini Market Don Andrés (2014–2024), Proyectos Independientes Cloud & Python (2025–Presente) e Infraestructura Cripto (2018–2023).
+  - Habilidades técnicas estructuradas en 5 categorías (Liderazgo & Soporte ITIL/SLAs, Infraestructura & Redes, Programación & Cloud APIs / OAuth 2.0 / Drive v3 / OCR, Desarrollo Web & PWAs, y Sistemas Core/ERP).
+- Incorporado en [index.html](file:///d:/Carpetas/Desarrollos/Desarrollos%20WEB/CV%20Web/index.html) y [assets/js/main.js](file:///d:/Carpetas/Desarrollos/Desarrollos%20WEB/CV%20Web/assets/js/main.js) el **Selector Adaptativo según Cargo Objetivo** en el Hero (Jefatura de Soporte, Gerencia TI, Desarrollador Senior) y el modal nativo `<dialog id="json-modal">` para visualizar y copiar el esquema JSON exportable estructurado para ATS.
+- Actualizado el catálogo bilingüe en [assets/js/i18n.js](file:///d:/Carpetas/Desarrollos/Desarrollos%20WEB/CV%20Web/assets/js/i18n.js) con paridad estricta para nuevas claves y filtros.
+- Restaurado el botón `#theme-toggle-mobile` en el menú móvil y optimizadas las reglas de impresión en [assets/css/custom.css](file:///d:/Carpetas/Desarrollos/Desarrollos%20WEB/CV%20Web/assets/css/custom.css).
+- 14/14 tests pasando en verde con `node --test`.
 
 ### 2026-10-16 — Corrección: Restauración de h2#modal-title y robustez en modal STAR
 - Detectado que al pulsar el botón "Ver caso completo STAR" no se abría el diálogo debido a la omisión accidental del elemento `<h2 id="modal-title">` en `index.html`.

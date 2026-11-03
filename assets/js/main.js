@@ -6,6 +6,7 @@
 let currentFilter = 'all';
 let currentSearchQuery = '';
 let currentLanguage = 'es';
+let currentTargetRole = 'soporte';
 
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
@@ -878,32 +879,146 @@ function setupNavigation() {
    Modales Nativos (<dialog closedby="any">) con fallback moderno
    ========================================================================== */
 function setupModals() {
-  const dialog = document.getElementById('project-modal');
-  if (!dialog) return;
+  const dialogs = [document.getElementById('project-modal'), document.getElementById('json-modal')].filter(Boolean);
 
   // Fallback para navegadores que aún no soportan closedby="any" nativamente
-  if (!('closedBy' in HTMLDialogElement.prototype)) {
-    dialog.addEventListener('click', (event) => {
-      if (event.target !== dialog) return;
-      const rect = dialog.getBoundingClientRect();
-      const isDialogContent = (
-        rect.top <= event.clientY &&
-        event.clientY <= rect.top + rect.height &&
-        rect.left <= event.clientX &&
-        event.clientX <= rect.left + rect.width
-      );
-      if (!isDialogContent) {
-        dialog.close();
-      }
+  dialogs.forEach(dialog => {
+    if (!('closedBy' in HTMLDialogElement.prototype)) {
+      dialog.addEventListener('click', (event) => {
+        if (event.target !== dialog) return;
+        const rect = dialog.getBoundingClientRect();
+        const isDialogContent = (
+          rect.top <= event.clientY &&
+          event.clientY <= rect.top + rect.height &&
+          rect.left <= event.clientX &&
+          event.clientX <= rect.left + rect.width
+        );
+        if (!isDialogContent) {
+          dialog.close();
+        }
+      });
+    }
+  });
+
+  // Botones de cierre en los diálogos
+  const projectCloseBtn = document.getElementById('modal-close-btn');
+  if (projectCloseBtn) {
+    projectCloseBtn.addEventListener('click', () => {
+      const d = document.getElementById('project-modal');
+      if (d) d.close();
     });
   }
 
-  // Botón de cierre en el diálogo
-  const closeBtn = document.getElementById('modal-close-btn');
-  if (closeBtn) {
-    closeBtn.addEventListener('click', () => dialog.close());
+  const jsonCloseBtn = document.getElementById('json-modal-close-btn');
+  if (jsonCloseBtn) {
+    jsonCloseBtn.addEventListener('click', () => {
+      const d = document.getElementById('json-modal');
+      if (d) d.close();
+    });
+  }
+
+  // Copiar JSON al portapapeles
+  const copyJsonBtn = document.getElementById('btn-copy-json');
+  if (copyJsonBtn) {
+    copyJsonBtn.addEventListener('click', () => {
+      const codeEl = document.getElementById('json-export-code');
+      if (!codeEl) return;
+      navigator.clipboard.writeText(codeEl.textContent).then(() => {
+        const msg = (typeof I18nModule !== 'undefined')
+          ? I18nModule.obtenerTraduccion('toast_json_copied', currentLanguage) || '¡Esquema JSON copiado al portapapeles!'
+          : '¡Esquema JSON copiado al portapapeles!';
+        showToast(msg, 'success');
+      }).catch(() => {
+        showToast('Esquema JSON copiado', 'info');
+      });
+    });
   }
 }
+
+// Selector adaptativo de rol profesional (cv-andres-aguiar)
+window.setTargetRole = function(roleId) {
+  if (typeof PROFILE_DATA === 'undefined' || !PROFILE_DATA.personal || !PROFILE_DATA.personal.targetProfiles) return;
+  const profile = PROFILE_DATA.personal.targetProfiles[roleId];
+  if (!profile) return;
+  currentTargetRole = roleId;
+
+  // Actualizar headline y summary en Hero
+  const headlineEl = document.getElementById('hero-headline');
+  const summaryEl = document.getElementById('hero-summary');
+  if (headlineEl) headlineEl.textContent = profile.headline;
+  if (summaryEl) summaryEl.textContent = profile.summary;
+
+  // Actualizar botones de rol
+  const buttons = document.querySelectorAll('.role-target-btn');
+  buttons.forEach(btn => {
+    const r = btn.getAttribute('data-role');
+    if (r === roleId) {
+      btn.className = 'role-target-btn active px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer bg-blue-600 text-white shadow-xs';
+    } else {
+      btn.className = 'role-target-btn px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-650';
+    }
+  });
+
+  showToast(`Enfoque adaptado: ${profile.shortTitle}`, 'info');
+};
+
+// Modal de exportación de esquema JSON adaptativo
+window.openJsonModal = function() {
+  const dialog = document.getElementById('json-modal');
+  const codeEl = document.getElementById('json-export-code');
+  if (!dialog || !codeEl || typeof PROFILE_DATA === 'undefined') return;
+
+  const currentRole = (PROFILE_DATA.personal.targetProfiles && PROFILE_DATA.personal.targetProfiles[currentTargetRole])
+    ? PROFILE_DATA.personal.targetProfiles[currentTargetRole]
+    : {
+        roleName: "Jefatura de Soporte Técnico (Prioridad 1)",
+        summary: PROFILE_DATA.personal.summary,
+        highlightPillars: [
+          "Gestión de Soporte Técnico y Help Desk",
+          "Continuidad Operativa e Infraestructura TI",
+          "Liderazgo de Equipos Multidisciplinarios",
+          "Python, JavaScript y Automatización",
+          "Integración de APIs y Cloud Services"
+        ]
+      };
+
+  const schemaJson = {
+    datos_personales: {
+      nombre: PROFILE_DATA.personal.name,
+      titulo: PROFILE_DATA.personal.title,
+      ubicacion: PROFILE_DATA.personal.location,
+      perfil_enfoque: currentRole.roleName,
+      resumen_ejecutivo: currentRole.summary
+    },
+    habilidades_principales: currentRole.highlightPillars || [
+      "Gestión de Soporte Técnico y Help Desk",
+      "Continuidad Operativa e Infraestructura TI",
+      "Liderazgo de Equipos Multidisciplinarios",
+      "Python, JavaScript y Automatización",
+      "Integración de APIs y Cloud Services"
+    ],
+    experiencia_laboral: PROFILE_DATA.experience.slice(0, 4).map(exp => ({
+      empresa: exp.company,
+      cargo: exp.role,
+      periodo: exp.period,
+      logros: exp.highlights.slice(0, 3)
+    })),
+    educacion: {
+      institucion: (PROFILE_DATA.educationAndCerts && PROFILE_DATA.educationAndCerts.education[0])
+        ? PROFILE_DATA.educationAndCerts.education[0].institution
+        : "Universidad Centroccidental Lisandro Alvarado (UCLA)",
+      titulo: "Licenciado en Informática",
+      promedio: "3.66 / 4.00"
+    }
+  };
+
+  codeEl.textContent = JSON.stringify(schemaJson, null, 2);
+  dialog.showModal();
+
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
+};
 
 // Función global para abrir el modal con los datos del proyecto
 window.openProjectModal = function(projectId) {

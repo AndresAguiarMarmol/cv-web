@@ -1,6 +1,6 @@
 /**
  * Módulo de Internacionalización (i18n) Bilingüe (Español / Inglés)
- * Para Portfolio Web de Andres Aguiar - Analista de Sistemas TI
+ * Para Portfolio Web de Andrés Aguiar Mármol - Licenciado en Informática & Analista de Sistemas TI
  * 
  * Soporta ejecución dual: Navegador (window.I18nModule) y Node.js (CommonJS / node --test)
  */
@@ -36,12 +36,12 @@
       nav_contact: 'Contacto',
       nav_download_cv: 'Descargar CV',
       nav_download_pdf: 'Descargar CV en PDF',
-      nav_tagline: 'Analista de Sistemas',
+      nav_tagline: 'Licenciado en Informática',
 
       // Hero & Perfil
-      hero_status: 'Disponible para Proyectos & Consultoría TI',
-      hero_headline: 'Más de 40 años optimizando recursos de TI y desarrollando soluciones de software empresarial.',
-      hero_summary: 'Profesional experto en Tecnología de Información con más de 40 años de sólida trayectoria liderando operaciones de soporte técnico, administración de plataformas y desarrollo de sistemas empresariales.',
+      hero_status: 'Disponible para Jefatura de Soporte, Gerencia TI & Consultoría',
+      hero_headline: 'Más de 40 años optimizando recursos de TI, liderando soporte corporativo y desarrollando software empresarial.',
+      hero_summary: 'Licenciado en Informática (UCLA, 1° de su Promoción) con más de 40 años de trayectoria: 13 años liderando la División de Soporte Técnico en CVG ALCASA, 10 años en dirección de operaciones de TI comercial y desarrollo actual en Python 3.13, JavaScript moderno y Cloud APIs.',
       cta_projects: 'Ver Casos de Éxito',
       cta_whatsapp: 'WhatsApp Directo',
       cta_copy_email: 'Copiar Correo',
@@ -50,10 +50,21 @@
       cta_view_linkedin: 'Ver Perfil en LinkedIn',
       cta_profile_badge: 'Perfil Oficial',
       profile_label_grad: 'Graduación:',
-      profile_val_grad: '1° en Promoción UCLA',
+      profile_val_grad: '1° en Promoción UCLA (3.66/4)',
       profile_label_spec: 'Especialidad:',
-      profile_val_spec: 'Gestión TI, Web, Python & Cripto',
+      profile_val_spec: 'Jefatura Soporte, Gerencia TI & Cloud',
       profile_label_phone: 'Teléfono:',
+
+      // Selector de Rol Adaptativo (cv-andres-aguiar)
+      target_role_label: 'Enfoque según Cargo Objetivo:',
+      target_role_soporte: 'Jefatura de Soporte',
+      target_role_gerencia: 'Gerencia TI',
+      target_role_developer: 'Desarrollador Senior',
+      btn_export_json: 'Exportar JSON para ATS / Apps',
+      modal_json_title: 'Esquema JSON Adaptativo (cv-andres-aguiar)',
+      modal_json_desc: 'Datos estructurados listos para alimentar portales de postulación, parseadores de CV y sistemas ATS:',
+      modal_json_copy: 'Copiar JSON',
+      toast_json_copied: '¡Esquema JSON copiado al portapapeles!',
 
       // Resumen 30s & Ecosistema
       brand_tech_title: 'Ecosistema Tecnológico Principal:',
@@ -86,6 +97,12 @@
       filter_core: 'Sistemas Core',
       filter_ai: 'IA & Moderno',
       filter_dev: 'Desarrollo',
+      filter_leadership: 'Soporte & Operaciones',
+      filter_web: 'Web & Cloud',
+      filter_gestion: 'Gestión & ERP',
+      filter_sports: 'Software Deportivo',
+      filter_crypto: 'Cripto & Infraestructura',
+      filter_erp: 'Análisis & ERP',
       projects_empty: 'No hay proyectos que coincidan con los criterios actuales.',
       project_read_more: 'Ver caso completo',
 
@@ -133,7 +150,7 @@
       contact_form_email: 'Correo Electrónico de Contacto *',
       contact_form_email_placeholder: 'nombre@empresa.com',
       contact_form_message: 'Mensaje o Propuesta *',
-      contact_form_message_placeholder: 'Hola Andrés, nos gustaría coordinar una entrevista técnica o conversar sobre una vacante de Analista de Sistemas...',
+      contact_form_message_placeholder: 'Hola Andrés, nos gustaría coordinar una entrevista técnica o conversar sobre una vacante de Jefatura de Soporte o Gerencia TI...',
       contact_form_submit: 'Enviar Mensaje',
 
       // Modal STAR
@@ -145,7 +162,7 @@
       modal_close_btn: 'Cerrar Ventana',
 
       // Pie de Página & Botones Flotantes
-      footer_role: 'Curriculum & Portfolio de Analista de Sistemas TI',
+      footer_role: 'Curriculum & Portfolio de Licenciado en Informática / Analista TI',
       footer_print: 'Imprimir / Guardar en PDF',
       footer_back_to_top: 'Volver arriba ↑',
       floating_whatsapp: 'WhatsApp',
@@ -181,12 +198,12 @@
       nav_contact: 'Contact',
       nav_download_cv: 'Download CV',
       nav_download_pdf: 'Download Resume (PDF)',
-      nav_tagline: 'Systems Analyst',
+      nav_tagline: 'Computer Science B.S.',
 
       // Hero & Profile
-      hero_status: 'Available for Projects & IT Consulting',
-      hero_headline: 'Over 40 years optimizing IT resources and building enterprise software solutions.',
-      hero_summary: 'Information Technology professional with over 40 years of solid track record leading technical support operations, platform administration, and enterprise systems development.',
+      hero_status: 'Available for Support Mgmt, IT Direction & Consulting',
+      hero_headline: 'Over 40 years optimizing IT resources, leading enterprise support, and developing business software.',
+      hero_summary: 'Computer Science graduate (UCLA, 1st in Class) with over 40 years of track record: 13 years leading the Technical Support Division at CVG ALCASA, 10 years in commercial IT operations, and active development in Python 3.13, modern JavaScript, and Cloud APIs.',
       cta_projects: 'View Case Studies',
       cta_whatsapp: 'Direct WhatsApp',
       cta_copy_email: 'Copy Email',
@@ -195,10 +212,21 @@
       cta_view_linkedin: 'View LinkedIn Profile',
       cta_profile_badge: 'Official Profile',
       profile_label_grad: 'Graduation:',
-      profile_val_grad: '1st in UCLA Class',
+      profile_val_grad: '1st in UCLA Class (3.66/4)',
       profile_label_spec: 'Specialty:',
-      profile_val_spec: 'IT Management, Web, Python & Crypto',
+      profile_val_spec: 'Support Mgmt, IT Direction & Cloud',
       profile_label_phone: 'Phone:',
+
+      // Adaptive Target Role Selector (cv-andres-aguiar)
+      target_role_label: 'Focus by Target Role:',
+      target_role_soporte: 'Support Management',
+      target_role_gerencia: 'IT Management',
+      target_role_developer: 'Senior Developer',
+      btn_export_json: 'Export JSON for ATS / Apps',
+      modal_json_title: 'Adaptive JSON Schema (cv-andres-aguiar)',
+      modal_json_desc: 'Structured data ready to feed job application portals, resume parsers, and ATS engines:',
+      modal_json_copy: 'Copy JSON',
+      toast_json_copied: 'JSON schema copied to clipboard!',
 
       // 30s Summary & Brand Tech
       brand_tech_title: 'Core Tech Ecosystem:',
@@ -231,6 +259,12 @@
       filter_core: 'Core Systems',
       filter_ai: 'AI & Modern',
       filter_dev: 'Development',
+      filter_leadership: 'Support & Operations',
+      filter_web: 'Web & Cloud',
+      filter_gestion: 'Business Mgmt & ERP',
+      filter_sports: 'Sports Software',
+      filter_crypto: 'Crypto & Infrastructure',
+      filter_erp: 'Analysis & ERP',
       projects_empty: 'No projects match current criteria.',
       project_read_more: 'View full case',
 
@@ -278,7 +312,7 @@
       contact_form_email: 'Contact Email Address *',
       contact_form_email_placeholder: 'name@company.com',
       contact_form_message: 'Message or Proposal *',
-      contact_form_message_placeholder: 'Hi Andres, we would like to schedule a technical interview or discuss a Systems Analyst opportunity...',
+      contact_form_message_placeholder: 'Hi Andres, we would like to schedule a technical interview or discuss a Support Management or IT Leadership opportunity...',
       contact_form_submit: 'Send Message',
 
       // STAR Modal
@@ -290,7 +324,7 @@
       modal_close_btn: 'Close Window',
 
       // Footer & Floating
-      footer_role: 'IT Systems Analyst Resume & Portfolio',
+      footer_role: 'Computer Science Graduate / IT Analyst Portfolio & CV',
       footer_print: 'Print / Save as PDF',
       footer_back_to_top: 'Back to top ↑',
       floating_whatsapp: 'WhatsApp',

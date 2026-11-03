@@ -4,16 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Andres Aguiar | Analista de Sistemas TI - Curriculum & Portfolio</title>
+  <title>Andrés Aguiar Mármol | Licenciado en Informática & Analista TI - Curriculum & Portfolio</title>
   <meta name="description"
-    content="Portfolio y Curriculum Vitae de Andres Aguiar, Analista de Sistemas con más de 40 años de trayectoria en TI, gestión de operaciones, desarrollo en Python/SQL y liderazgo en soporte corporativo.">
-  <meta name="author" content="Andres Aguiar">
+    content="Portfolio y Curriculum Vitae de Andrés Aguiar Mármol, Licenciado en Informática (UCLA) con más de 40 años de trayectoria: 13 años como Jefe de División de Soporte Técnico en CVG ALCASA, 10 años en gestión comercial y desarrollo contemporáneo en Python 3.13, Cloud APIs y gobernanza TI.">
+  <meta name="author" content="Andrés Aguiar Mármol">
 
   <!-- Open Graph / Meta Social -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Andres Aguiar | Analista de Sistemas">
+  <meta property="og:title" content="Andrés Aguiar Mármol | Licenciado en Informática">
   <meta property="og:description"
-    content="Más de 40 Años de Trayectoria en Tecnología de Información, Operaciones y Desarrollo de Software.">
+    content="Más de 40 Años de Trayectoria: 13 Años en Jefatura de Soporte Técnico (CVG ALCASA), Gerencia TI y Desarrollo Python 3.13 / Cloud.">
 
   <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -71,10 +71,10 @@
         </span>
         <div class="flex flex-col">
           <span
-            class="font-bold text-sm sm:text-base leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-            Andres Aguiar
+            class="font-bold text-sm sm:text-base leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors bind-name">
+            Andrés Aguiar Mármol
           </span>
-          <span class="text-[11px] text-slate-500 dark:text-slate-400 font-medium" data-i18n="nav_tagline">Analista de Sistemas</span>
+          <span class="text-[11px] text-slate-500 dark:text-slate-400 font-medium" data-i18n="nav_tagline">Licenciado en Informática</span>
         </div>
       </a>
 
@@ -141,11 +141,16 @@
       <a href="#contacto"
         class="mobile-nav-link block py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-blue-600" data-i18n="nav_contact">Contacto</a>
 
-      <div class="pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center gap-3">
+      <div class="pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center gap-2 sm:gap-3">
         <button id="lang-toggle-mobile" type="button" aria-label="Cambiar idioma (Español / English)"
           class="inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-bold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shrink-0 cursor-pointer">
           <i data-lucide="globe" class="w-4 h-4 text-blue-500"></i>
           <span id="lang-toggle-mobile-text">EN</span>
+        </button>
+        <button id="theme-toggle-mobile" type="button" aria-label="Cambiar modo de tema"
+          class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 border border-slate-200 dark:border-slate-700 cursor-pointer">
+          <i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i>
+          <i data-lucide="sun" class="w-4 h-4 block dark:hidden"></i>
         </button>
         <button type="button"
           class="btn-print-cv inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold text-white bg-blue-600 rounded-xl flex-1 justify-center cursor-pointer">
@@ -168,11 +173,11 @@
         <!-- Columna Izquierda: Presentación -->
         <div class="lg:col-span-8">
           <!-- Badges de Estado -->
-          <div class="flex flex-wrap items-center gap-2.5 mb-6">
+          <div class="flex flex-wrap items-center gap-2.5 mb-5">
             <div
               class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60">
               <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span id="bind-status" data-i18n="hero_status">Disponible para Proyectos & Consultoría TI</span>
+              <span id="bind-status" data-i18n="hero_status">Disponible para Jefatura de Soporte, Gerencia TI & Consultoría</span>
             </div>
             <div
               class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
@@ -181,15 +186,42 @@
             </div>
           </div>
 
+          <!-- Selector Adaptativo según Vacante (cv-andres-aguiar) -->
+          <div class="mb-6 p-2.5 sm:p-3 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200/90 dark:border-slate-700/80 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-2.5">
+            <div class="flex items-center gap-2 px-1">
+              <span class="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse shrink-0"></span>
+              <span class="text-xs font-bold text-slate-700 dark:text-slate-200" data-i18n="target_role_label">Enfoque según Cargo Objetivo:</span>
+            </div>
+            <div class="flex flex-wrap items-center gap-1.5" id="target-role-container">
+              <button type="button" onclick="setTargetRole('soporte')" data-role="soporte"
+                class="role-target-btn active px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer bg-blue-600 text-white shadow-xs">
+                🛡️ <span data-i18n="target_role_soporte">Jefatura de Soporte</span>
+              </button>
+              <button type="button" onclick="setTargetRole('gerencia')" data-role="gerencia"
+                class="role-target-btn px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-650">
+                🏢 <span data-i18n="target_role_gerencia">Gerencia TI</span>
+              </button>
+              <button type="button" onclick="setTargetRole('developer')" data-role="developer"
+                class="role-target-btn px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-650">
+                💻 <span data-i18n="target_role_developer">Desarrollador Senior</span>
+              </button>
+              <button type="button" onclick="openJsonModal()"
+                class="px-2.5 py-1.5 rounded-xl text-xs font-semibold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-100 dark:hover:bg-blue-900/60 border border-blue-200/80 dark:border-blue-800/60 transition-colors inline-flex items-center gap-1 cursor-pointer"
+                title="Exportar esquema JSON para ATS o aplicaciones">
+                <i data-lucide="file-json" class="w-3.5 h-3.5"></i>
+                <span data-i18n="btn_export_json">Exportar JSON</span>
+              </button>
+            </div>
+          </div>
+
           <!-- Titulares Principales -->
-          <h1
+          <h1 id="hero-headline"
             class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.12] mb-6" data-i18n="hero_headline">
             Más de 40 años optimizando recursos de TI y desarrollando soluciones de software empresarial.
           </h1>
 
-          <p class="bind-summary text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-8" data-i18n="hero_summary">
-            Profesional experto en Tecnología de Información con más de 40 años de sólida trayectoria liderando
-            operaciones de soporte técnico, administración de plataformas y desarrollo de sistemas empresariales.
+          <p id="hero-summary" class="bind-summary text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-8" data-i18n="hero_summary">
+            Licenciado en Informática (UCLA, 1° de su Promoción) con más de 40 años de sólida trayectoria liderando operaciones de soporte técnico, administración de plataformas y desarrollo de software.
           </p>
 
           <!-- Botones CTA -->
@@ -240,9 +272,9 @@
                   <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                   <span data-i18n="cta_profile_badge">Perfil Oficial</span>
                 </div>
-                <h3 class="font-extrabold text-lg sm:text-xl text-slate-900 dark:text-white leading-tight truncate">
-                  Andres Aguiar</h3>
-                <p class="text-xs font-semibold text-blue-600 dark:text-blue-400" data-i18n="nav_tagline">Analista de Sistemas</p>
+                <h3 class="font-extrabold text-lg sm:text-xl text-slate-900 dark:text-white leading-tight truncate bind-name">
+                  Andrés Aguiar Mármol</h3>
+                <p class="text-xs font-semibold text-blue-600 dark:text-blue-400" data-i18n="nav_tagline">Licenciado en Informática</p>
                 <p class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1 mt-0.5">
                   <i data-lucide="map-pin" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
                   <span class="truncate">Santiago, Chile</span>
@@ -254,11 +286,11 @@
               class="space-y-3 text-xs text-slate-600 dark:text-slate-300 border-t border-slate-200/80 dark:border-slate-700/80 pt-4 mb-5">
               <div class="flex items-center justify-between">
                 <span class="text-slate-500" data-i18n="profile_label_grad">Graduación:</span>
-                <span class="font-bold text-amber-600 dark:text-amber-400" data-i18n="profile_val_grad">1° en Promoción UCLA</span>
+                <span class="font-bold text-amber-600 dark:text-amber-400" data-i18n="profile_val_grad">1° en Promoción UCLA (3.66/4)</span>
               </div>
               <div class="flex items-center justify-between">
                 <span class="text-slate-500" data-i18n="profile_label_spec">Especialidad:</span>
-                <span class="font-semibold text-slate-800 dark:text-slate-200" data-i18n="profile_val_spec">Gestión TI, Web, Python & Cripto</span>
+                <span class="font-semibold text-slate-800 dark:text-slate-200" data-i18n="profile_val_spec">Jefatura Soporte, Gerencia TI & Cloud</span>
               </div>
               <div class="flex items-center justify-between">
                 <span class="text-slate-500" data-i18n="profile_label_phone">Teléfono:</span>
@@ -379,10 +411,13 @@
             <i data-lucide="sparkles" class="w-3.5 h-3.5 text-blue-500"></i>
             <span data-i18n="search_suggestions_label">Sugerencias rápidas:</span>
           </span>
+          <button type="button" class="search-suggestion-chip px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-750 dark:hover:bg-blue-950/50 text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" data-term="NovaPrint">NovaPrint ERP</button>
+          <button type="button" class="search-suggestion-chip px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-750 dark:hover:bg-blue-950/50 text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" data-term="Boveda">Bóveda Digital</button>
+          <button type="button" class="search-suggestion-chip px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-750 dark:hover:bg-blue-950/50 text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" data-term="Karate">Karate La Reina</button>
+          <button type="button" class="search-suggestion-chip px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-750 dark:hover:bg-blue-950/50 text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" data-term="Gimnasio">Gimnasio Pro</button>
+          <button type="button" class="search-suggestion-chip px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-750 dark:hover:bg-blue-950/50 text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" data-term="Cookie">Momentos Cookie</button>
           <button type="button" class="search-suggestion-chip px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-750 dark:hover:bg-blue-950/50 text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" data-term="Python">Python</button>
           <button type="button" class="search-suggestion-chip px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-750 dark:hover:bg-blue-950/50 text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" data-term="SQL">SQL Server</button>
-          <button type="button" class="search-suggestion-chip px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-750 dark:hover:bg-blue-950/50 text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" data-term="IA">Inteligencia Artificial</button>
-          <button type="button" class="search-suggestion-chip px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-750 dark:hover:bg-blue-950/50 text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" data-term="Saint">Saint ERP</button>
           <button type="button" class="search-suggestion-chip px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-750 dark:hover:bg-blue-950/50 text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" data-term="Alcasa">CVG ALCASA</button>
           <button type="button" class="search-suggestion-chip px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-blue-50 dark:bg-slate-750 dark:hover:bg-blue-950/50 text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" data-term="Soporte">Soporte Técnico</button>
         </div>
@@ -810,15 +845,63 @@
   </dialog>
 
   <!-- =======================================================================
+       Modal Nativo (<dialog closedby="any">) para Exportación de Esquema JSON
+       Basado en la especificación de datos de la skill cv-andres-aguiar
+       ======================================================================= -->
+  <dialog id="json-modal" closedby="any" aria-labelledby="json-modal-title"
+    class="p-0 border-0 rounded-2xl bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-2xl backdrop:bg-slate-950/70 backdrop:backdrop-blur-sm max-w-2xl w-full">
+    <div class="relative max-h-[90vh] overflow-y-auto p-6 sm:p-8">
+      <!-- Botón de Cerrar Modal -->
+      <button id="json-modal-close-btn" type="button" aria-label="Cerrar modal"
+        class="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="flex items-center gap-2 mb-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 flex items-center gap-1.5">
+          <i data-lucide="code" class="w-4 h-4"></i>
+          <span>Skill cv-andres-aguiar</span>
+        </span>
+      </div>
+
+      <h2 id="json-modal-title" class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-2 pr-8 leading-snug" data-i18n="modal_json_title">
+        Esquema JSON Adaptativo (cv-andres-aguiar)
+      </h2>
+      <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-4" data-i18n="modal_json_desc">
+        Datos estructurados listos para alimentar portales de postulación, parseadores de CV y sistemas ATS:
+      </p>
+
+      <div class="relative bg-slate-950 text-slate-100 p-4 rounded-xl border border-slate-800 font-mono text-xs overflow-x-auto max-h-96 shadow-inner">
+        <pre><code id="json-export-code" class="text-xs text-blue-300"></code></pre>
+      </div>
+
+      <div class="mt-6 flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-200 dark:border-slate-800">
+        <button type="button" id="btn-copy-json"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-xs shadow transition-all cursor-pointer">
+          <i data-lucide="copy" class="w-4 h-4"></i>
+          <span data-i18n="modal_json_copy">Copiar JSON</span>
+        </button>
+        <form method="dialog">
+          <button type="submit"
+            class="px-5 py-2.5 rounded-xl bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-semibold transition-colors cursor-pointer"
+            data-i18n="modal_close_btn">
+            Cerrar Ventana
+          </button>
+        </form>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- =======================================================================
        Pie de Página (Footer)
        ======================================================================= -->
   <footer class="border-t border-slate-200 dark:border-slate-800 py-10 bg-white dark:bg-slate-900/50">
     <div
       class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
       <div class="flex items-center gap-2">
-        <span class="font-bold text-slate-700 dark:text-slate-300">Andres Aguiar</span>
+        <span class="font-bold text-slate-700 dark:text-slate-300 bind-name">Andrés Aguiar Mármol</span>
         <span>•</span>
-        <span data-i18n="footer_role">Curriculum & Portfolio de Analista de Sistemas TI</span>
+        <span data-i18n="footer_role">Curriculum & Portfolio de Licenciado en Informática / Analista TI</span>
       </div>
       <div class="flex items-center gap-4">
         <button type="button" class="btn-print-cv hover:text-blue-600 transition-colors font-medium cursor-pointer" data-i18n="footer_print">
